@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="shortcut icon" type="image/png" href="../img/logo-48x48.png">
+  <title>Cercemap.org</title>
+
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.4/slicknav.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
+
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,700|Lato:400,700" rel="stylesheet" type="text/css">
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.4/jquery.slicknav.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+
+
+</head>
+<body>
+
+  <header class="logo">
+    <div class="menu">
+      <h1>cercemap <span class="version">1.0</span></h1>
+      <nav>
+        <ul>
+          <li><a href="#">Bienvenida</a></li>
+          <li><a href="#">Mapa</a></li>
+          <li><a href="#">API</a></li>
+          <li><a href="#">Idioma</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+    <button>Ir al mapa</button>
+  </header>
+
+  <main>
+    <section class="features">
+      <ul>
+        <li>
+          <div class="icon"><i class="fa fa-map-pin fa-3" aria-hidden="true"></i></div>
+          <div class="text">
+            <h3>Servicios geolocalizados</h3>
+            <p>Muestra en el mapa los principales servicios y comercios de utilidad diaría</p>
+          </div>
+        </li>
+
+        <li>
+          <div class="icon"><i class="fa fa-bullseye fa-3" aria-hidden="true"></i></div>
+          <div class="text">
+            <h3>Localiza tu posición</h3>
+            <p>Muestra tu posición en el mapa utilizando las tecnologias de posicionamiento disponible en el dispositivo de acceso</p>
+          </div>
+        </li>
+        <li>
+          <div class="icon"><i class="fa fa-map fa-3" aria-hidden="true"></i></div>
+          <div class="text">
+            <h3>Puntos de interés turístico</h3>
+            <p>Ofrece a los visitantes la localización de los principales puntos de interés</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Copyright ©Jesidea. Todos los derechos reservados</p>
+    <!-- <p>Portions of data © OpenStreetMap contributors.</p> -->
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+@charset 'utf-8';
+@import url(https://fonts.googleapis.com/css?family=Arvo:400,700);
+
+$dark-blue: #282F44;
+$base-color: #50686B;
+$light-blue: #A6A6B3;
+$light-blue-2: #9ED0E6;
+$green: #04724D;
+$red: #DB3A34;
+$yellow: #F7CE5B;
+$grey: #E1DEE3;
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  outline: none;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html { overflow-y: scroll; }
+body {
+  font-size: 62.5%;
+  line-height: 1;
+  // font-family: Helvetica, Arial, sans-serif;
+  background: #709dc3;
+  font-family: 'Roboto', 'sans-serif';
+
+}
+
+br { display: block; line-height: 1.6em; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+ol, ul { list-style: none; }
+
+input, textarea {
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+}
+
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+strong, b { font-weight: bold; }
+em, i { font-style: italic; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+img { border: 0; max-width: 100%; height: auto; }
+
+h1 {
+  // font-family: 'Arvo', Helvetica, sans-serif;
+  font-family: 'Roboto', 'sans-serif';
+
+  font-size: 9em;
+  font-weight: bold;
+  letter-spacing: -0.04em;
+  color: #fff;
+  text-shadow: 1px 2px 0 #446793;
+  margin-bottom: 0.1em;
+}
+
+/** page construct **/
+main {
+  display: block;
+  // max-width: 950px;
+  margin: 0 auto;
+  position:absolute;
+  top:20%;
+  left:30%;
+  width:42%;
+
+  .main-wrapper {
+    position:relative;
+  }
+
+  img {
+    float:left;
+  }
+
+  .header {
+    float:right;
+    padding:1em;
+    text-align: center;
+    h1 {
+    }
+
+    h3 {
+      font-family: 'Roboto', 'sans-serif';
+      font-size: 1.5em;
+      color: #3a567e;
+    }
+  }
+
+
+  ul.features {
+    clear: both;
+    margin:1em auto;
+    text-align: center;
+    width:85%;
+    padding:2em 0;
+    li {
+      float:left;
+      text-align: center;
+      padding:0 0em 0 0;
+      margin-right:0.1em;
+      width:9em;
+      .fa {
+        color:#709dc3;
+      }
+      .fa-stack, .fa-circle {
+         color:#fff;
+      }
+      .fa-large {
+        font-size: 4em;
+      }
+      .feature {
+        font-size: 1.2em;
+        margin-top:1em;
+      }
+      &:hover {
+        // background-color: $yellow;
+        .fa-circle {
+          color:$yellow;
+        }
+
+      }
+    }
+  }
+}
+footer {
+  padding-top:7em;
+  text-align:center;
+  font-family: 'Roboto', 'sans-serif';
+  text-align: center;
+  position: fixed;
+  clear:both;
+  bottom: 0em;
+  width:100%;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  color:$yellow;;
+}
+
+.logotxt {
+  display: block;
+  text-align: center;
+  margin-top: 130px;
+  margin-bottom: 60px;
+}
+
+.sublogo {
+  font-size: 1.75em;
+  color: #3a567e;
+}
+
+.featured {
+  display: block;
+}
+.featured p { color: #e0ecf3; text-transform: uppercase; font-weight: bold; margin-bottom: 15px; }
+
+
+.logos {
+  display: block;
+}
+.logos li { display: block; float: left; margin-right: 15px; }
+
+.logos li img {
+  opacity: 0.55;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+.logos li img:hover { opacity: 1; }

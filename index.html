@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="shortcut icon" type="image/png" href="../img/logo-48x48.png">
+  <title>Cercemap.org</title>
+
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.4/slicknav.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/main-black.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,700|Lato:400,700" rel="stylesheet" type="text/css">
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.4/jquery.slicknav.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+
+
+</head>
+<body>
+
+  <main>
+
+    <div class="main-wrapper">
+      <img src="img/cercedilla_escudo.png" alt="Cercedilla Escudo" />
+
+      <div class="header">
+        <h1>Cercemap</h1>
+        <h3 style="opacity:0;">Localiza servicios y puntos de interés de Cercedilla</h3>
+      </div>
+
+      <ul class="features">
+        <li class="health" style="opacity:0;">
+          <span class="fa-stack fa-large">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-medkit fa-stack-1x fa-inverse"></i>
+          </span>
+          <div class="feature">
+            Servicios de salud
+          </div>
+        </li>
+        <li class="locale" style="opacity:0;">
+          <span class="fa-stack fa-large">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-building-o fa-stack-1x fa-inverse"></i>
+          </span>
+          <div class="feature">
+              Servicios municipales
+          </div>
+        </li>
+        <li class="food" style="opacity:0;">
+          <span class="fa-stack fa-large">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-cutlery fa-stack-1x fa-inverse"></i>
+          </span>
+          <div class="feature">
+              Alimentación
+          </div>
+        </li>
+        <li class="hotel" style="opacity:0;">
+          <span class="fa-stack fa-large">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-h-square fa-stack-1x fa-inverse"></i>
+          </span>
+          <div class="feature">
+              Alojamiento
+          </div>
+        </li>
+        <li class="walks" style="opacity:0;">
+          <span class="fa-stack fa-large">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-map-pin fa-stack-1x fa-inverse"></i>
+          </span>
+          <div class="feature">
+              Rutas urbanas
+          </div>
+        </li>
+      </ul>
+    </div>
+  </main>
+
+
+  <footer>
+    <p>Copyright ©Jesidea. Todos los derechos reservados</p>
+    <!-- <p>Portions of data © OpenStreetMap contributors.</p> -->
+  </footer>
+
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $('main h1').show().addClass('animated fadeInUp');
+
+    setTimeout(function(){ // animate "featured in" text
+       $('main h3').show().addClass('animated fadeInUp');
+     }, 650);
+
+    setTimeout(function(){ // chain logo animations
+      $('.health').show().addClass('animated fadeInDown');
+
+      setTimeout(function(){  // animate mashable logo
+        $('.locale').show().addClass('animated fadeInDown');
+      }, 200);
+
+      setTimeout(function(){ // animate cnet logo
+        $('.food').show().addClass('animated fadeInDown');
+      }, 400);
+
+      setTimeout(function(){ // animate verge logo
+        $('.hotel').show().addClass('animated fadeInDown');
+      }, 500);
+
+      setTimeout(function(){ // animate buzzfeed logo
+        $('.walks').show().addClass('animated fadeInDown');
+      }, 600);
+    }, 700);
+
+  });
+
+
+
+
+  </script>
+
+</body>
+</html>
