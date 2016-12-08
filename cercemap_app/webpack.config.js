@@ -12,8 +12,9 @@ module.exports = {
       SelectorPanel: 'components/SelectorPanel.jsx',
       MapLayer: 'components/MapLayer.jsx',
       SearchBox: 'components/SearchBox.jsx',
-      Legend: 'components/Legend.jsx'
-
+      Legend: 'components/Legend.jsx',
+      LayersControlExample: 'components/LayersControlExample.jsx',
+      locationService: 'api/locationService.jsx'
     },
     extensions: ['','.js','.jsx']
   },

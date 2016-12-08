@@ -4,6 +4,7 @@ var SelectorPanel = require('SelectorPanel');
 var Legend = require('Legend');
 var SearchBox = require('SearchBox');
 var MapLayer = require('MapLayer');
+var LayersControlExample = require('LayersControlExample');
 
 
 var CerceMapContainer = React.createClass({
@@ -24,6 +25,7 @@ var CerceMapContainer = React.createClass({
     return (
       <div className="ccm-container">
         <MapLayer layersSerialized={this.state.layersSerialized}/>
+        // <LayersControlExample/>
         <SelectorPanel onChange={this.handleSelectorChange}/>
         <Legend/>
         <SearchBox/>
