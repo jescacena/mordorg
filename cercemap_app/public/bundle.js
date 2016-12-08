@@ -21939,14 +21939,14 @@
 	    return {
 	      center: {
 	        address: "Hello",
-	        lat: 424234234.33,
-	        lon: 424234234.33
+	        lat: 40.7410,
+	        lon: -4.0574
 	      }
 	    };
 	  },
 	  render: function render() {
 
-	    var position = [51.505, -0.09];
+	    var position = [this.props.center.lat, this.props.center.lon];
 	    var map = React.createElement(
 	      _reactLeaflet.Map,
 	      { className: 'ccm-maplayer', center: position, zoom: 13 },
