@@ -28,7 +28,17 @@ gulp.task('browser-sync',['styles'], function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['./**/*.html', './**/*.js', './**/*.scss', '!./node_modules/**/*.js','!./node_modules/**/*.scss','!./node_modules/**/*.html'], ['styles']).on('change' , function () {
+  gulp.watch(['./**/*.html',
+              './**/*.js',
+              './**/*.scss',
+              '!./node_modules/**/*.js',
+              '!./node_modules/**/*.scss',
+              '!./node_modules/**/*.html',
+              '!./cercemap_app/**/*'
+              // '!./cercemap-app/node_modules/**/*.html',
+              // '!./cercemap-app/node_modules/**/*.js',
+              // '!./cercemap-app/node_modules/**/*.scss'
+            ], ['styles']).on('change' , function () {
       browserSync.reload();
   });
 });
