@@ -9,14 +9,14 @@ var MapLayer = React.createClass({
     return {
       center: {
         address: "Hello",
-        lat: 424234234.33,
-        lon: 424234234.33
+        lat: 40.7410,
+        lon: -4.0574
       }
     };
   },
   render: function() {
 
-    const position = [51.505, -0.09];
+    const position = [this.props.center.lat, this.props.center.lon];
     const map = (
       <Map className="ccm-maplayer" center={position} zoom={13}>
         <TileLayer

@@ -37,50 +37,40 @@
       </div>
 
       <ul class="features">
-        <li class="health" style="opacity:0;">
+        <li class="health" style="opacity:0;" data-ccm-subject="health">
           <span class="fa-stack fa-large">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-medkit fa-stack-1x fa-inverse"></i>
           </span>
-          <div class="feature">
             Servicios de salud
-          </div>
         </li>
-        <li class="locale" style="opacity:0;">
+        <li class="public-services" style="opacity:0;" data-ccm-subject="public-services">
           <span class="fa-stack fa-large">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-building-o fa-stack-1x fa-inverse"></i>
           </span>
-          <div class="feature">
-              Servicios municipales
-          </div>
+            Servicios municipales
         </li>
-        <li class="food" style="opacity:0;">
+        <li class="food" style="opacity:0;" data-ccm-subject="food">
           <span class="fa-stack fa-large">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-cutlery fa-stack-1x fa-inverse"></i>
           </span>
-          <div class="feature">
-              Alimentación
-          </div>
+            Alimentación
         </li>
-        <li class="hotel" style="opacity:0;">
+        <li class="hotel" style="opacity:0;" data-ccm-subject="hotel">
           <span class="fa-stack fa-large">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-h-square fa-stack-1x fa-inverse"></i>
           </span>
-          <div class="feature">
-              Alojamiento
-          </div>
+            Alojamiento
         </li>
-        <li class="walks" style="opacity:0;">
+        <li class="walks" style="opacity:0;" data-ccm-subject="walks">
           <span class="fa-stack fa-large">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-map-pin fa-stack-1x fa-inverse"></i>
           </span>
-          <div class="feature">
-              Rutas urbanas
-          </div>
+            Rutas urbanas
         </li>
       </ul>
     </div>
@@ -119,6 +109,15 @@
         $('.walks').show().addClass('animated fadeInDown');
       }, 600);
     }, 700);
+
+    $('.features li').on('click', function(event) {
+      var optionSelected = $(event.target);
+      optionSelected = (optionSelected[0].tagName === 'LI')? optionSelected : optionSelected.parent().parent();
+      var dataSelected = optionSelected.data('ccm-subject');
+      console.log("Vamos que nos vamos!!! optionSelected-->", optionSelected);
+      console.log("Vamos que nos vamos!!! dataSelected-->", dataSelected);
+      document.location.href = "/cercemap_app/public/index.html?dataSelected="+dataSelected;
+    });
 
   });
 
