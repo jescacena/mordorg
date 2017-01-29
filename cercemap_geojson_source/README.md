@@ -15,5 +15,5 @@ Install the dependencies and devDependencies and start to generate GeoJSON files
 
 ```sh
 $ npm install -d
-$ npm start
+$ npm build
 ```

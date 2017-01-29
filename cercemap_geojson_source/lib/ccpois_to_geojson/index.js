@@ -24,7 +24,7 @@ var Ccpois_to_geojson = function () {
           },
           "geometry": {
             "type": "Point",
-            "coordinates": [latlonArray[0], latlonArray[1]]
+            "coordinates": [latlonArray[1], latlonArray[0]]
           }
         };
       });
