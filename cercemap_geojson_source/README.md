@@ -8,8 +8,7 @@ Convert CCPOIS from Wordpress site to GeoJson format
 Fetch CCPOIS data from Wordpress site
 
 ### Requirements
-* [NodeJS] - HTML enhanced for web apps!
-* [ES6] - awesome web-based text editor
+* [NodeJS / NPM]
 ### Installation
 Install the dependencies and devDependencies and start to generate GeoJSON files.
 
