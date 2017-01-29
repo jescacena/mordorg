@@ -9,6 +9,7 @@ Fetch CCPOIS data from Wordpress site
 
 ### Requirements
 * [NodeJS / NPM]
+
 ### Installation
 Install the dependencies and devDependencies and start to generate GeoJSON files.
 
