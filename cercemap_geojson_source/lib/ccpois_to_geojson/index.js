@@ -20,7 +20,11 @@ var Ccpois_to_geojson = function () {
           "properties": {
             "name": item.nombre,
             "type": item.type,
-            "address": item.direccion
+            "address": item.direccion,
+            "image_front": item.image_front ? item.image_front.guid : "",
+            "tfnos": item.tfnos,
+            "google_streetview_link": item.google_streetview_link,
+            "website": item.website
           },
           "geometry": {
             "type": "Point",

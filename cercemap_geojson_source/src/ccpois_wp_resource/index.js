@@ -15,12 +15,12 @@ class Ccpois_wordpress_gateway {
       });
     }
    fetchSchoolsCCPS() {
-     var url = WP_CCPOIS_URL + "ccpoi_school";
+     var url = WP_CCPOIS_URL + "school";
      return this._get(url);
 
    }
    fetchPublicTransportsCCPS () {
-     var url = WP_CCPOIS_URL + "ccpoi_public_transpo";
+     var url = WP_CCPOIS_URL + "public_transport";
      return this._get(url);
    }
  }

@@ -27,13 +27,13 @@ var Ccpois_wordpress_gateway = function () {
   }, {
     key: 'fetchSchoolsCCPS',
     value: function fetchSchoolsCCPS() {
-      var url = WP_CCPOIS_URL + "ccpoi_school";
+      var url = WP_CCPOIS_URL + "school";
       return this._get(url);
     }
   }, {
     key: 'fetchPublicTransportsCCPS',
     value: function fetchPublicTransportsCCPS() {
-      var url = WP_CCPOIS_URL + "ccpoi_public_transpo";
+      var url = WP_CCPOIS_URL + "public_transport";
       return this._get(url);
     }
   }]);

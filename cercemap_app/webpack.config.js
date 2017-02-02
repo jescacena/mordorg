@@ -1,9 +1,15 @@
+var webpack = require('webpack');
+var path = require('path');
+
 module.exports = {
   entry: './app.jsx',
   output: {
     path: __dirname,
     filename: './public/bundle.js',
   },
+
+  plugins: [
+  ],
   resolve: {
     root: __dirname,
     alias: {
