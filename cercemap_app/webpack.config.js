@@ -20,7 +20,9 @@ module.exports = {
       SearchBox: 'components/SearchBox.jsx',
       Legend: 'components/Legend.jsx',
       LayersControlExample: 'components/LayersControlExample.jsx',
-      locationService: 'api/locationService.jsx'
+      locationService: 'api/locationService.jsx',
+      actions: 'actions/actions.jsx',
+      reducers: 'reducers/reducers.jsx'
     },
     extensions: ['','.js','.jsx']
   },

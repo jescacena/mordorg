@@ -1,37 +1,37 @@
-var React = require('react');
+const React = require('react');
 
-var SelectorPanel = require('SelectorPanel');
-var Legend = require('Legend');
-var SearchBox = require('SearchBox');
-var MapLayer = require('MapLayer');
-var LayersControlExample = require('LayersControlExample');
+import SelectorPanel from 'SelectorPanel';
+import Legend from 'Legend';
+import SearchBox from 'SearchBox';
+import MapLayer from 'MapLayer';
 
-
-var CerceMapContainer = React.createClass({
-  getInitialState: function () {
-    return {};
-  },
-  handleSelectorChange: function(event) {
-    var layersSelected = this.state.layersSelected || [];
+export class CerceMapContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      layersSelected: [],
+      layersSerialized: null
+    };
+  }
+  handleSelectorChange(event) {
+    let layersSelected = this.state.layersSelected || [];
     layersSelected.push(event.target.value);
     this.setState({
-      layersSelected:layersSelected,
+      layersSelected: layersSelected,
       layersSerialized: JSON.stringify(layersSelected)
     });
-    console.log("state-->" ,this.state );
-
-  },
-  render: function() {
+    console.log('state-->', this.state);
+  }
+  render() {
     return (
       <div className="ccm-container">
         <MapLayer layersSerialized={this.state.layersSerialized}/>
-        // <LayersControlExample/>
-        <SelectorPanel onChange={this.handleSelectorChange}/>
+        <SelectorPanel onChange={this.handleSelectorChange.bind(this)}/>
         <Legend/>
         <SearchBox/>
       </div>
     );
   }
-});
+}
 
-module.exports = CerceMapContainer;
+export default CerceMapContainer;

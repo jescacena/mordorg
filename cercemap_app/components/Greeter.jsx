@@ -1,7 +1,7 @@
 var React = require('react');
 
-var Greeter = React.createClass({
-  render: function() {
+export class Greeter React.Component{
+  render() {
     return (
       <div>
         <h1>Hello React!</h1>
@@ -9,6 +9,6 @@ var Greeter = React.createClass({
       </div>
     );
   }
-});
+};
 
-module.exports = Greeter;
+export default Greeter;

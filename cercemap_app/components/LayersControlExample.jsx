@@ -1,4 +1,4 @@
-var React = require('react');
+const React = require('react');
 import {
   Circle,
   FeatureGroup,
@@ -8,19 +8,18 @@ import {
   Marker,
   Popup,
   Rectangle,
-  TileLayer,
+  TileLayer
 } from 'react-leaflet';
 
 const { BaseLayer, Overlay } = LayersControl;
 
 
-
-var LayersControlExample = React.createClass({
-  render: function () {
+export class LayersControlExample extends React.Component {
+  render() {
     const center = [51.505, -0.09];
     const rectangle = [
       [51.49, -0.08],
-      [51.5, -0.06],
+      [51.5, -0.06]
     ];
 
     return (
@@ -67,6 +66,6 @@ var LayersControlExample = React.createClass({
       </Map>
     );
   }
-});
+}
 
-module.exports = LayersControlExample;
+export default LayersControlExample;

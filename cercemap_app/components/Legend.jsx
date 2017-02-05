@@ -1,13 +1,13 @@
-var React = require('react');
+const React = require('react');
 
-var Legend = React.createClass({
-  render: function() {
+export class Legend extends React.Component {
+  render() {
     return (
       <div className="ccm-legend">
         <h3>Legend</h3>
       </div>
     );
   }
-});
+}
 
-module.exports = Legend;
+export default Legend;

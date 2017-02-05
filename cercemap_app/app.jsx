@@ -1,22 +1,13 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var CerceMapContainer = require('CerceMapContainer');
+const React = require('react');
+const ReactDOM = require('react-dom');
+const {Route, Router, hashHistory} = require('react-router');
+import CerceMapContainer from 'CerceMapContainer';
 
-
-//Ejemplo de ES6
-var objOne = {
-  name: 'Gerardo',
-  location: 'Peñaranda de Bracamonte'
-};
-
-var objTwo = {
-  age:25,
-  ...objOne
-};
-
-console.log(objTwo);
 
 ReactDOM.render(
-  <CerceMapContainer/>,
+  <Router history={hashHistory}>
+    <Route path="/" component={CerceMapContainer} />
+    <Route path="/layer/:layerid" component={CerceMapContainer} />
+  </Router>,
   document.getElementById('app')
 );

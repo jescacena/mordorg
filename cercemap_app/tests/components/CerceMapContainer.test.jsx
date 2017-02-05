@@ -11,12 +11,12 @@ describe('CerceMapContainer' , () => {
         expect(CerceMapContainer).toExist();
       });
 
-      describe('render', () => {
-         it('should render Map', () => {
-           var ccmContainer = TestUtils.renderIntoDocument(<CerceMapContainer/>);
-           var $el = $(ReactDOM.findDOMNode(ccmContainer));
-           var objDivMapLayer = $el.find('.ccm-maplayer');
-           expect(objDivMapLayer).toNotBe(null);
-         });
-       });
+      // describe('render', () => {
+      //    it('should render Map', () => {
+      //      var ccmContainer = TestUtils.renderIntoDocument(<CerceMapContainer/>);
+      //      var $el = $(ReactDOM.findDOMNode(ccmContainer));
+      //      var objDivMapLayer = $el.find('.ccm-maplayer');
+      //      expect(objDivMapLayer).toNotBe(null);
+      //    });
+      //  });
 });

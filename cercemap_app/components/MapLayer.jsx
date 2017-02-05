@@ -1,41 +1,31 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var locationService = require('locationService');
+const React = require('react');
+const locationService = require('locationService');
 
-import { Map, Marker, Popup, TileLayer,GeoJSON } from 'react-leaflet';
+import { Map, Marker, Popup, TileLayer, GeoJSON } from 'react-leaflet';
 
 
-var MapLayer = React.createClass({
-  getDefaultProps: function () {
-    return {
-      center: {
-        address: "Hello",
-        lat: 40.7410,
-        lon: -4.0574,
-        zoom:14
-      }
+export class MapLayer extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      locationData: {}
     };
-  },
-  loadLocationData : function() {
-    var that = this;
+  }
+
+  loadLocationData() {
+    let that = this;
     locationService.getGeoJsonDataBySubject().then(function (response) {
-      console.log("JESSSS-->",response.features);
-      that.setState({locationData:response.features});
+      that.setState({locationData: response.features});
     }, function (errorMessage) {
-        alert(errorMessage);
+      console.log(errorMessage);
     });
+  }
+  componentWillMount() {
+    this.loadLocationData();
+  }
 
-  },
-  getInitialState : function() {
-    return {
-      locationData : {},
-    };
-  },
-  componentWillMount : function() {
-   this.loadLocationData();
-  },
-  render: function() {
-
+  render() {
     const position = [this.props.center.lat, this.props.center.lon];
     const zoom = this.props.center.zoom;
 
@@ -51,12 +41,28 @@ var MapLayer = React.createClass({
           </Popup>
         </Marker>
 
-        <GeoJSON data={this.state.locationData}></GeoJSON>
+        <GeoJSON data={this.state.locationData} />
       </Map>
     );
 
     return map;
   }
-});
+}
 
-module.exports = MapLayer;
+MapLayer.defaultProps = {
+  center: {
+    address: 'Hello',
+    lat: 40.7410,
+    lon: -4.0574,
+    zoom: 14
+  }
+};
+
+MapLayer.propTypes = {
+  center: {
+    lat: React.PropTypes.number,
+    lon: React.PropTypes.number
+  }
+};
+
+export default MapLayer;

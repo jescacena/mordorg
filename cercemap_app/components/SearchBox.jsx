@@ -1,13 +1,13 @@
-var React = require('react');
+const React = require('react');
 
-var SearchBox = React.createClass({
-  render: function() {
+export class SearchBox extends React.Component {
+  render() {
     return (
       <div className="ccm-searchbox">
         <h3>SearchBox</h3>
       </div>
     );
   }
-});
+}
 
-module.exports = SearchBox;
+export default SearchBox;
