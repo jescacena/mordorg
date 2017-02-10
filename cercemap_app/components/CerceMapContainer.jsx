@@ -4,31 +4,22 @@ import SelectorPanel from 'SelectorPanel';
 import Legend from 'Legend';
 import SearchBox from 'SearchBox';
 import MapLayer from 'MapLayer';
+import { Button } from 'react-bootstrap';
 
 export class CerceMapContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      layersSelected: [],
-      layersSerialized: null
-    };
-  }
-  handleSelectorChange(event) {
-    let layersSelected = this.state.layersSelected || [];
-    layersSelected.push(event.target.value);
-    this.setState({
-      layersSelected: layersSelected,
-      layersSerialized: JSON.stringify(layersSelected)
-    });
-    console.log('state-->', this.state);
+    // this.state = {
+    //   layersSelected: [],
+    //   layersSerialized: null
+    // };
   }
   render() {
     return (
       <div className="ccm-container">
-        <MapLayer layersSerialized={this.state.layersSerialized}/>
-        <SelectorPanel onChange={this.handleSelectorChange.bind(this)}/>
+        <MapLayer />
+        <SelectorPanel />
         <Legend/>
-        <SearchBox/>
       </div>
     );
   }

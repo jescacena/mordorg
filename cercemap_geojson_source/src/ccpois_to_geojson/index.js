@@ -20,8 +20,8 @@ class Ccpois_to_geojson {
          "geometry": {
            "type": "Point",
            "coordinates": [
-             latlonArray[1],
-             latlonArray[0]
+             parseFloat(latlonArray[1]),
+             parseFloat(latlonArray[0])
            ]
          }
        };

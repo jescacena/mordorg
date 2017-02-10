@@ -1,5 +1,6 @@
 const React = require('react');
-const locationService = require('locationService');
+const {connect} = require('react-redux');
+const LocationService = require('LocationService');
 
 import { Map, Marker, Popup, TileLayer, GeoJSON } from 'react-leaflet';
 
@@ -9,13 +10,31 @@ export class MapLayer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      locationData: {}
+      locationData: {
+        type: 'Feature',
+        properties: {
+          test: 'jeje'
+        },
+        geometry: {
+          type: 'Point',
+          coordinates: [
+            75.5859375,
+            61.938950426660604
+          ]
+        }
+      },
+      center: {
+        address: 'Hello',
+        lat: 40.7410,
+        lon: -4.0574,
+        zoom: 14
+      }
     };
   }
 
   loadLocationData() {
     let that = this;
-    locationService.getGeoJsonDataBySubject().then(function (response) {
+    LocationService.getGeoJsonDataBySubject('public_transports').then(function (response) {
       that.setState({locationData: response.features});
     }, function (errorMessage) {
       console.log(errorMessage);
@@ -26,8 +45,9 @@ export class MapLayer extends React.Component {
   }
 
   render() {
-    const position = [this.props.center.lat, this.props.center.lon];
-    const zoom = this.props.center.zoom;
+    let {center, layers} = this.props;
+    let position = [center.lat, center.lon];
+    let zoom = center.zoom;
 
     const map = (
       <Map className="ccm-maplayer" center={position} zoom={zoom}>
@@ -51,7 +71,6 @@ export class MapLayer extends React.Component {
 
 MapLayer.defaultProps = {
   center: {
-    address: 'Hello',
     lat: 40.7410,
     lon: -4.0574,
     zoom: 14
@@ -59,10 +78,15 @@ MapLayer.defaultProps = {
 };
 
 MapLayer.propTypes = {
-  center: {
-    lat: React.PropTypes.number,
-    lon: React.PropTypes.number
-  }
+  center: React.PropTypes.object,
+  layers: React.PropTypes.object
 };
 
-export default MapLayer;
+export default connect(
+  (state) => {
+    return {
+      center: state.center,
+      layers: state.layers
+    };
+  }
+)(MapLayer);

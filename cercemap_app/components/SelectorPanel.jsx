@@ -1,54 +1,43 @@
 const React = require('react');
+const {connect} = require('react-redux');
+import {LayerList} from 'LayerList';
+import {IconGroup} from 'IconGroup';
+// let store = require('configureStore').configure();
+
 
 export class SelectorPanel extends React.Component {
 
-  getDefaultProps() {
-    return {
-      panelOpened: 'ccmLayerHealth',
-      layers: [
-        {
-          id: 'ccmLayerHealth',
-          locTypes: [
-            {
-              id: 'pharmacy'
-            },
-            {
-              id: 'hospital'
-            }
-          ]
-        },
-        {
-          id: 'ccmLayerEducation',
-          locTypes: [
-            {
-              id: 'kinder-garden'
-            },
-            {
-              id: 'primary school'
-            }
-          ]
-        }
-      ]
-    };
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
   }
   render() {
     return (
       <div className="ccm-selector-panel">
-        <h3>Selector Panel</h3>
-        <form>
-          <label htmlFor="education_selector">Educación</label>
-          <input type="checkbox" id="education_selector"
-            name="education_selector"
-            value="education" onChange={this.props.onChange} />
-          <label htmlFor="public_services_selector">Servicios públicos</label>
-          <input type="checkbox" id="public_services_selector"
-            name="public_services_selector"
-            value="public_services" onChange={this.props.onChange} />
-        </form>
-
+        <IconGroup />
+        <LayerList />
       </div>
     );
   }
 }
 
-export default SelectorPanel;
+SelectorPanel.defaultProps = {
+  layers: {}
+};
+
+SelectorPanel.contextTypes = {
+  store: React.PropTypes.object.isRequired
+};
+
+SelectorPanel.propTypes = {
+  layers: React.PropTypes.object
+};
+
+export default connect(
+  (state) => {
+    return {
+      layers: state.layers
+    };
+  }
+)(SelectorPanel);

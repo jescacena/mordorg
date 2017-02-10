@@ -11,18 +11,36 @@ export const toggleLayerReducer = (state={}, action) => {
   switch (action.type) {
   case 'TOGGLE_LAYER':
     let layerId = action.layerId;
-    console.log('JEJE-->layerId',layerId);
-    console.log('JIJI-->state',state);
-
     let res = {
       ...state,
       [layerId]: !state[layerId]
     };
-    console.log('JOJO-->res',res);
-
     return res;
   default:
     return state;
 
+  }
+};
+
+export const toggleLayerSelectorReducer = (state='', action) => {
+  switch (action.type) {
+  case 'TOGGLE_LAYER_SELECTOR':
+    return !state;
+  default:
+    return state;
+
+  }
+};
+
+export const setCenterReducer = (state = {}, action) => {
+  switch(action.type) {
+  case 'SET_CENTER':
+    return {
+      lat: action.lat,
+      lon: action.lon,
+      zoom: action.zoom
+    };
+  default:
+    return state;
   }
 };

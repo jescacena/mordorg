@@ -1,22 +1,26 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var expect = require('expect');
-var $ = require('jQuery');
-var TestUtils = require('react-addons-test-utils');
+/* global module*/
+/* eslint-env jasmine*/
 
-var SelectorPanel = require('SelectorPanel');
+const React = require('react');
+const ReactDOM = require('react-dom');
+const expect = require('expect');
+const $ = require('jQuery');
+const TestUtils = require('react-addons-test-utils');
 
-describe('SelectorPanel' , () => {
-      it('it should exist', () => {
-        expect(SelectorPanel).toExist();
-      });
+import {SelectorPanel} from 'SelectorPanel';
 
-      describe('render', () => {
-         it('should render main structure', () => {
-           var selectorPanel = TestUtils.renderIntoDocument(<SelectorPanel/>);
-           var $el = $(ReactDOM.findDOMNode(selectorPanel));
-           var objDiv = $el.find('.ccm-selector-panel');
-           expect(objDiv).toNotBe(null);
-         });
-       });
+describe('SelectorPanel', () => {
+  it('it should exist', () => {
+    expect(SelectorPanel).toExist();
+  });
+
+  describe('render', () => {
+    it('should render container with ccm-selector-panel class', () => {
+      const selectorPanel = TestUtils.renderIntoDocument(<SelectorPanel/>);
+      const $el = $(ReactDOM.findDOMNode(selectorPanel));
+      // const objDiv = $el.find('.ccm-selector-panel');
+      const result = $el.hasClass('ccm-selector-panel');
+      expect(result).toBe(true);
+    });
+  });
 });

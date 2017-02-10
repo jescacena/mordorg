@@ -11,3 +11,17 @@ export const toggleLayer = (layerId) => {
     layerId
   };
 };
+export const setCenter = (lat, lon, zoom) => {
+  return {
+    type: 'SET_CENTER',
+    lat,
+    lon,
+    zoom
+  };
+};
+
+export const toggleLayerSelector = () => {
+  return {
+    type: 'TOGGLE_LAYER_SELECTOR'
+  };
+};

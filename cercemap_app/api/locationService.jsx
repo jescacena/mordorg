@@ -1,12 +1,15 @@
 const axios = require('axios');
-const PUBLIC_SERVICES_DL = 'https://raw.githubusercontent.com/jescacena/cerceloc/master/public_services.json';
 
+const API_URLS = {
+  PUBLIC_TRANSPORTS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/cercemap_geojson_source/json/ccpois_public_transports.json',
+  SCHOOLS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/cercemap_geojson_source/json/ccpois_schools.json'
+};
 
 module.exports = {
-  getGeoJsonDataBySubject: function () {
+  getGeoJsonDataBySubject(subjectId = 'schools') {
     // var encodedLocation = encodeURIComponent(location);
     // var requestUrl = `${OPEN_WEATHER_MAP_URL}&q=${encodedLocation}`;
-    let requestUrl = PUBLIC_SERVICES_DL;
+    let requestUrl = API_URLS[subjectId.toUpperCase()];
 
     return axios.get(requestUrl).then(function (res) {
       if (res.data.cod && res.data.message) {
