@@ -30,27 +30,8 @@ export class MapLayer extends React.Component {
         zoom: 14
       }
     };
-
-    // L.Icon.Default.imagePath = '.';
-    // OR
-    delete L.Icon.Default.prototype._getIconUrl;
-
-    L.Icon.Default.mergeOptions({
-      iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-      iconUrl: require('leaflet/dist/images/marker-icon.png'),
-      shadowUrl: require('leaflet/dist/images/marker-shadow.png')
-    });
-
   }
 
-  // loadLocationData() {
-  //   let that = this;
-  //   LocationService.getGeoJsonDataBySubject().then(function (response) {
-  //     that.setState({locationData: response.features});
-  //   }, function (errorMessage) {
-  //     console.log(errorMessage);
-  //   });
-  // }
   componentWillMount() {
     let {dispatch} = this.props;
     const defaultLayer = 'schools';
@@ -59,14 +40,6 @@ export class MapLayer extends React.Component {
   }
 
   componentWillUpdate() {
-    // let mountNode = ReactDOM.findDOMNode(this.refs.geojson);
-    // let unmount = ReactDOM.unmountComponentAtNode(mountNode);
-    //const map = this.refs.map.leafletElement;
-    //console.log('JAEEEE-->map',map);
-
-    // debugger;
-
-    //map.flyTo([13.87992, 45.9791], 12);
   }
 
   render() {
@@ -85,18 +58,8 @@ export class MapLayer extends React.Component {
           layers[layerKey].leafleftLayer.remove();
         }
       });
-
-
-      // debugger;
-      // Creates a red marker with the coffee icon
-      // //
     }
 
-    // let el = ReactDOM.findDOMNode(this);
-    // const geoJsonObj = $el.find('ccm-searchbox');
-    // if(el && this.state.locationData) {
-    //   el.forceUpdate();
-    // }
     const map = (
       <Map ref="map" className="ccm-maplayer" center={position} zoom={zoom}>
         <TileLayer

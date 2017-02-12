@@ -46,6 +46,7 @@ module.exports = {
       actions: 'actions/actions.jsx',
       reducers: 'reducers/reducers.jsx',
       configureStore: 'store/configureStore.jsx',
+      constants: 'constants/constants.js',
       applicationStyles: 'styles/app.scss'
     },
     extensions: ['', '.js', '.jsx']

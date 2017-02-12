@@ -4,7 +4,6 @@ const actions = require('actions');
 
 import { ListGroup, ListGroupItem} from 'react-bootstrap';
 
-
 export class LayerList extends React.Component {
 
   render() {

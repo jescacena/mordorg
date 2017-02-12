@@ -1,4 +1,5 @@
-const Handlebars = require('handlebars/runtime');
+/* global L */
+import {CUSTOM_LAYER_ICONS, POPUP_TEMPLATE} from 'constants';
 
 export const searchTextReducer = (state = '', action) => {
   switch(action.type) {
@@ -13,27 +14,21 @@ export const toggleLayerReducer = (state={}, action) => {
   let layerId = action.layerId;
   let data = action.data;
   let res;
-  const CUSTOM_LAYER_ICONS = {
-    'public_transports':{
-      icon: 'bus',
-      markerColor: 'red',
-      prefix: 'fa'
-    },
-    'schools':{
-      icon: 'graduation-cap',
-      markerColor: 'blue',
-      prefix: 'fa'
-    }
-  };
 
-  var template = require("../templates/popup.handlebars");
 
   const onEachFeature = (feature, layer) => {
     if (feature.properties) {
-        var context = {name: feature.properties.name};
-        var html = template(context);
-        layer.bindPopup(html);
-        // layer.bindPopup(feature.properties.popupContent);
+      const context = {
+        name: feature.properties.name,
+        address: feature.properties.address,
+        imageFront: feature.properties.image_front,
+        tfnos: feature.properties.tfnos,
+        gsvLink: feature.properties.google_streetview_link,
+        website: feature.properties.website
+      };
+      const html = POPUP_TEMPLATE(context);
+      layer.bindPopup(html);
+      // layer.bindPopup(feature.properties.popupContent);
     }
   };
 
