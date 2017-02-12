@@ -1,6 +1,7 @@
 const React = require('react');
 const {connect} = require('react-redux');
 const LocationService = require('LocationService');
+const actions = require('actions');
 
 import { Map, Marker, Popup, TileLayer, GeoJSON } from 'react-leaflet';
 
@@ -32,16 +33,19 @@ export class MapLayer extends React.Component {
     };
   }
 
-  loadLocationData() {
-    let that = this;
-    LocationService.getGeoJsonDataBySubject().then(function (response) {
-      that.setState({locationData: response.features});
-    }, function (errorMessage) {
-      console.log(errorMessage);
-    });
-  }
+  // loadLocationData() {
+  //   let that = this;
+  //   LocationService.getGeoJsonDataBySubject().then(function (response) {
+  //     that.setState({locationData: response.features});
+  //   }, function (errorMessage) {
+  //     console.log(errorMessage);
+  //   });
+  // }
   componentWillMount() {
-    this.loadLocationData();
+    let {dispatch} = this.props;
+    const defaultLayer = 'schools';
+
+    dispatch(actions.startToggleLayer(defaultLayer));
   }
 
   componentWillUpdate() {
@@ -61,10 +65,16 @@ export class MapLayer extends React.Component {
     let position = [center.lat, center.lon];
     let zoom = center.zoom;
 
-    console.log('JOJOJO--->',this.state.locationData);
-
     if(this.refs.map && this.refs.map.leafletElement) {
-      L.geoJSON(this.state.locationData).addTo(this.refs.map.leafletElement);
+      let that = this;
+      // L.geoJSON().clearLayers();
+      Object.keys(layers).forEach(function (layerKey) {
+        if(layers[layerKey] && layers[layerKey].leafleftLayer && layers[layerKey].show) {
+          layers[layerKey].leafleftLayer.addTo(that.refs.map.leafletElement);
+        } else if(layers[layerKey].leafleftLayer && !layers[layerKey].show){
+          layers[layerKey].leafleftLayer.remove();
+        }
+      });
     }
 
     // let el = ReactDOM.findDOMNode(this);

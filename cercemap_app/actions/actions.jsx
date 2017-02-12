@@ -40,19 +40,20 @@ export const toggleLayerSelector = () => {
 export const startToggleLayer = (layerId) => {
   return (dispatch, getState) => {
     const layer = getState().layers[layerId];
-    if(layer && (!layer.data || layer.data.length === 0)) {
+    if(!layer || !layer.data || layer.data.length === 0) {
       const locationServicePromise = LocationService.getGeoJsonDataBySubject(layerId);
       return locationServicePromise.then((response)=> {
         // getState().setState({locationData: response.features});
-        if(response && response.features) {
-          dispatch(setLayerData(layerId, response.features));
+        if(response && !response.no_layer_data && response.features) {
           dispatch(toggleLayer(layerId));
+          dispatch(setLayerData(layerId, response.features));
+        } else if(response.no_layer_data) {
+          console.log(response.no_layer_data);
         }
       }, function (errorMessage) {
         console.log(errorMessage);
       });
-    } else {
-      return dispatch(toggleLayer(layerId));
     }
+    return dispatch(toggleLayer(layerId));
   };
 };

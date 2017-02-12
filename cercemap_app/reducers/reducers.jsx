@@ -26,7 +26,8 @@ export const toggleLayerReducer = (state={}, action) => {
       ...state,
       [layerId]: {
         ...state[layerId],
-        data: data
+        data: data,
+        leafleftLayer: L.geoJSON(data)
       }
     };
     return res;
