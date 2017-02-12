@@ -1,3 +1,5 @@
+const Handlebars = require('handlebars/runtime');
+
 export const searchTextReducer = (state = '', action) => {
   switch(action.type) {
   case 'SET_SEARCH_TEXT':
@@ -11,6 +13,30 @@ export const toggleLayerReducer = (state={}, action) => {
   let layerId = action.layerId;
   let data = action.data;
   let res;
+  const CUSTOM_LAYER_ICONS = {
+    'public_transports':{
+      icon: 'bus',
+      markerColor: 'red',
+      prefix: 'fa'
+    },
+    'schools':{
+      icon: 'graduation-cap',
+      markerColor: 'blue',
+      prefix: 'fa'
+    }
+  };
+
+  var template = require("../templates/popup.handlebars");
+
+  const onEachFeature = (feature, layer) => {
+    if (feature.properties) {
+        var context = {name: feature.properties.name};
+        var html = template(context);
+        layer.bindPopup(html);
+        // layer.bindPopup(feature.properties.popupContent);
+    }
+  };
+
   switch (action.type) {
   case 'TOGGLE_LAYER':
     res = {
@@ -22,12 +48,18 @@ export const toggleLayerReducer = (state={}, action) => {
     };
     return res;
   case 'SET_LAYER_DATA':
+    const icon = L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS[layerId]);
     res = {
       ...state,
       [layerId]: {
         ...state[layerId],
         data: data,
-        leafleftLayer: L.geoJSON(data)
+        leafleftLayer: L.geoJSON(data, {
+          pointToLayer: function (geoJsonPoint, latlng) {
+            return L.marker(latlng, {icon: icon});
+          },
+          onEachFeature: onEachFeature
+        })
       }
     };
     return res;

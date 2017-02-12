@@ -2,7 +2,6 @@ const React = require('react');
 const {connect} = require('react-redux');
 const LocationService = require('LocationService');
 const actions = require('actions');
-
 import { Map, Marker, Popup, TileLayer, GeoJSON } from 'react-leaflet';
 
 
@@ -31,6 +30,17 @@ export class MapLayer extends React.Component {
         zoom: 14
       }
     };
+
+    // L.Icon.Default.imagePath = '.';
+    // OR
+    delete L.Icon.Default.prototype._getIconUrl;
+
+    L.Icon.Default.mergeOptions({
+      iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+      iconUrl: require('leaflet/dist/images/marker-icon.png'),
+      shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+    });
+
   }
 
   // loadLocationData() {
@@ -75,6 +85,11 @@ export class MapLayer extends React.Component {
           layers[layerKey].leafleftLayer.remove();
         }
       });
+
+
+      // debugger;
+      // Creates a red marker with the coffee icon
+      // //
     }
 
     // let el = ReactDOM.findDOMNode(this);
@@ -85,14 +100,10 @@ export class MapLayer extends React.Component {
     const map = (
       <Map ref="map" className="ccm-maplayer" center={position} zoom={zoom}>
         <TileLayer
+          detectRetina='true'
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
-        <Marker position={position}>
-          <Popup>
-            <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
-          </Popup>
-        </Marker>
       </Map>
     );
 

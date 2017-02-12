@@ -6,8 +6,9 @@ const LiveReloadPlugin = require('webpack-livereload-plugin');
 module.exports = {
   entry: [
     'script!jquery/dist/jquery.min.js',
-    'script!bootstrap/dist/js/bootstrap.min.js',
-    'script!leaflet-easybutton/src/easy-button.js',
+    'script!leaflet/dist/leaflet.js',
+    'script!drmonty-leaflet-awesome-markers/js/leaflet.awesome-markers.js',
+    // 'script!bootstrap/dist/js/bootstrap.min.js',
     './app.jsx'
   ],
   externals: {
@@ -88,6 +89,9 @@ module.exports = {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url?limit=10000&mimetype=image/svg+xml'
         // loader: 'svg-url-loader'
+      },
+      {
+        test: /\.handlebars$/, loader: "handlebars-loader"
       }
     ]
   },

@@ -5,8 +5,10 @@ const {Provider, dispatch} = require('react-redux');
 const actions = require('actions');
 
 let store = require('configureStore').configure();
-import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 require('font-awesome/css/font-awesome.css');
+require('bootstrap/dist/css/bootstrap.css');
+require('drmonty-leaflet-awesome-markers/css/leaflet.awesome-markers.css');
+require('leaflet/dist/leaflet.css');
 
 // import CerceMapContainer2 from 'CerceMapContainer2';
 import CerceMapContainer from 'CerceMapContainer';
