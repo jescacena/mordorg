@@ -1,12 +1,13 @@
 const React = require('react');
 const {connect} = require('react-redux');
 const actions = require('actions');
-import IconButton from 'IconButton';
-
+import {IconButton} from 'IconButton';
 
 export class IconGroup extends React.Component {
 
   render() {
+    console.log('IconGroup props', this.props);
+
     const {dispatch} = this.props;
     return (
       <div className="ccm-icon-group">

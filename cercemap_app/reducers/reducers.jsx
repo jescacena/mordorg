@@ -8,17 +8,30 @@ export const searchTextReducer = (state = '', action) => {
 };
 
 export const toggleLayerReducer = (state={}, action) => {
+  let layerId = action.layerId;
+  let data = action.data;
+  let res;
   switch (action.type) {
   case 'TOGGLE_LAYER':
-    let layerId = action.layerId;
-    let res = {
+    res = {
       ...state,
-      [layerId]: !state[layerId]
+      [layerId]: {
+        ...state[layerId],
+        show: (state[layerId])? !state[layerId].show : true
+      }
+    };
+    return res;
+  case 'SET_LAYER_DATA':
+    res = {
+      ...state,
+      [layerId]: {
+        ...state[layerId],
+        data: data
+      }
     };
     return res;
   default:
     return state;
-
   }
 };
 

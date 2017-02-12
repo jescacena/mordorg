@@ -7,37 +7,41 @@ import {IconGroup} from 'IconGroup';
 
 export class SelectorPanel extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
+
   componentDidMount() {
   }
   render() {
+    console.log('SelectorPanel props', this.props);
+    const {dispatch, showLayerSelector, layers} = this.props;
+
     return (
       <div className="ccm-selector-panel">
-        <IconGroup />
-        <LayerList />
+        <IconGroup dispatch={dispatch} layers={layers}/>
+        <LayerList dispatch={dispatch} layers={layers} showLayerSelector={showLayerSelector}/>
       </div>
     );
   }
 }
 
 SelectorPanel.defaultProps = {
-  layers: {}
+  layers: {},
+  showLayerSelector: false
 };
 
-SelectorPanel.contextTypes = {
-  store: React.PropTypes.object.isRequired
-};
+// SelectorPanel.contextTypes = {
+//   store: React.PropTypes.object.isRequired
+// };
 
 SelectorPanel.propTypes = {
-  layers: React.PropTypes.object
+  layers: React.PropTypes.object,
+  showLayerSelector: React.PropTypes.bool
 };
 
 export default connect(
   (state) => {
     return {
-      layers: state.layers
+      layers: state.layers,
+      showLayerSelector: state.showLayerSelector
     };
   }
 )(SelectorPanel);

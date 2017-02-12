@@ -9,7 +9,9 @@ export const configure = (initialState = {
     lat: 40.7410,
     lon: -4.0574,
     zoom: 14
-  }
+  },
+  showLayerSelector: false,
+  layers: {}
 }) => {
   const reducer = redux.combineReducers({
     searchText: searchTextReducer,

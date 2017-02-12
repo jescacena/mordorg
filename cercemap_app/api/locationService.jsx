@@ -10,6 +10,7 @@ module.exports = {
     // var encodedLocation = encodeURIComponent(location);
     // var requestUrl = `${OPEN_WEATHER_MAP_URL}&q=${encodedLocation}`;
     let requestUrl = API_URLS[subjectId.toUpperCase()];
+    console.log('LocationService requestUrl --->', requestUrl);
 
     return axios.get(requestUrl).then(function (res) {
       if (res.data.cod && res.data.message) {
@@ -18,7 +19,9 @@ module.exports = {
         return res.data;
       }
     }, function (res) {
-      throw new Error(res.data.message);
+      // throw new Error(res.data);
+      console.log('ERROR res-->', res);
+      return [];
     });
   }
 };

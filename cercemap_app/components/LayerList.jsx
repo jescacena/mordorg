@@ -8,46 +8,48 @@ import { ListGroup, ListGroupItem} from 'react-bootstrap';
 export class LayerList extends React.Component {
 
   render() {
+    console.log('LayerList props', this.props);
+
     const {dispatch, layers, showLayerSelector} = this.props;
 
     const listgroupInstance = (
       <ListGroup>
         <ListGroupItem
           onClick={()=> {
-            dispatch(actions.toggleLayer('schools'));
+            dispatch(actions.startToggleLayer('schools'));
           }}
           className="icon-decorator schools"
-          active={(layers.schools) ? true : false}>Centro educativos</ListGroupItem>
+          active={(layers.schools && layers.schools.show) ? true : false}>Centro educativos</ListGroupItem>
         <ListGroupItem
           onClick={()=> {
-            dispatch(actions.toggleLayer('public_transports'));
+            dispatch(actions.startToggleLayer('public_transports'));
           }}
           className="icon-decorator public-transports"
-          active={(layers.public_transports) ? true : false}>Transporte público</ListGroupItem>
+          active={(layers.public_transports && layers.public_transports.show) ? true : false}>Transporte público</ListGroupItem>
         <ListGroupItem
           onClick={()=> {
-            dispatch(actions.toggleLayer('food'));
+            dispatch(actions.startToggleLayer('food'));
           }}
           className="icon-decorator food"
-          active={(layers.food) ? true : false}>Alimentación</ListGroupItem>
+          active={(layers.food && layers.food.show) ? true : false}>Alimentación</ListGroupItem>
         <ListGroupItem
           onClick={()=> {
-            dispatch(actions.toggleLayer('health'));
+            dispatch(actions.startToggleLayer('health'));
           }}
           className="icon-decorator health"
-          active={(layers.health) ? true : false}>Farmacias y salud</ListGroupItem>
+          active={(layers.health && layers.health.show) ? true : false}>Farmacias y salud</ListGroupItem>
         <ListGroupItem
           onClick={()=> {
-            dispatch(actions.toggleLayer('restaurants'));
+            dispatch(actions.startToggleLayer('restaurants'));
           }}
           className="icon-decorator restaurants"
-          active={(layers.restaurants) ? true : false}>Restaurantes</ListGroupItem>
+          active={(layers.restaurants && layers.restaurants.show) ? true : false}>Restaurantes</ListGroupItem>
         <ListGroupItem
           onClick={()=> {
-            dispatch(actions.toggleLayer('hotels'));
+            dispatch(actions.startToggleLayer('hotels'));
           }}
           className="icon-decorator hotels"
-          active={(layers.hotels) ? true : false}>Alojamiento</ListGroupItem>
+          active={(layers.hotels && layers.hotels.show) ? true : false}>Alojamiento</ListGroupItem>
       </ListGroup>
     );
 
@@ -61,11 +63,13 @@ export class LayerList extends React.Component {
 }
 
 LayerList.defaultProps = {
-  layers: {}
+  layers: {},
+  showLayerSelector: false
 };
 
 LayerList.propTypes = {
-  layers: React.PropTypes.object
+  layers: React.PropTypes.object,
+  showLayerSelector: React.PropTypes.bool
 };
 
 export default connect(
