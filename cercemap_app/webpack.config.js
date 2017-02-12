@@ -45,8 +45,9 @@ module.exports = {
       LocationService: 'api/LocationService.jsx',
       actions: 'actions/actions.jsx',
       reducers: 'reducers/reducers.jsx',
+      reducersUtils: 'common/reducersUtils.js',
       configureStore: 'store/configureStore.jsx',
-      constants: 'constants/constants.js',
+      constants: 'common/constants.js',
       applicationStyles: 'styles/app.scss'
     },
     extensions: ['', '.js', '.jsx']

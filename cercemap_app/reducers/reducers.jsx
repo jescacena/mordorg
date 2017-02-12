@@ -1,5 +1,4 @@
-/* global L */
-import {CUSTOM_LAYER_ICONS, POPUP_TEMPLATE} from 'constants';
+import {createGeoJsonLayer} from 'reducersUtils';
 
 export const searchTextReducer = (state = '', action) => {
   switch(action.type) {
@@ -15,23 +14,6 @@ export const toggleLayerReducer = (state={}, action) => {
   let data = action.data;
   let res;
 
-
-  const onEachFeature = (feature, layer) => {
-    if (feature.properties) {
-      const context = {
-        name: feature.properties.name,
-        address: feature.properties.address,
-        imageFront: feature.properties.image_front,
-        tfnos: feature.properties.tfnos,
-        gsvLink: feature.properties.google_streetview_link,
-        website: feature.properties.website
-      };
-      const html = POPUP_TEMPLATE(context);
-      layer.bindPopup(html);
-      // layer.bindPopup(feature.properties.popupContent);
-    }
-  };
-
   switch (action.type) {
   case 'TOGGLE_LAYER':
     res = {
@@ -43,18 +25,12 @@ export const toggleLayerReducer = (state={}, action) => {
     };
     return res;
   case 'SET_LAYER_DATA':
-    const icon = L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS[layerId]);
     res = {
       ...state,
       [layerId]: {
         ...state[layerId],
         data: data,
-        leafleftLayer: L.geoJSON(data, {
-          pointToLayer: function (geoJsonPoint, latlng) {
-            return L.marker(latlng, {icon: icon});
-          },
-          onEachFeature: onEachFeature
-        })
+        leafleftLayer: createGeoJsonLayer(layerId, data)
       }
     };
     return res;
