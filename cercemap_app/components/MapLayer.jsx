@@ -50,14 +50,28 @@ export class MapLayer extends React.Component {
 
     if(this.refs.map && this.refs.map.leafletElement) {
       let that = this;
-      // L.geoJSON().clearLayers();
+      let latlngArray = [];
       Object.keys(layers).forEach(function (layerKey) {
         if(layers[layerKey] && layers[layerKey].leafleftLayer && layers[layerKey].show) {
+          console.log('MapLayer: Geojson layer to be added:', layers[layerKey].leafleftLayer);
+
+          // Gathering latlng bounds
+          let leaflet_layers = layers[layerKey].leafleftLayer._layers;
+          Object.keys(leaflet_layers).forEach(function (key) {
+            latlngArray.push(leaflet_layers[key]._latlng);
+          });
+
           layers[layerKey].leafleftLayer.addTo(that.refs.map.leafletElement);
-        } else if(layers[layerKey].leafleftLayer && !layers[layerKey].show){
+        } else if(layers[layerKey].leafleftLayer && !layers[layerKey].show) {
           layers[layerKey].leafleftLayer.remove();
         }
       });
+
+      // Fit to bounds to all markers
+      if(latlngArray.length>0) {
+        const latlngbounds = new L.latLngBounds(latlngArray);
+        that.refs.map.leafletElement.fitBounds(latlngbounds);
+      }
     }
 
     const map = (

@@ -41,6 +41,8 @@ module.exports = {
       MapLayer: 'components/MapLayer.jsx',
       SearchBox: 'components/SearchBox.jsx',
       Legend: 'components/Legend.jsx',
+      Logo: 'components/Logo.jsx',
+      Footer: 'components/Footer.jsx',
       LayersControlExample: 'components/LayersControlExample.jsx',
       LocationService: 'api/LocationService.jsx',
       actions: 'actions/actions.jsx',
@@ -89,7 +91,8 @@ module.exports = {
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=image/svg+xml'
+        loader: 'url?mimetype=image/svg+xml'
+        // loader: 'url?limit=10000&mimetype=image/svg+xml'
         // loader: 'svg-url-loader'
       },
       {

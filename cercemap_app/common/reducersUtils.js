@@ -6,6 +6,10 @@ export function createGeoJsonLayer(layerId, data) {
 
   const onEachFeature = (feature, layer) => {
     if (feature.properties) {
+      const popupOptions = {
+        maxWidth: '250',
+        className: 'ccm-marker-popup'
+      };
       const context = {
         name: feature.properties.name,
         address: feature.properties.address,
@@ -14,8 +18,9 @@ export function createGeoJsonLayer(layerId, data) {
         gsvLink: feature.properties.google_streetview_link,
         website: feature.properties.website
       };
+
       const html = POPUP_TEMPLATE(context);
-      layer.bindPopup(html);
+      layer.bindPopup(html,popupOptions);
       // layer.bindPopup(feature.properties.popupContent);
     }
   };

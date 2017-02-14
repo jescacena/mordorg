@@ -25,3 +25,6 @@ Ccpois_wordpress_resource.fetchPublicTransportsCCPS().then(function (data) {
 Ccpois_wordpress_resource.fetchSchoolsCCPS().then(function (data) {
   _saveFile(Ccpois_to_geojson.convertToFeatureCollection(data), './json/ccpois_schools.json');
 });
+Ccpois_wordpress_resource.fetchHealthCCPS().then(function (data) {
+  _saveFile(Ccpois_to_geojson.convertToFeatureCollection(data), './json/ccpois_health.json');
+});

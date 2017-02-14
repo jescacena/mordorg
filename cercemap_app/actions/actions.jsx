@@ -37,6 +37,12 @@ export const toggleLayerSelector = () => {
   };
 };
 
+export const toggleSearchbox = () => {
+  return {
+    type: 'TOGGLE_SEARCH_BOX'
+  };
+};
+
 export const startToggleLayer = (layerId) => {
   return (dispatch, getState) => {
     const layer = getState().layers[layerId];

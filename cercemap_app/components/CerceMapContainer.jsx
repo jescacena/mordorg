@@ -1,9 +1,11 @@
 const React = require('react');
 
 import SelectorPanel from 'SelectorPanel';
-import Legend from 'Legend';
+// import Legend from 'Legend';
 import SearchBox from 'SearchBox';
 import MapLayer from 'MapLayer';
+import Logo from 'Logo';
+import Footer from 'Footer';
 import { Button } from 'react-bootstrap';
 
 export class CerceMapContainer extends React.Component {
@@ -17,9 +19,10 @@ export class CerceMapContainer extends React.Component {
   render() {
     return (
       <div className="ccm-container">
+        <Logo />
         <MapLayer />
         <SelectorPanel />
-        <Legend/>
+        <Footer />
       </div>
     );
   }

@@ -1,9 +1,13 @@
 .ccm-searchbox {
   background-color: #DB3A34;
   position:absolute;
-  display:inline-block;
   width:4em;
   top:1em;
   right:1em;
   z-index:1000;
+  display:none;
+
+  &.open {
+    display:inline-block;
+  }
 }

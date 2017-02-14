@@ -15,7 +15,7 @@ export class IconGroup extends React.Component {
           dispatch(actions.toggleLayerSelector());
         }}/>
         <IconButton iconKey="search" onClick={()=> {
-          dispatch(actions.toggleLayerSelector());
+          dispatch(actions.toggleSearchbox());
         }}/>
       </div>
     );

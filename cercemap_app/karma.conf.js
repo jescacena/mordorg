@@ -4,7 +4,11 @@ module.exports = function (config) {
   //  browsers: ['PhantomJS'],  // Phantom doesnt have support for ES6 promises
     browsers: ['Chrome'],
     frameworks: ['mocha'],
-    files: ['./tests/**/*.test.jsx'],
+    files: [
+      'node_modules/leaflet/dist/leaflet.js',
+      './tests/**/*.test.jsx',
+      'public/js/leaflet.awesome-markers.min.js'
+    ],
     preprocessors: {
       './tests/**/*.test.jsx': ['webpack', 'sourcemap']
     },

@@ -1,11 +1,6 @@
 const axios = require('axios');
+import {API_URLS, API_NO_LAYER_DATA_MESSAGE} from 'constants';
 
-const API_NO_LAYER_DATA_MESSAGE = 'https://raw.githubusercontent.com/jescacena/mordorg/master/cercemap_geojson_source/json/no_layer_data.json';
-
-const API_URLS = {
-  PUBLIC_TRANSPORTS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/cercemap_geojson_source/json/ccpois_public_transports.json',
-  SCHOOLS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/cercemap_geojson_source/json/ccpois_schools.json'
-};
 
 module.exports = {
   getGeoJsonDataBySubject(subjectId = 'schools') {

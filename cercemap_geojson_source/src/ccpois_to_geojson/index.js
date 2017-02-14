@@ -15,7 +15,8 @@ class Ccpois_to_geojson {
            "image_front":(item.image_front)? item.image_front.guid: "",
            "tfnos":item.tfnos,
            "google_streetview_link":item.google_streetview_link,
-           "website":item.website
+           "website":item.website,
+           "opening_time":item.horario
          },
          "geometry": {
            "type": "Point",

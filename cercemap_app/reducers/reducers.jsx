@@ -9,7 +9,7 @@ export const searchTextReducer = (state = '', action) => {
   }
 };
 
-export const toggleLayerReducer = (state={}, action) => {
+export const layerReducer = (state={}, action) => {
   let layerId = action.layerId;
   let data = action.data;
   let res;
@@ -42,6 +42,16 @@ export const toggleLayerReducer = (state={}, action) => {
 export const toggleLayerSelectorReducer = (state='', action) => {
   switch (action.type) {
   case 'TOGGLE_LAYER_SELECTOR':
+    return !state;
+  default:
+    return state;
+
+  }
+};
+
+export const toggleSearchboxReducer = (state='', action) => {
+  switch (action.type) {
+  case 'TOGGLE_SEARCH_BOX':
     return !state;
   default:
     return state;

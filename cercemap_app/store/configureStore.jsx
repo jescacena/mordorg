@@ -1,7 +1,7 @@
 import * as redux from 'redux';
 import thunk from 'redux-thunk';
 
-const {searchTextReducer, toggleLayerReducer, setCenterReducer, toggleLayerSelectorReducer} = require('reducers');
+const {searchTextReducer, layerReducer, setCenterReducer, toggleLayerSelectorReducer, toggleSearchboxReducer} = require('reducers');
 
 export const configure = (initialState = {
   center: {
@@ -11,13 +11,15 @@ export const configure = (initialState = {
     zoom: 14
   },
   showLayerSelector: false,
+  showSearchbox: false,
   layers: {}
 }) => {
   const reducer = redux.combineReducers({
     searchText: searchTextReducer,
-    layers: toggleLayerReducer,
+    layers: layerReducer,
     center: setCenterReducer,
-    showLayerSelector: toggleLayerSelectorReducer
+    showLayerSelector: toggleLayerSelectorReducer,
+    showSearchbox: toggleSearchboxReducer
   });
 
   const store = redux.createStore(reducer, initialState, redux.compose(
