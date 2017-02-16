@@ -31,6 +31,15 @@ export const setCenter = (lat, lon, zoom) => {
   };
 };
 
+export const setFlyToPoint = (lat, lon, zoom) => {
+  return {
+    type: 'SET_FLYTO_POINT',
+    lat,
+    lon,
+    zoom
+  };
+};
+
 export const toggleLayerSelector = () => {
   return {
     type: 'TOGGLE_LAYER_SELECTOR'

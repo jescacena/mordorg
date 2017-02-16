@@ -17,7 +17,7 @@ export class SelectorPanel extends React.Component {
 
     return (
       <div className="ccm-selector-panel">
-        <IconGroup dispatch={dispatch} layers={layers}/>
+        <IconGroup dispatch={dispatch} layers={layers} showLayerSelector={showLayerSelector} showSearchbox={showSearchbox}/>
         <LayerList dispatch={dispatch} layers={layers} showLayerSelector={showLayerSelector}/>
         <SearchBox dispatch={dispatch} showSearchbox={showSearchbox}/>
       </div>

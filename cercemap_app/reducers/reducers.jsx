@@ -71,3 +71,16 @@ export const setCenterReducer = (state = {}, action) => {
     return state;
   }
 };
+
+export const flyToPointReducer = (state = {}, action) => {
+  switch(action.type) {
+  case 'SET_FLYTO_POINT':
+    return {
+      lat: action.lat,
+      lon: action.lon,
+      zoom: action.zoom
+    };
+  default:
+    return state;
+  }
+};

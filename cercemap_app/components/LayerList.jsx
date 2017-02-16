@@ -6,6 +6,12 @@ import { ListGroup, ListGroupItem} from 'react-bootstrap';
 
 export class LayerList extends React.Component {
 
+  onClickHandler(layerKey) {
+    const {dispatch} = this.props;
+
+    dispatch(actions.startToggleLayer(layerKey));
+  }
+
   render() {
     console.log('LayerList props', this.props);
 
@@ -15,37 +21,43 @@ export class LayerList extends React.Component {
       <ListGroup>
         <ListGroupItem
           onClick={()=> {
-            dispatch(actions.startToggleLayer('schools'));
+            $(event.target).blur();
+            this.onClickHandler('schools');
           }}
           className="icon-decorator schools"
           active={(layers.schools && layers.schools.show) ? true : false}>Centro educativos</ListGroupItem>
         <ListGroupItem
-          onClick={()=> {
-            dispatch(actions.startToggleLayer('public_transports'));
+          onClick={(event)=> {
+            $(event.target).blur();
+            this.onClickHandler('public_transports');
           }}
           className="icon-decorator public-transports"
           active={(layers.public_transports && layers.public_transports.show) ? true : false}>Transporte público</ListGroupItem>
         <ListGroupItem
-          onClick={()=> {
-            dispatch(actions.startToggleLayer('food'));
+          onClick={(event)=> {
+            $(event.target).blur();
+            this.onClickHandler('food');
           }}
           className="icon-decorator food"
           active={(layers.food && layers.food.show) ? true : false}>Alimentación</ListGroupItem>
         <ListGroupItem
-          onClick={()=> {
-            dispatch(actions.startToggleLayer('health'));
+          onClick={(event)=> {
+            $(event.target).blur();
+            this.onClickHandler('health');
           }}
           className="icon-decorator health"
           active={(layers.health && layers.health.show) ? true : false}>Farmacias y salud</ListGroupItem>
         <ListGroupItem
-          onClick={()=> {
-            dispatch(actions.startToggleLayer('restaurants'));
+          onClick={(event)=> {
+            $(event.target).blur();
+            this.onClickHandler('restaurants');
           }}
           className="icon-decorator restaurants"
           active={(layers.restaurants && layers.restaurants.show) ? true : false}>Restaurantes</ListGroupItem>
         <ListGroupItem
-          onClick={()=> {
-            dispatch(actions.startToggleLayer('hotels'));
+          onClick={(event)=> {
+            $(event.target).blur();
+            this.onClickHandler('hotels');
           }}
           className="icon-decorator hotels"
           active={(layers.hotels && layers.hotels.show) ? true : false}>Alojamiento</ListGroupItem>

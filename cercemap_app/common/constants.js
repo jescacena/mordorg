@@ -1,4 +1,5 @@
 /* global L */
+const Promise = require('q').Promise;
 export const API_NO_LAYER_DATA_MESSAGE = 'https://raw.githubusercontent.com/jescacena/mordorg/master/cercemap_geojson_source/json/no_layer_data.json';
 
 export const API_URLS = {
@@ -22,11 +23,26 @@ export const CUSTOM_LAYER_ICONS = {
     icon: 'medkit',
     markerColor: 'green',
     prefix: 'fa'
+  },
+  default: {
+    icon: 'bullseye',
+    markerColor: 'purple',
+    prefix: 'fa'
   }
 };
 
 /* handlebars templates */
 export const POPUP_TEMPLATE = require('../templates/popup.handlebars');
+
+// API console: https://console.developers.google.com/apis/credentials?project=cerce-api-project&hl=ES
+export const GOOGLE_MAP_KEY = 'AIzaSyC4hAxLWQYK86JGwSCI3FB4TiuAGRU-ez4';
+
+// export const googleMapsClient = require('@google/maps').createClient({
+//   key: 'AIzaSyC4hAxLWQYK86JGwSCI3FB4TiuAGRU-ez4',
+//   Promise: Promise
+// });
+
+
 
 
 // Reset market default icons

@@ -2,6 +2,7 @@ const React = require('react');
 const {connect} = require('react-redux');
 const LocationService = require('LocationService');
 const actions = require('actions');
+import {CUSTOM_LAYER_ICONS} from 'constants';
 import { Map, Marker, Popup, TileLayer, GeoJSON } from 'react-leaflet';
 
 
@@ -39,7 +40,18 @@ export class MapLayer extends React.Component {
     dispatch(actions.startToggleLayer(defaultLayer));
   }
 
-  componentWillUpdate() {
+  componentDidUpdate() {
+    if(this.refs.map && this.refs.map.leafletElement) {
+      let {flyToPoint} = this.props;
+      console.log('MapLayer componentWillUpdate flyToPoint', flyToPoint);
+      if(flyToPoint) {
+        let leafletPoint = new L.LatLng(flyToPoint.lat, flyToPoint.lon);
+        this.refs.map.leafletElement.flyTo(leafletPoint, 17);
+        const icon = L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS['default']);
+        L.marker(leafletPoint, {icon: icon}).addTo(this.refs.map.leafletElement);
+
+      }
+    }
   }
 
   render() {
@@ -100,6 +112,7 @@ MapLayer.defaultProps = {
 
 MapLayer.propTypes = {
   center: React.PropTypes.object,
+  flyToPoint: React.PropTypes.object,
   layers: React.PropTypes.object
 };
 
@@ -107,6 +120,7 @@ export default connect(
   (state) => {
     return {
       center: state.center,
+      flyToPoint: state.flyToPoint,
       layers: state.layers
     };
   }

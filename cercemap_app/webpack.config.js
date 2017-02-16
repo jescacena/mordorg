@@ -45,6 +45,7 @@ module.exports = {
       Footer: 'components/Footer.jsx',
       LayersControlExample: 'components/LayersControlExample.jsx',
       LocationService: 'api/LocationService.jsx',
+      PlacesService: 'api/PlacesService.jsx',
       actions: 'actions/actions.jsx',
       reducers: 'reducers/reducers.jsx',
       reducersUtils: 'common/reducersUtils.js',
@@ -97,6 +98,10 @@ module.exports = {
       },
       {
         test: /\.handlebars$/, loader: "handlebars-loader"
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ]
   },
