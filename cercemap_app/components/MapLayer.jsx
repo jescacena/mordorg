@@ -1,6 +1,7 @@
 const React = require('react');
 const {connect} = require('react-redux');
 const LocationService = require('LocationService');
+const MapLayerUtils = require('MapLayerUtils');
 const actions = require('actions');
 import {CUSTOM_LAYER_ICONS} from 'constants';
 import { Map, Marker, Popup, TileLayer, GeoJSON } from 'react-leaflet';
@@ -42,49 +43,33 @@ export class MapLayer extends React.Component {
 
   componentDidUpdate() {
     if(this.refs.map && this.refs.map.leafletElement) {
-      let {flyToPoint} = this.props;
-      console.log('MapLayer componentWillUpdate flyToPoint', flyToPoint);
-      if(flyToPoint) {
-        let leafletPoint = new L.LatLng(flyToPoint.lat, flyToPoint.lon);
-        this.refs.map.leafletElement.flyTo(leafletPoint, 17);
-        const icon = L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS['default']);
-        L.marker(leafletPoint, {icon: icon}).addTo(this.refs.map.leafletElement);
+      let {flyToPoint, layers, fitToBounds, dispatch} = this.props;
 
+      MapLayerUtils.addActiveLayers(layers, fitToBounds, this.refs.map.leafletElement);
+
+      if(fitToBounds) {
+        // Reset fly to point
+        setTimeout(()=> {
+          dispatch(actions.removeFitToBounds());
+        }, 2000);
+      }
+
+      if(flyToPoint) {
+        console.log('MapLayer componentWillUpdate flyToPoint', flyToPoint);
+        MapLayerUtils.flyTo(flyToPoint, this.refs.map.leafletElement);
+        // Reset fly to point
+        setTimeout(()=> {
+          dispatch(actions.removeFlyToPoint());
+        }, 5000);
       }
     }
   }
 
   render() {
     console.log('MapLayer props', this.props);
-    let {center, layers} = this.props;
+    let {center} = this.props;
     let position = [center.lat, center.lon];
     let zoom = center.zoom;
-
-    if(this.refs.map && this.refs.map.leafletElement) {
-      let that = this;
-      let latlngArray = [];
-      Object.keys(layers).forEach(function (layerKey) {
-        if(layers[layerKey] && layers[layerKey].leafleftLayer && layers[layerKey].show) {
-          console.log('MapLayer: Geojson layer to be added:', layers[layerKey].leafleftLayer);
-
-          // Gathering latlng bounds
-          let leaflet_layers = layers[layerKey].leafleftLayer._layers;
-          Object.keys(leaflet_layers).forEach(function (key) {
-            latlngArray.push(leaflet_layers[key]._latlng);
-          });
-
-          layers[layerKey].leafleftLayer.addTo(that.refs.map.leafletElement);
-        } else if(layers[layerKey].leafleftLayer && !layers[layerKey].show) {
-          layers[layerKey].leafleftLayer.remove();
-        }
-      });
-
-      // Fit to bounds to all markers
-      if(latlngArray.length>0) {
-        const latlngbounds = new L.latLngBounds(latlngArray);
-        that.refs.map.leafletElement.fitBounds(latlngbounds);
-      }
-    }
 
     const map = (
       <Map ref="map" className="ccm-maplayer" center={position} zoom={zoom}>
@@ -113,6 +98,7 @@ MapLayer.defaultProps = {
 MapLayer.propTypes = {
   center: React.PropTypes.object,
   flyToPoint: React.PropTypes.object,
+  fitToBounds: React.PropTypes.bool,
   layers: React.PropTypes.object
 };
 
@@ -121,6 +107,7 @@ export default connect(
     return {
       center: state.center,
       flyToPoint: state.flyToPoint,
+      fitToBounds: state.fitToBounds,
       layers: state.layers
     };
   }

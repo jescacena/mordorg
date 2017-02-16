@@ -40,6 +40,24 @@ export const setFlyToPoint = (lat, lon, zoom) => {
   };
 };
 
+export const removeFlyToPoint = () => {
+  return {
+    type: 'REMOVE_FLYTO_POINT'
+  };
+};
+
+export const setFitToBounds = () => {
+  return {
+    type: 'SET_FIT_TO_BOUNDS'
+  };
+};
+
+export const removeFitToBounds = () => {
+  return {
+    type: 'REMOVE_FIT_TO_BOUNDS'
+  };
+};
+
 export const toggleLayerSelector = () => {
   return {
     type: 'TOGGLE_LAYER_SELECTOR'

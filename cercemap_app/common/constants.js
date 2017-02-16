@@ -8,6 +8,15 @@ export const API_URLS = {
   HEALTH: 'https://raw.githubusercontent.com/jescacena/mordorg/master/cercemap_geojson_source/json/ccpois_health.json'
 };
 
+export const CERCE_CENTER = new global.google.maps.LatLng(40.71863980562837, -4.092063903808594);
+
+export const CERCE_BOUNDS = new global.google.maps.LatLngBounds(
+    // new google.maps.LatLng(40, -4),
+    // new google.maps.LatLng(40, -3)
+    new global.google.maps.LatLng(40.71863980562837, -4.092063903808594),
+    new global.google.maps.LatLng(40.79613778833378, -3.980140686035156)
+);
+
 export const CUSTOM_LAYER_ICONS = {
   public_transports: {
     icon: 'bus',

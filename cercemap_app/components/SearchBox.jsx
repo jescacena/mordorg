@@ -27,10 +27,7 @@ export class SearchBox extends React.Component {
         <div className="input-group">
             <input type="text" id="searchbox"
               className="form-control"
-              placeholder="Search for..." />
-            <span className="input-group-btn">
-              <button className="btn btn-default" type="button">Go!</button>
-            </span>
+              placeholder="Calle ..." />
         </div>
       </div>
     );

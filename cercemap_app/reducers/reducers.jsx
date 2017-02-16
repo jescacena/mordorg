@@ -74,12 +74,25 @@ export const setCenterReducer = (state = {}, action) => {
 
 export const flyToPointReducer = (state = {}, action) => {
   switch(action.type) {
+  case 'REMOVE_FLYTO_POINT':
+    return null;
   case 'SET_FLYTO_POINT':
     return {
       lat: action.lat,
       lon: action.lon,
       zoom: action.zoom
     };
+  default:
+    return state;
+  }
+};
+
+export const fitToBoundsReducer = (state = false, action) => {
+  switch(action.type) {
+  case 'REMOVE_FIT_TO_BOUNDS':
+    return false;
+  case 'SET_FIT_TO_BOUNDS':
+    return true;
   default:
     return state;
   }

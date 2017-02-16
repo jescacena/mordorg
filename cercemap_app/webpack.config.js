@@ -49,6 +49,7 @@ module.exports = {
       actions: 'actions/actions.jsx',
       reducers: 'reducers/reducers.jsx',
       reducersUtils: 'common/reducersUtils.js',
+      MapLayerUtils: 'common/MapLayerUtils.js',
       configureStore: 'store/configureStore.jsx',
       constants: 'common/constants.js',
       applicationStyles: 'styles/app.scss'

@@ -8,8 +8,8 @@ export class LayerList extends React.Component {
 
   onClickHandler(layerKey) {
     const {dispatch} = this.props;
-
     dispatch(actions.startToggleLayer(layerKey));
+    dispatch(actions.setFitToBounds());
   }
 
   render() {

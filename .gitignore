@@ -1,3 +1,5 @@
 node_modules
 css
 .remote-sync.json
+cercemap_app/node_modules
+cercemap_geojson_source/node_modules
