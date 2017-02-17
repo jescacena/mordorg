@@ -7,9 +7,14 @@ const expect = require('expect');
 const $ = require('jQuery');
 const TestUtils = require('react-addons-test-utils');
 
+require('globalmocks');
+
 import {MapLayer} from 'MapLayer';
 
 describe('MapLayer', () => {
+  beforeEach(()=> {
+  });
+
   it('it should exist', () => {
     expect(MapLayer).toExist();
   });

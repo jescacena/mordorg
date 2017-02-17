@@ -3,20 +3,22 @@ const webpack = require('webpack');
 // const path = require('path');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
 
+console.log('JARRRR __dirname-->', __dirname);
+
 module.exports = {
   entry: [
     'script!jquery/dist/jquery.min.js',
     'script!leaflet/dist/leaflet.js',
     'script!drmonty-leaflet-awesome-markers/js/leaflet.awesome-markers.js',
     // 'script!bootstrap/dist/js/bootstrap.min.js',
-    './app.jsx'
+    './cercemap_app/app.jsx'
   ],
   externals: {
     jquery: 'jQuery'
   },
   output: {
-    path: __dirname,
-    filename: './public/bundle.js'
+    path: __dirname + '/cercemap_app',
+    filename: 'public/bundle.js'
   },
   plugins: [
     new webpack.ProvidePlugin({
@@ -29,7 +31,7 @@ module.exports = {
 
   ],
   resolve: {
-    root: __dirname,
+    root: __dirname + '/cercemap_app',
     alias: {
       Greeter: 'components/Greeter.jsx',
       CerceMapContainer: 'components/CerceMapContainer.jsx',

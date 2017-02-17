@@ -1,10 +1,12 @@
 /* global module*/
 /* eslint-env jasmine*/
-
 const expect = require('expect');
+require('globalmocks');
 const actions = require('actions');
 
 describe('actions', () => {
+  beforeEach(()=> {
+  });
   it('should generate SET_CENTER action', () => {
     const action = {
       type: 'SET_CENTER',

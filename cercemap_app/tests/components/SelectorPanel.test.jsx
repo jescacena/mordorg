@@ -7,9 +7,14 @@ const expect = require('expect');
 const $ = require('jQuery');
 const TestUtils = require('react-addons-test-utils');
 
+require('globalmocks');
+
 import {SelectorPanel} from 'SelectorPanel';
 
 describe('SelectorPanel', () => {
+  beforeEach(()=> {
+  });
+
   it('it should exist', () => {
     expect(SelectorPanel).toExist();
   });

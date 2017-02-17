@@ -1,2 +1,1 @@
-cd cercemap_app
-npm run-script
+./node_modules/karma/bin/karma start --single-run --no-auto-watch

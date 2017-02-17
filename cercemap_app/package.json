@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "test": "NODE_ENV=test ./node_modules/karma/bin/karma start",
-    "run-script": "NODE_ENV=test ./node_modules/karma/bin/karma start --single-run --no-auto-watch"
+    "test": "NODE_ENV=test ./node_modules/karma/bin/karma start"
   },
   "repository": {
     "type": "git",

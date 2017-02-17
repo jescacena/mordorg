@@ -1,6 +1,7 @@
 export PATH=/usr/local/bin:$PATH
 git add .
 #git stash -q --keep-index
+cd .
 ./run_tests.sh
 RESULT=$?
 #git stash pop -q

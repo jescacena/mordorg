@@ -7,7 +7,11 @@ export function flyTo(flyToPoint, leafletMap) {
   const icon = L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS.default);
   L.marker(leafletPoint, {icon: icon}).addTo(leafletMap);
 }
-
+/**
+* addActiveLayers
+* @type method
+* @returns void
+*/
 export function addActiveLayers(layers, fitToBounds, leafletMap) {
   let latlngArray = [];
 

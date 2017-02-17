@@ -7,9 +7,14 @@ const expect = require('expect');
 const $ = require('jQuery');
 const TestUtils = require('react-addons-test-utils');
 
+require('globalmocks');
+
 import {LayerList} from 'LayerList';
 
 describe('LayerList', () => {
+  beforeEach(()=> {
+  });
+
   it('it should exist', () => {
     expect(LayerList).toExist();
   });

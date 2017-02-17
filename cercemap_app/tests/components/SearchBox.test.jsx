@@ -7,9 +7,14 @@ const expect = require('expect');
 const $ = require('jQuery');
 const TestUtils = require('react-addons-test-utils');
 
-import SearchBox from 'SearchBox';
+require('globalmocks');
+
+
+import {SearchBox} from 'SearchBox';
 
 describe('SearchBox', () => {
+  beforeEach(()=> {
+  });
   it('it should exist', () => {
     expect(SearchBox).toExist();
   });

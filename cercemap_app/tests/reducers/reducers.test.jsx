@@ -3,6 +3,8 @@
 
 const expect = require('expect');
 const df = require('deep-freeze-strict');
+require('globalmocks');
+
 const reducers = require('reducers');
 
 describe('reducers', ()=>{
