@@ -3,8 +3,6 @@ const webpack = require('webpack');
 // const path = require('path');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
 
-console.log('JARRRR __dirname-->', __dirname);
-
 module.exports = {
   entry: [
     'script!jquery/dist/jquery.min.js',

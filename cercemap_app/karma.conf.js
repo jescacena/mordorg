@@ -1,20 +1,17 @@
-const webpackConfig = require('webpack.config.js');
-
-process.chdir('./cercemap_app');
+const webpackConfig = require('./webpack.config.js');
 
 module.exports = function (config) {
   config.set({
   //  browsers: ['PhantomJS'],  // Phantom doesnt have support for ES6 promises
-    basePath: './cercemap_app',
     browsers: ['Chrome'],
     frameworks: ['mocha'],
     files: [
       'node_modules/leaflet/dist/leaflet.js',
-      './cercemap_app/tests/**/*.test.jsx',
-      './cercemap_app/public/js/leaflet.awesome-markers.min.js'
+      'tests/**/*.test.jsx',
+      'public/js/leaflet.awesome-markers.min.js'
     ],
     preprocessors: {
-      './cercemap_app/tests/**/*.test.jsx': ['webpack', 'sourcemap']
+      'tests/**/*.test.jsx': ['webpack', 'sourcemap']
     },
     reporters: ['mocha'],
     client: {
