@@ -43,6 +43,8 @@ module.exports = {
       Legend: 'components/Legend.jsx',
       Logo: 'components/Logo.jsx',
       Footer: 'components/Footer.jsx',
+      LoadingSpinner: 'components/LoadingSpinner.jsx',
+      ModalMessage: 'components/ModalMessage.jsx',
       LayersControlExample: 'components/LayersControlExample.jsx',
       LocationService: 'api/LocationService.jsx',
       PlacesService: 'api/PlacesService.jsx',

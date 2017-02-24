@@ -28,13 +28,15 @@ gulp.task('browser-sync',['styles'], function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['./**/*.html',
-              './**/*.js',
-              './**/*.scss',
+  gulp.watch(['./index.html',
+              // './**/*.js',
+              './sass/**/*.scss',
               '!./node_modules/**/*.js',
               '!./node_modules/**/*.scss',
               '!./node_modules/**/*.html',
-              '!./cercemap_app/**/*'
+              '!./cercemap_app/**/*.*',
+              '!./cercemap_geojson_source/**/*.*',
+              // '!./cercemap_app/**/*'
               // '!./cercemap-app/node_modules/**/*.html',
               // '!./cercemap-app/node_modules/**/*.js',
               // '!./cercemap-app/node_modules/**/*.scss'

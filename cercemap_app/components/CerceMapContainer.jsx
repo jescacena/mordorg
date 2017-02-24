@@ -2,7 +2,8 @@ const React = require('react');
 
 import SelectorPanel from 'SelectorPanel';
 // import Legend from 'Legend';
-import SearchBox from 'SearchBox';
+import LoadingSpinner from 'LoadingSpinner';
+import ModalMessage from 'ModalMessage';
 import MapLayer from 'MapLayer';
 import Logo from 'Logo';
 import Footer from 'Footer';
@@ -23,6 +24,8 @@ export class CerceMapContainer extends React.Component {
         <MapLayer />
         <SelectorPanel />
         <Footer />
+        <LoadingSpinner />
+        <ModalMessage />
       </div>
     );
   }

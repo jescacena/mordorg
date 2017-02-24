@@ -6,6 +6,9 @@ const {searchTextReducer,
   setCenterReducer,
   toggleLayerSelectorReducer,
   toggleSearchboxReducer,
+  loadingReducer,
+  modalReducer,
+  modalMessageReducer,
   fitToBoundsReducer,
   flyToPointReducer} = require('reducers');
 
@@ -19,6 +22,8 @@ export const configure = (initialState = {
   flyToPoint: null,
   showLayerSelector: false,
   showSearchbox: false,
+  showModal: false,
+  modalMessageText: 'Todas las caras de la verdad',
   layers: {}
 }) => {
   const reducer = redux.combineReducers({
@@ -27,6 +32,9 @@ export const configure = (initialState = {
     center: setCenterReducer,
     showLayerSelector: toggleLayerSelectorReducer,
     showSearchbox: toggleSearchboxReducer,
+    showLoading: loadingReducer,
+    showModal: modalReducer,
+    modalMessageText: modalMessageReducer,
     flyToPoint: flyToPointReducer,
     fitToBounds: fitToBoundsReducer
   });

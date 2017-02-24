@@ -3,6 +3,8 @@ const webpack = require('webpack');
 // const path = require('path');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 module.exports = {
   entry: [
     'script!jquery/dist/jquery.min.js',
@@ -25,6 +27,16 @@ module.exports = {
     }),
     new LiveReloadPlugin({
       appendScriptTag: true
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false
+      }
     })
 
   ],
@@ -44,6 +56,8 @@ module.exports = {
       Logo: 'components/Logo.jsx',
       Footer: 'components/Footer.jsx',
       LayersControlExample: 'components/LayersControlExample.jsx',
+      LoadingSpinner: 'components/LoadingSpinner.jsx',
+      ModalMessage: 'components/ModalMessage.jsx',
       LocationService: 'api/LocationService.jsx',
       PlacesService: 'api/PlacesService.jsx',
       actions: 'actions/actions.jsx',
@@ -107,7 +121,8 @@ module.exports = {
       }
     ]
   },
-  devtool: 'source-map'
+  // devtool: 'source-map'
+  devtool: process.env.NODE_ENV === 'production' ? undefined : 'source-map'
   // devtool: process.env.NODE_ENV === 'production' ? undefined : 'cheap-module-eval-source-map'
 
 };

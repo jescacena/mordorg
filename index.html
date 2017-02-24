@@ -7,7 +7,8 @@
   <title>Cercemap.org</title>
 
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+  <script src="https://use.fontawesome.com/6ff81cb10b.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.4/slicknav.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
@@ -37,39 +38,44 @@
       </div>
 
       <ul class="features">
-        <li class="health" style="opacity:0;" data-ccm-subject="health">
-          <span class="fa-stack fa-large">
+        <li class="feature health" style="opacity:0;" data-ccm-subject="health">
+          <div class="fa-stack fa-large">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-medkit fa-stack-1x fa-inverse"></i>
-          </span>
+          </div>
+          <br>
             Servicios de salud
         </li>
-        <li class="public-services" style="opacity:0;" data-ccm-subject="public-services">
-          <span class="fa-stack fa-large">
+        <li class="feature public-services" style="opacity:0;" data-ccm-subject="public-services">
+          <div class="fa-stack fa-large">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-building-o fa-stack-1x fa-inverse"></i>
-          </span>
+          </div>
+          <br>
             Servicios municipales
         </li>
-        <li class="food" style="opacity:0;" data-ccm-subject="food">
-          <span class="fa-stack fa-large">
+        <li class="feature food" style="opacity:0;" data-ccm-subject="food">
+          <div class="fa-stack fa-large">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-cutlery fa-stack-1x fa-inverse"></i>
-          </span>
+          </div>
+          <br>
             Alimentación
         </li>
-        <li class="hotel" style="opacity:0;" data-ccm-subject="hotel">
-          <span class="fa-stack fa-large">
+        <li class="feature hotel" style="opacity:0;" data-ccm-subject="hotel">
+          <div class="fa-stack fa-large">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-h-square fa-stack-1x fa-inverse"></i>
-          </span>
+          </div>
+          <br>
             Alojamiento
         </li>
-        <li class="walks" style="opacity:0;" data-ccm-subject="walks">
-          <span class="fa-stack fa-large">
+        <li class="feature walks" style="opacity:0;" data-ccm-subject="walks">
+          <div class="fa-stack fa-large">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-map-pin fa-stack-1x fa-inverse"></i>
-          </span>
+          </div>
+          <br>
             Rutas urbanas
         </li>
       </ul>
@@ -94,7 +100,7 @@
       $('.health').show().addClass('animated fadeInDown');
 
       setTimeout(function(){  // animate mashable logo
-        $('.locale').show().addClass('animated fadeInDown');
+        $('.public-services').show().addClass('animated fadeInDown');
       }, 200);
 
       setTimeout(function(){ // animate cnet logo

@@ -7,6 +7,13 @@ export const setSearchText = (searchText) => {
   };
 };
 
+export const setModalMessageText = (modalMessageText) => {
+  return {
+    type: 'SET_MODAL_MESSAGE_TEXT',
+    modalMessageText
+  };
+};
+
 export const toggleLayer = (layerId) => {
   return {
     type: 'TOGGLE_LAYER',
@@ -70,6 +77,31 @@ export const toggleSearchbox = () => {
   };
 };
 
+export const showLoading = () => {
+  return {
+    type: 'SHOW_LOADING'
+  };
+};
+
+export const hideLoading = () => {
+  return {
+    type: 'HIDE_LOADING'
+  };
+};
+
+export const showModal = () => {
+  return {
+    type: 'SHOW_MODAL'
+  };
+};
+
+export const hideModal = () => {
+  return {
+    type: 'HIDE_MODAL'
+  };
+};
+
+
 export const startToggleLayer = (layerId) => {
   return (dispatch, getState) => {
     const layer = getState().layers[layerId];
@@ -80,6 +112,7 @@ export const startToggleLayer = (layerId) => {
         if(response && !response.no_layer_data && response.features) {
           dispatch(toggleLayer(layerId));
           dispatch(setLayerData(layerId, response.features));
+          dispatch(hideLoading());
         } else if(response.no_layer_data) {
           console.log(response.no_layer_data);
         }
@@ -87,6 +120,7 @@ export const startToggleLayer = (layerId) => {
         console.log(errorMessage);
       });
     }
+    dispatch(hideLoading());
     return dispatch(toggleLayer(layerId));
   };
 };

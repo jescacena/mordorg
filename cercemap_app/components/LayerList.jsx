@@ -6,8 +6,15 @@ import { ListGroup, ListGroupItem} from 'react-bootstrap';
 
 export class LayerList extends React.Component {
 
+  showModalMessage(msg) {
+    const {dispatch} = this.props;
+    dispatch(actions.setModalMessageText(msg));
+    dispatch(actions.showModal());
+  }
+
   onClickHandler(layerKey) {
     const {dispatch} = this.props;
+    dispatch(actions.showLoading());
     dispatch(actions.startToggleLayer(layerKey));
     dispatch(actions.setFitToBounds());
   }
@@ -25,7 +32,7 @@ export class LayerList extends React.Component {
             this.onClickHandler('schools');
           }}
           className="icon-decorator schools"
-          active={(layers.schools && layers.schools.show) ? true : false}>Centro educativos</ListGroupItem>
+          active={(layers.schools && layers.schools.show) ? true : false}>Centros educativos</ListGroupItem>
         <ListGroupItem
           onClick={(event)=> {
             $(event.target).blur();
@@ -36,7 +43,8 @@ export class LayerList extends React.Component {
         <ListGroupItem
           onClick={(event)=> {
             $(event.target).blur();
-            this.onClickHandler('food');
+            //this.onClickHandler('food');
+            this.showModalMessage('Datos aún no disponibles');
           }}
           className="icon-decorator food"
           active={(layers.food && layers.food.show) ? true : false}>Alimentación</ListGroupItem>
@@ -50,14 +58,16 @@ export class LayerList extends React.Component {
         <ListGroupItem
           onClick={(event)=> {
             $(event.target).blur();
-            this.onClickHandler('restaurants');
+            // this.onClickHandler('restaurants');
+            this.showModalMessage('Datos aún no disponibles');
           }}
           className="icon-decorator restaurants"
           active={(layers.restaurants && layers.restaurants.show) ? true : false}>Restaurantes</ListGroupItem>
         <ListGroupItem
           onClick={(event)=> {
             $(event.target).blur();
-            this.onClickHandler('hotels');
+            // this.onClickHandler('hotels');
+            this.showModalMessage('Datos aún no disponibles');
           }}
           className="icon-decorator hotels"
           active={(layers.hotels && layers.hotels.show) ? true : false}>Alojamiento</ListGroupItem>

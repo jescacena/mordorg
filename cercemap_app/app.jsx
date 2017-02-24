@@ -29,12 +29,14 @@ require('style!css!sass!applicationStyles');
 // store.dispatch(actions.toggleLayer('schools'));
 
 
-ReactDOM.render(
-  <Provider store = {store}>
-    <Router history={hashHistory}>
-      <Route path="/" component={CerceMapContainer} />
-      <Route path="/layer/:layerid" component={CerceMapContainer} />
-    </Router>
-  </Provider>,
-  document.getElementById('app')
-);
+setTimeout(function () {
+  ReactDOM.render(
+    <Provider store = {store}>
+      <Router history={hashHistory}>
+        <Route path="/" component={CerceMapContainer} />
+        <Route path="/layer/:layerid" component={CerceMapContainer} />
+      </Router>
+    </Provider>,
+    document.getElementById('app')
+  );
+}, 1000);

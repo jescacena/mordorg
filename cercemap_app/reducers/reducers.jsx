@@ -1,5 +1,38 @@
 import {createGeoJsonLayer} from 'reducersUtils';
 
+
+export const modalReducer = (state = false, action) => {
+  switch(action.type) {
+  case 'SHOW_MODAL':
+    return true;
+  case 'HIDE_MODAL':
+    return false;
+  default:
+    return state;
+  }
+};
+
+export const loadingReducer = (state = false, action) => {
+  switch(action.type) {
+  case 'SHOW_LOADING':
+    return true;
+  case 'HIDE_LOADING':
+    return false;
+  default:
+    return state;
+  }
+};
+
+
+export const modalMessageReducer = (state = '', action) => {
+  switch(action.type) {
+  case 'SET_MODAL_MESSAGE_TEXT':
+    return action.modalMessageText;
+  default:
+    return state;
+  }
+};
+
 export const searchTextReducer = (state = '', action) => {
   switch(action.type) {
   case 'SET_SEARCH_TEXT':

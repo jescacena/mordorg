@@ -34,6 +34,7 @@ export function addActiveLayers(layers, fitToBounds, leafletMap) {
   // Fit to bounds to all markers
   if(latlngArray.length>0 && fitToBounds) {
     const latlngbounds = new L.latLngBounds(latlngArray);
+    console.log('MapLayer: Fitting to bounds', latlngbounds);
     leafletMap.fitBounds(latlngbounds);
   }
 

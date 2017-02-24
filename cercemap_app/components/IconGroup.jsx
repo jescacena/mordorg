@@ -12,7 +12,7 @@ export class IconGroup extends React.Component {
     const that = this;
     return (
       <div className="ccm-icon-group">
-        <IconButton onClick={()=> {
+        <IconButton iconKey="layers" onClick={()=> {
           const {showSearchbox} = that.props;
           console.log('JARRRRR --> showSearchbox --->' , showSearchbox);
           if(showSearchbox){
