@@ -14,7 +14,7 @@ module.exports = {
             componentRestrictions: {country: 'es'}
           });
 
-    GPAutocomplete.addListener('place_changed', ()=> {
+    return GPAutocomplete.addListener('place_changed', ()=> {
       const place = GPAutocomplete.getPlace();
       handleNewPlaceSelectedFn(place);
     });

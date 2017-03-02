@@ -108,6 +108,7 @@ export const startToggleLayer = (layerId) => {
     if(!layer || !layer.data || layer.data.length === 0) {
       const locationServicePromise = LocationService.getGeoJsonDataBySubject(layerId);
       return locationServicePromise.then((response)=> {
+        console.log('!!locationServicePromise response-->', response);
         // getState().setState({locationData: response.features});
         if(response && !response.no_layer_data && response.features) {
           dispatch(toggleLayer(layerId));
@@ -116,6 +117,7 @@ export const startToggleLayer = (layerId) => {
         } else if(response.no_layer_data) {
           console.log(response.no_layer_data);
         }
+        return;
       }, function (errorMessage) {
         console.log(errorMessage);
       });

@@ -3,6 +3,8 @@ const webpack = require('webpack');
 // const path = require('path');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
 
+const AssetsPlugin = require('assets-webpack-plugin');
+
 module.exports = {
   entry: [
     'script!jquery/dist/jquery.min.js',
@@ -16,9 +18,13 @@ module.exports = {
   },
   output: {
     path: __dirname,
-    filename: './public/bundle.js'
+    filename: './public/bundle-[hash].js'
   },
   plugins: [
+    new AssetsPlugin({
+      prettyPrint: true,
+      fullPath: false
+    }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
@@ -55,6 +61,8 @@ module.exports = {
       configureStore: 'store/configureStore.jsx',
       constants: 'common/constants.js',
       globalmocks: 'tests/GlobalMocks.js',
+      MockData: 'tests/MockData.js',
+      LeafletAwesomeMarkers: 'public/js/leaflet.awesome-markers.js',
       applicationStyles: 'styles/app.scss'
     },
     extensions: ['', '.js', '.jsx']

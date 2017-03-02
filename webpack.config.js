@@ -67,6 +67,8 @@ module.exports = {
       configureStore: 'store/configureStore.jsx',
       constants: 'common/constants.js',
       globalmocks: 'tests/GlobalMocks.js',
+      MockData: 'tests/MockData.js',
+      LeafletAwesomeMarkers: 'public/js/leaflet.awesome-markers.js',
       applicationStyles: 'styles/app.scss'
     },
     extensions: ['', '.js', '.jsx']

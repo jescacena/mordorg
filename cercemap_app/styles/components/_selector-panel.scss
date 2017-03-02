@@ -55,21 +55,42 @@
     padding:0.5em 0.5em 0.5em 0.5em;
     &.schools {
       background: url('svgs/people.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      &.selected {
+        background: url('svgs/people-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      }
     }
     &.public-transports {
       background: url('svgs/public.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      &.selected {
+        background: url('svgs/public-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      }
+
     }
     &.food {
       background: url('svgs/commerce.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      &.selected {
+        background: url('svgs/commerce-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      }
+
     }
     &.health {
       background: url('svgs/medical.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      &.selected {
+        background: url('svgs/medical-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      }
     }
     &.restaurants {
       background: url('svgs/fork.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      &.selected {
+        background: url('svgs/fork-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      }
+
     }
     &.hotels {
       background: url('svgs/letter.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      &.selected {
+        background: url('svgs/letter-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      }
     }
   }
 
