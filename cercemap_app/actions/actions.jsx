@@ -77,6 +77,12 @@ export const toggleSearchbox = () => {
   };
 };
 
+export const toggleFullScreen = () => {
+  return {
+    type: 'TOGGLE_FULL_SCREEN'
+  };
+};
+
 export const showLoading = () => {
   return {
     type: 'SHOW_LOADING'

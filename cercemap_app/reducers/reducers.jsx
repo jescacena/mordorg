@@ -92,6 +92,16 @@ export const toggleSearchboxReducer = (state='', action) => {
   }
 };
 
+export const toggleFullScreenReducer = (state='', action) => {
+  switch (action.type) {
+  case 'TOGGLE_FULL_SCREEN':
+    return !state;
+  default:
+    return state;
+
+  }
+};
+
 export const setCenterReducer = (state = {}, action) => {
   switch(action.type) {
   case 'SET_CENTER':

@@ -14,7 +14,6 @@ export class IconGroup extends React.Component {
       <div className="ccm-icon-group">
         <IconButton iconKey="layers" onClick={()=> {
           const {showSearchbox} = that.props;
-          console.log('JARRRRR --> showSearchbox --->' , showSearchbox);
           if(showSearchbox){
             dispatch(actions.toggleSearchbox());
           }
@@ -27,6 +26,9 @@ export class IconGroup extends React.Component {
           }
           dispatch(actions.toggleSearchbox());
         }}/>
+        <IconButton iconKey="fullscreen" onClick={()=> {
+            dispatch(actions.toggleFullScreen());
+          }}/>
       </div>
     );
   }
@@ -36,7 +38,8 @@ export default connect(
   (state) => {
     return {
       showSearchbox: state.showSearchbox,
-      showLayerSelector: state.showLayerSelector
+      showLayerSelector: state.showLayerSelector,
+      fullScreenMode: state.fullScreenMode
     };
   }
 )(IconGroup);

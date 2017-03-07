@@ -5,6 +5,7 @@ const MapLayerUtils = require('MapLayerUtils');
 const actions = require('actions');
 import {CUSTOM_LAYER_ICONS} from 'constants';
 import { Map, Marker, Popup, TileLayer, GeoJSON } from 'react-leaflet';
+const screenfull = require('screenfull');
 
 
 export class MapLayer extends React.Component {
@@ -43,7 +44,7 @@ export class MapLayer extends React.Component {
 
   componentDidUpdate() {
     if(this.refs.map && this.refs.map.leafletElement) {
-      let {flyToPoint, layers, fitToBounds, dispatch} = this.props;
+      let {flyToPoint, layers, fitToBounds, fullScreenMode, dispatch} = this.props;
 
       MapLayerUtils.addActiveLayers(layers, fitToBounds, this.refs.map.leafletElement);
 
@@ -61,6 +62,15 @@ export class MapLayer extends React.Component {
         setTimeout(()=> {
           dispatch(actions.removeFlyToPoint());
         }, 5000);
+      }
+
+      if(fullScreenMode){
+        //TODO request full screen
+        if (screenfull.enabled) {
+            screenfull.request();
+        }
+      } else {
+        screenfull.exit();
       }
     }
   }
@@ -99,6 +109,7 @@ MapLayer.propTypes = {
   center: React.PropTypes.object,
   flyToPoint: React.PropTypes.object,
   fitToBounds: React.PropTypes.bool,
+  fullScreenMode: React.PropTypes.bool,
   layers: React.PropTypes.object
 };
 
@@ -108,7 +119,8 @@ export default connect(
       center: state.center,
       flyToPoint: state.flyToPoint,
       fitToBounds: state.fitToBounds,
-      layers: state.layers
+      layers: state.layers,
+      fullScreenMode: state.fullScreenMode
     };
   }
 )(MapLayer);
