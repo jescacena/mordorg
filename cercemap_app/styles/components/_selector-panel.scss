@@ -5,6 +5,10 @@
   right:2em;
   z-index:2222;
 
+  @include handset-tablet {
+    right: 1em;
+  }
+
   .ccm-layer-list {
     width:170px;
     overflow: hidden;

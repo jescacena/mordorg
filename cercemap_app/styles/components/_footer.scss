@@ -6,6 +6,13 @@
   font-size: .8em;
   z-index: 1111;
   text-align: center;
+
+  @include handset-tablet {
+    bottom: 1px;
+    left: 0.5em;
+    text-align: left;
+  }
+
   a {
     // letter-spacing: -1px;
     color: rgba(69,85,102,.9);

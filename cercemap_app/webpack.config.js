@@ -1,9 +1,10 @@
 /* eslint-env node */
 const webpack = require('webpack');
+const fs = require('fs');
+const path = require('path');
 // const path = require('path');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
 
-const AssetsPlugin = require('assets-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -17,14 +18,12 @@ module.exports = {
     jquery: 'jQuery'
   },
   output: {
-    path: __dirname,
-    filename: './public/bundle-[hash].js'
+    path: 'public',
+    // filename: 'js/bundle.js',
+    filename: 'js/main.bundle.js'
+
   },
   plugins: [
-    new AssetsPlugin({
-      prettyPrint: true,
-      fullPath: false
-    }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
@@ -39,7 +38,6 @@ module.exports = {
     alias: {
       Greeter: 'components/Greeter.jsx',
       CerceMapContainer: 'components/CerceMapContainer.jsx',
-      // CerceMapContainer2: 'components/CerceMapContainer2.jsx',
       SelectorPanel: 'components/SelectorPanel.jsx',
       IconButton: 'components/IconButton.jsx',
       IconGroup: 'components/IconGroup.jsx',
@@ -92,15 +90,15 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/font-woff'
+        loader: 'url?limit=10000&mimetype=application/font-woff&name=[path][name].[ext]'
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/octet-stream'
+        loader: 'url?limit=10000&mimetype=application/octet-stream&name=[path][name].[ext]'
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'file'
+        loader: 'file?name=[path][name].[ext]'
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,

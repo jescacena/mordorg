@@ -15,11 +15,15 @@
     display:block;
     input.form-control {
       height:3em;
+      @include handset-tablet {
+        right: 0.5em;
+        position: absolute;
+        width: 14em;
+      }
     }
 
     button {
       height:3em;
     }
   }
-
 }

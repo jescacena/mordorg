@@ -1,8 +1,12 @@
-var express = require('express');
+const express = require('express');
 
-var app = express();
+const app = express();
 
-app.use(express.static('public'));
+if(process.env.NODE_ENV === 'development') {
+  app.use(express.static('public'));
+} else {
+  app.use(express.static('dist'));
+}
 
 app.listen(3333 , function () {
   console.log("Cercemap app server listening on port 3333");

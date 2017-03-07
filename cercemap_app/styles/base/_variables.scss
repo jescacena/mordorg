@@ -20,8 +20,6 @@ $blue: #38AADD;
 $blue-marine: #0E68A1;
 $blue-navy: #446977;
 
-
-
 $red: #D63E2A;
 
 $orange: #F4963D;
@@ -31,3 +29,32 @@ $purple: #5A3B6A;
 
 
 $brown: #A03439;
+
+/*Responsive*/
+$handset-width: 320px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin handset {
+  @media (min-width: #{$handset-width}) and (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin handset-tablet {
+  @media (min-width: #{$handset-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}

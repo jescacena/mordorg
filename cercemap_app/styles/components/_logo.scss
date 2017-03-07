@@ -5,6 +5,9 @@
   width: 100%;
   z-index: 1111;
   text-align: center;
+  @include handset-tablet {
+    left: 0em;
+  }
   a {
     // letter-spacing: -1px;
     padding: 0.5em 0 0.5em 1.6em;
