@@ -84,7 +84,9 @@
 
 
   <footer>
-    <p>Copyright ©Jesidea. Todos los derechos reservados</p>
+    <p>
+      <a href="https://github.com/jescacena/mordorg/blob/master/LICENSE.txt"><img src="img/gplv3-127x51.png" alt="Gnu Public License"> &nbsp;Copyright 2017 © Javier Escacena</a>
+    </p>
     <!-- <p>Portions of data © OpenStreetMap contributors.</p> -->
   </footer>
 
@@ -120,8 +122,6 @@
       var optionSelected = $(event.target);
       optionSelected = (optionSelected[0].tagName === 'LI')? optionSelected : optionSelected.parent().parent();
       var dataSelected = optionSelected.data('ccm-subject');
-      console.log("Vamos que nos vamos!!! optionSelected-->", optionSelected);
-      console.log("Vamos que nos vamos!!! dataSelected-->", dataSelected);
       document.location.href = "/cercemap_app/public/index.html?dataSelected="+dataSelected;
     });
 

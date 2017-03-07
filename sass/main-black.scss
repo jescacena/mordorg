@@ -222,6 +222,11 @@ footer {
   line-height: 1.5em;
   color:$yellow;
 
+  img {
+    width: 3em;
+    vertical-align: middle;
+  }
+
   @include handset-tablet {
     position:inherit;
   }
