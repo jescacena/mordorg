@@ -38,10 +38,10 @@ module.exports = {
       dry: false
       // exclude: ['shared.js']
     }),
-    // new WebpackAutoInject({
-    //   autoIncrease: true,
-    //   injectByTag: true
-    // }),
+    new WebpackAutoInject({
+      autoIncrease: true,
+      injectByTag: true
+    }),
     new ReplacePlugin({
       skip: process.env.NODE_ENV === 'development',
       entry: './public/index.html.production.tpl',
@@ -80,7 +80,18 @@ module.exports = {
     }),
     new LiveReloadPlugin({
       appendScriptTag: true
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false
+      }
     })
+
 
   ],
   resolve: {
