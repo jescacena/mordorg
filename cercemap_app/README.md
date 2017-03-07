@@ -14,18 +14,27 @@ npm start
 
 * Webpack build
 ```
-webpack
+npm run-script build
 ```
 
 * Webpack build with watch
 ```
-webpack -w
+npm run-script build-watch
 ```
 
-* Webpack bumping version (--major --minor --patch). Version is bumped in package.json
+## Build releases
+
+* Build a dist with bump of version
 ```
-webpack --major
+npm run-script dist-major-version
+npm run-script dist-minor-version
+npm run-script dist-patch-version
 ```
+* Run local server in dist folder
+```
+npm run-script start-dist
+```
+
 
 ## Unit tests
 * Run tests
