@@ -9,12 +9,16 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     cp = require('child_process'),
     changed = require('gulp-changed'),
-    size = require('gulp-size');
+    size = require('gulp-size'),
+    sourcemaps = require('gulp-sourcemaps');
+
 
 gulp.task('styles', function() {
   gulp.src('./sass/**/*.scss')
+    .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./css'))
     .pipe(browserSync.reload({stream:true}));
 });

@@ -10,7 +10,6 @@
   <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
   <script src="https://use.fontawesome.com/6ff81cb10b.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.4/slicknav.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
   <link rel="stylesheet" href="/css/reset.css">
@@ -18,18 +17,32 @@
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,700|Lato:400,700" rel="stylesheet" type="text/css">
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.4/jquery.slicknav.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
-
 
 </head>
 <body>
 
-  <main>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Cercemap</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="javascript:hideContact()">Bienvenida<span class="sr-only">(current)</span></a></li>
+            <li><a href="javascript:showContact()">Contacto<span class="sr-only">(current)</span></a></li>
+          </ul>
+      </div>
+    </div>
+  </nav>
 
-    <div class="main-wrapper">
+  <main>
+    <div class="main-wrapper welcome" style="display:block;">
       <img src="img/cercedilla_escudo.png" alt="Cercedilla Escudo" />
 
       <div class="header">
@@ -80,6 +93,20 @@
         </li>
       </ul>
     </div>
+
+    <div class="main-wrapper contact" style="display:none;">
+      <a href="mailto:admin@cercemap.org">admin@cercemap.org</a>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+
   </main>
 
 
@@ -90,7 +117,24 @@
     <!-- <p>Portions of data © OpenStreetMap contributors.</p> -->
   </footer>
 
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.4/jquery.slicknav.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
   <script type="text/javascript">
+
+  function showContact() {
+    $('.contact').show();
+    $('.welcome').hide();
+  }
+  function hideContact() {
+    $('.welcome').show();
+    $('.contact').hide();
+  }
+
   $(document).ready(function() {
     $('main h1').show().addClass('animated fadeInUp');
 
@@ -126,9 +170,6 @@
     });
 
   });
-
-
-
 
   </script>
 

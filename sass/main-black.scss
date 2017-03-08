@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css?family=Questrial');
 
 $dark-blue: #282F44;
+$blue-navy: #709dc3;
 $base-color: #50686B;
 $light-blue: #A6A6B3;
 $light-blue-2: #9ED0E6;
@@ -61,7 +62,7 @@ body {
   font-size: 1em;
   line-height: 1;
   // font-family: Helvetica, Arial, sans-serif;
-  background: #709dc3;
+  background: $blue-navy;
   // font-family: 'Roboto', 'sans-serif';
   font-family: 'Questrial', sans-serif;
 
@@ -106,6 +107,79 @@ h1 {
 }
 
 /** page construct **/
+
+.navbar-default {
+  background-color: $blue-navy;
+  border: none;
+
+  @include handset {
+    background-color: $dark-blue;
+    border: none;
+  }
+  color: #fff;
+
+  .navbar-nav {
+    float: right;
+    @include handset {
+      float: left;
+    }
+    >li {
+      >a {
+        color: #fff;
+        background-color: $blue-navy;
+        color:#fff;
+        @include handset {
+          background-color: $dark-blue;
+          border: none;
+        }
+
+        &:hover {
+          background-color: $blue-navy;
+          color:$yellow;
+          @include handset {
+            background-color: $dark-blue;
+            border: none;
+          }
+        }
+      }
+
+      &.active {
+        >a {
+          color: #fff;
+          background-color: $blue-navy;
+          color:$yellow;
+          @include handset {
+            background-color: $dark-blue;
+            border: none;
+          }
+          &:hover {
+            background-color: $blue-navy;
+            color:$yellow;
+            @include handset {
+              background-color: $dark-blue;
+              border: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .navbar-brand {
+    color: #fff;
+    display:none;
+    @include handset {
+      display:block;
+    }
+  }
+
+  .navbar-toggle {
+    .icon-bar {
+      background-color: #fff;
+    }
+  }
+
+}
+
 main {
   display: block;
   margin: 0 auto;
@@ -124,14 +198,51 @@ main {
 
   .main-wrapper {
     position:relative;
+    margin-bottom:3em;
+    display: inline-block;
+
+    &.contact {
+      text-align: center;
+      position:absolute;
+      display:inline-block;
+      top:5em;
+      left: 11%;
+      @include tablet {
+        top:50%;
+        left:38%;
+      }
+      @include handset {
+        top:50%;
+        left:18%;
+      }
+      a {
+        font-size: 2em;
+        color:#fff;
+        margin:0 auto;
+        display: block;
+        @include tablet {
+          font-size: 1.5em;
+        }
+        @include handset {
+          font-size: 1.3em;
+        }
+      }
+    }
   }
 
   img {
     float:left;
 
-    @include handset-tablet {
+    @include tablet {
       position: relative;
       width:7em;
+      margin: 0 auto;
+      display: block;
+      float:none;
+    }
+    @include handset {
+      width:5em;
+      position: relative;
       margin: 0 auto;
       display: block;
       float:none;
@@ -150,8 +261,11 @@ main {
       float:none;
     }
     h1 {
-      @include handset-tablet {
+      @include tablet {
         font-size: 3em;
+      }
+      @include handset {
+        font-size: 2em;
       }
     }
 
@@ -171,9 +285,14 @@ main {
     margin:1em auto;
     text-align: center;
     width:100%;
-    @include handset-tablet {
+    @include tablet {
       margin:0.5em auto;
       width:67%;
+      padding:0;
+    }
+    @include handset {
+      margin:0.5em auto;
+      width:100%;
       padding:0;
     }
     padding:2em 0;
@@ -183,8 +302,11 @@ main {
       padding:0 0em 0 0;
       margin-right:0.1em;
       width:8em;
-      @include handset-tablet {
-        width: 48%;
+      @include handset {
+        width: 49%;
+      }
+      @include tablet {
+        width: 32%;
       }
       cursor:pointer;
       font-size: 0.8em;
@@ -197,6 +319,10 @@ main {
       }
       .fa-large {
         font-size: 4em;
+        @include handset {
+          font-size: 3em;
+        }
+
       }
       &:hover {
         // background-color: $yellow;
@@ -228,7 +354,7 @@ footer {
   }
 
   @include handset-tablet {
-    position:inherit;
+    // position:inherit;
   }
 }
 
