@@ -11,13 +11,13 @@ module.exports = {
     'script!leaflet/dist/leaflet.js',
     'script!drmonty-leaflet-awesome-markers/js/leaflet.awesome-markers.js',
     // 'script!bootstrap/dist/js/bootstrap.min.js',
-    './cercemap_app/app.jsx'
+    './app/app.jsx'
   ],
   externals: {
     jquery: 'jQuery'
   },
   output: {
-    path: __dirname + '/cercemap_app',
+    path: __dirname + '/app',
     filename: 'public/bundle.js'
   },
   plugins: [
@@ -41,7 +41,7 @@ module.exports = {
 
   ],
   resolve: {
-    root: __dirname + '/cercemap_app',
+    root: __dirname + '/app',
     alias: {
       Greeter: 'components/Greeter.jsx',
       CerceMapContainer: 'components/CerceMapContainer.jsx',

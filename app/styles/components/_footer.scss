@@ -1,0 +1,28 @@
+.ccm-footer {
+  display: inline-block;
+  position: fixed;
+  bottom: 4px;
+  width: 100%;
+  font-size: .8em;
+  z-index: 1111;
+  text-align: center;
+
+  @include handset-tablet {
+    bottom: 1px;
+    left: 0.5em;
+    text-align: left;
+  }
+
+  a {
+    // letter-spacing: -1px;
+    color: rgba(69,85,102,.9);
+    font-weight: 700;
+    text-decoration: none;
+    text-shadow: 0 0 2px #ffefef;
+
+    img {
+      width: 3em;
+      vertical-align: middle;
+    }
+  }
+}

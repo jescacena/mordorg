@@ -166,7 +166,7 @@
       var optionSelected = $(event.target);
       optionSelected = (optionSelected[0].tagName === 'LI')? optionSelected : optionSelected.parent().parent();
       var dataSelected = optionSelected.data('ccm-subject');
-      document.location.href = "/cercemap_app/public/index.html?dataSelected="+dataSelected;
+      document.location.href = "/app/public/index.html?layer="+dataSelected;
     });
 
   });

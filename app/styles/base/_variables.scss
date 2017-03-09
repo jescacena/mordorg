@@ -1,0 +1,60 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Questrial');
+
+// Colors
+$grey: #333333;
+$light-grey: #fafafa;
+$light-grey-border: #eeeeee;
+
+$light-color:#aaaaaa;
+
+$selected-color:#337ab7;
+
+$green: #74AE33;
+$dark-green: #04724D;
+$light-green: #e5efe1;
+$olive-green: #72812C;
+
+
+$blue: #38AADD;
+$blue-marine: #0E68A1;
+$blue-navy: #446977;
+
+$red: #D63E2A;
+
+$orange: #F4963D;
+
+$magenta: #D056B7;
+$purple: #5A3B6A;
+
+
+$brown: #A03439;
+
+/*Responsive*/
+$handset-width: 320px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin handset {
+  @media (min-width: #{$handset-width}) and (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin handset-tablet {
+  @media (min-width: #{$handset-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
