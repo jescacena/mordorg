@@ -1,7 +1,10 @@
 const React = require('react');
+import {VERSION_APP} from 'constants';
+
 
 export class Footer extends React.Component {
   render() {
+    const version = VERSION_APP;
     return (
       <div className="ccm-footer">
         <span className="copyright" data-reactid=".0.3.4">
@@ -12,6 +15,8 @@ export class Footer extends React.Component {
         </a>
 
         </span>
+
+        <span className="version">(v{version})</span>
       </div>
     );
   }

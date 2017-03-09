@@ -28,6 +28,12 @@ module.exports = {
       $: 'jquery',
       jQuery: 'jquery'
     }),
+    new webpack.DefinePlugin({
+      VERSION: JSON.stringify(require("./package.json").version),
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+      }
+    }),
     new LiveReloadPlugin({
       appendScriptTag: true
     })

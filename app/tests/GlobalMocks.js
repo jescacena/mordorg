@@ -1,5 +1,7 @@
 const L = require('leaflet');
 
+window.VERSION = '0.0.0';
+
 window.google = {
   maps: {
     LatLng: ()=>{},

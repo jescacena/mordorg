@@ -1,5 +1,4 @@
-// [AIV] Build version: 0.2.0 
- /*
+/*
   Leaflet.AwesomeMarkers, a plugin that adds colorful iconic markers for Leaflet, based on the Font Awesome icons
   (c) 2012-2013, Lennard Voogdt
 
@@ -124,4 +123,3 @@
 
 
 
- 

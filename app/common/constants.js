@@ -1,4 +1,6 @@
 /* global L */
+
+export const VERSION_APP = VERSION;
 const Promise = require('q').Promise;
 export const API_NO_LAYER_DATA_MESSAGE = 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/no_layer_data.json';
 

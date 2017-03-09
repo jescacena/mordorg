@@ -2,7 +2,7 @@ const webpackConfig = require('./webpack.config.js');
 module.exports = function (config) {
   config.set({
   //  browsers: ['PhantomJS'],  // Phantom doesnt have support for ES6 promises
-    basePath: './cercemap_app',
+    basePath: './app',
     browsers: ['Chrome'],
     frameworks: ['mocha'],
     files: [

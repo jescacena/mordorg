@@ -12,8 +12,7 @@ const ReplacePlugin = require('replace-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-
-
+// const pjson = require("./package.json");
 module.exports = {
   entry: [
     'script!jquery/dist/jquery.min.js',
@@ -38,10 +37,10 @@ module.exports = {
       dry: false
       // exclude: ['shared.js']
     }),
-    new WebpackAutoInject({
-      autoIncrease: true,
-      injectByTag: true
-    }),
+    // new WebpackAutoInject({
+    //   autoIncrease: true,
+    //   injectByTag: true
+    // }),
     new ReplacePlugin({
       skip: process.env.NODE_ENV === 'development',
       entry: './public/index.html.production.tpl',
@@ -82,6 +81,7 @@ module.exports = {
       appendScriptTag: true
     }),
     new webpack.DefinePlugin({
+      VERSION: JSON.stringify(require("./package.json").version),
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
       }

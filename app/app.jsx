@@ -15,6 +15,11 @@ import CerceMapContainer from 'CerceMapContainer';
 
 // const actions = require('actions');
 
+// const version = '<{version}>';
+//
+// console.log('CERCEMAP v' + version);
+console.log("Version: " + VERSION);
+
 const unsubscribe = store.subscribe(() => {
   const currentState = store.getState();
   console.log('Store New state', currentState);
