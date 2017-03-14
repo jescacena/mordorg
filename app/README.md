@@ -23,6 +23,7 @@ npm run-script build-watch
 ```
 
 ## Build releases
+version is bumped into **package.json**
 
 * Build a dist with bump of version
 ```
@@ -34,6 +35,12 @@ npm run-script dist-patch
 ```
 npm run-script start-dist
 ```
+* Don't forget git tag after making a release
+```
+git tag vX.X.X
+```
+and git commit and push to origin
+
 
 
 ## Unit tests
