@@ -26,9 +26,9 @@ npm run-script build-watch
 
 * Build a dist with bump of version
 ```
-npm run-script dist-major-version
-npm run-script dist-minor-version
-npm run-script dist-patch-version
+npm run-script dist-major
+npm run-script dist-minor
+npm run-script dist-patch
 ```
 * Run local server in dist folder
 ```

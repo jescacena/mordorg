@@ -12,6 +12,12 @@ const ReplacePlugin = require('replace-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const Bump = require("bump-webpack-plugin");
+// const GitRevisionPlugin = require('git-revision-webpack-plugin');
+// const gitRevisionPlugin = new GitRevisionPlugin();
+
+// const GitSHAPlugin = require('git-sha-webpack-plugin');
+
 // const pjson = require("./package.json");
 module.exports = {
   entry: [
@@ -31,6 +37,9 @@ module.exports = {
 
   },
   plugins: [
+    // new GitRevisionPlugin(),
+    // new GitSHAPlugin({shaLength: 7}),
+
     new CleanWebpackPlugin(['dist'], {
       root: '/',
       verbose: true,
@@ -82,6 +91,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       VERSION: JSON.stringify(require("./package.json").version),
+      // 'VERSION': JSON.stringify(gitRevisionPlugin.version()),
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
       }
