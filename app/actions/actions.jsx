@@ -107,6 +107,39 @@ export const hideModal = () => {
   };
 };
 
+export const setShowPopupPoiDataReducer = (data) => {
+  return {
+    type: 'SET_SHOW_POPUP_POI_DATA',
+    data: data
+  };
+};
+
+export const removeShowPopupPoiDataReducer = () => {
+  return {
+    type: 'REMOVE_SHOW_POPUP_POI_DATA'
+  };
+};
+
+
+export const startViewPOI= (poiKey) => {
+  return (dispatch, getState) => {
+    const locationServicePromise = LocationService.getCCPoiDataById(poiKey);
+    return locationServicePromise.then((response)=> {
+
+      const poiData = {
+        type: response.type,
+        name: response.nombre,
+        address: response.direccion,
+        coords: response.latlon,
+        imgUrl: response.image_front.guid,
+        gsvLink: response.google_streetview_link
+      };
+      dispatch(setShowPopupPoiDataReducer(poiData));
+      const point = response.latlon.split(',');
+      dispatch(setFlyToPoint(point[0], point[1], 11));
+    });
+  };
+};
 
 export const startToggleLayer = (layerId) => {
   return (dispatch, getState) => {

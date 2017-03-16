@@ -1,6 +1,15 @@
 import {createGeoJsonLayer} from 'reducersUtils';
 
 
+export const showPopupPoiDataReducer = (state = {}, action) => {
+  switch(action.type) {
+  case 'SET_SHOW_POPUP_POI_DATA':
+    return action.data;
+  default:
+    return state;
+  }
+};
+
 export const modalReducer = (state = false, action) => {
   switch(action.type) {
   case 'SHOW_MODAL':

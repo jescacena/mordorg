@@ -1,16 +1,11 @@
 /* global L */
-import {CUSTOM_LAYER_ICONS, POPUP_TEMPLATE} from 'constants';
+import {CUSTOM_LAYER_ICONS, POPUP_TEMPLATE, POPUP_OPTIONS} from 'constants';
 
 export function createGeoJsonLayer(layerId, data) {
   const icon = L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS[layerId]);
 
   const onEachFeature = (feature, layer) => {
     if (feature.properties) {
-      const popupOptions = {
-        maxWidth: '250',
-        className: 'ccm-marker-popup',
-        autoPanPadding: [100, 100]
-      };
       const context = {
         name: feature.properties.name,
         address: feature.properties.address,
@@ -21,7 +16,7 @@ export function createGeoJsonLayer(layerId, data) {
       };
 
       const html = POPUP_TEMPLATE(context);
-      layer.bindPopup(html, popupOptions);
+      layer.bindPopup(html, POPUP_OPTIONS);
       // setTimeout(function () {
       //   var panorama = new google.maps.StreetViewPanorama(
       //       document.getElementById('street-view'),

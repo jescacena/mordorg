@@ -44,7 +44,7 @@ export class MapLayer extends React.Component {
 
   componentDidUpdate() {
     if(this.refs.map && this.refs.map.leafletElement) {
-      let {flyToPoint, layers, fitToBounds, fullScreenMode, dispatch} = this.props;
+      let {flyToPoint, layers, fitToBounds, fullScreenMode, showPopupPoiData, dispatch} = this.props;
 
       MapLayerUtils.addActiveLayers(layers, fitToBounds, this.refs.map.leafletElement);
 
@@ -57,10 +57,11 @@ export class MapLayer extends React.Component {
 
       if(flyToPoint) {
         console.log('MapLayer componentWillUpdate flyToPoint', flyToPoint);
-        MapLayerUtils.flyTo(flyToPoint, this.refs.map.leafletElement);
+        MapLayerUtils.flyTo(flyToPoint, this.refs.map.leafletElement,showPopupPoiData);
         // Reset fly to point
         setTimeout(()=> {
           dispatch(actions.removeFlyToPoint());
+          dispatch(actions.removeShowPopupPoiDataReducer());
         }, 5000);
       }
 
@@ -107,6 +108,7 @@ MapLayer.defaultProps = {
 MapLayer.propTypes = {
   center: React.PropTypes.object,
   flyToPoint: React.PropTypes.object,
+  showPopupPoiData: React.PropTypes.object,
   fitToBounds: React.PropTypes.bool,
   fullScreenMode: React.PropTypes.bool,
   layers: React.PropTypes.object
@@ -119,7 +121,8 @@ export default connect(
       flyToPoint: state.flyToPoint,
       fitToBounds: state.fitToBounds,
       layers: state.layers,
-      fullScreenMode: state.fullScreenMode
+      fullScreenMode: state.fullScreenMode,
+      showPopupPoiData: state.showPopupPoiData
     };
   }
 )(MapLayer);

@@ -11,6 +11,7 @@ const {searchTextReducer,
   modalReducer,
   modalMessageReducer,
   fitToBoundsReducer,
+  showPopupPoiDataReducer,
   flyToPointReducer} = require('reducers');
 
 export const configure = (initialState = {
@@ -23,9 +24,11 @@ export const configure = (initialState = {
   flyToPoint: null,
   showLayerSelector: false,
   showSearchbox: false,
+  fullScreenMode: false,
   showModal: false,
   modalMessageText: 'Todas las caras de la verdad',
-  layers: {}
+  layers: {},
+  showPopupPoiData: {}
 }) => {
   const reducer = redux.combineReducers({
     searchText: searchTextReducer,
@@ -38,6 +41,7 @@ export const configure = (initialState = {
     showModal: modalReducer,
     modalMessageText: modalMessageReducer,
     flyToPoint: flyToPointReducer,
+    showPopupPoiData: showPopupPoiDataReducer,
     fitToBounds: fitToBoundsReducer
   });
 

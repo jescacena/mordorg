@@ -5,6 +5,7 @@ const Promise = require('q').Promise;
 export const API_NO_LAYER_DATA_MESSAGE = 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/no_layer_data.json';
 
 export const API_URLS = {
+  CERCEPOI_GET_ONE: 'http://jesidea.com/cercepois/wp-json/wp/v2/school/',
   PUBLIC_TRANSPORTS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_public_transports.json',
   SCHOOLS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_schools.json',
   HEALTH: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_health.json'
@@ -47,6 +48,12 @@ export const POPUP_TEMPLATE = require('../templates/popup.handlebars');
 
 // API console: https://console.developers.google.com/apis/credentials?project=cerce-api-project&hl=ES
 export const GOOGLE_MAP_KEY = 'AIzaSyC4hAxLWQYK86JGwSCI3FB4TiuAGRU-ez4';
+
+export const POPUP_OPTIONS = {
+  maxWidth: '250',
+  className: 'ccm-marker-popup',
+  autoPanPadding: [100, 100]
+};
 
 // export const googleMapsClient = require('@google/maps').createClient({
 //   key: 'AIzaSyC4hAxLWQYK86JGwSCI3FB4TiuAGRU-ez4',

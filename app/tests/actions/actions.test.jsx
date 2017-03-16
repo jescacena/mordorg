@@ -148,7 +148,7 @@ describe('actions', () => {
 
         const action = actions.startToggleLayer('schools');
 
-        store.dispatch(action).then(()=> {
+        store.dispatch(action).then(() => {
 
           setTimeout(function () {
             const mockActions = store.getActions();

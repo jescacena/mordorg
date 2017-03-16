@@ -1,6 +1,6 @@
 {
   "name": "cercemap-app",
-  "version": "1.0.0",
+  "version": "1.1.2",
   "description": "Web app for showing maps in Cercedilla and close locations",
   "main": "index.js",
   "scripts": {
@@ -8,9 +8,9 @@
     "start-dist": "NODE_ENV=production node server.js",
     "build": "NODE_ENV=development webpack",
     "build-watch": "NODE_ENV=development webpack -w",
-    "dist-major": "NODE_ENV=production npm version major; webpack -p  --config ./webpack.production.config.js",
-    "dist-minor": "NODE_ENV=production npm version minor; webpack -p  --config ./webpack.production.config.js",
-    "dist-patch": "NODE_ENV=production npm version patch; webpack -p  --config ./webpack.production.config.js",
+    "dist-major": "NODE_ENV=production npm version major; webpack -p --config ./webpack.production.config.js",
+    "dist-minor": "NODE_ENV=production npm version minor; webpack -p --config ./webpack.production.config.js",
+    "dist-patch": "NODE_ENV=production npm version patch; webpack -p --config ./webpack.production.config.js",
     "test": "NODE_ENV=test ./node_modules/karma/bin/karma start"
   },
   "repository": {
