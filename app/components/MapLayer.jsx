@@ -37,9 +37,9 @@ export class MapLayer extends React.Component {
 
   componentWillMount() {
     let {dispatch} = this.props;
-    const defaultLayer = 'schools';
-
-    dispatch(actions.startToggleLayer(defaultLayer));
+    // const defaultLayer = 'schools';
+    // 
+    // dispatch(actions.startToggleLayer(defaultLayer));
   }
 
   componentDidUpdate() {
@@ -61,7 +61,7 @@ export class MapLayer extends React.Component {
         // Reset fly to point
         setTimeout(()=> {
           dispatch(actions.removeFlyToPoint());
-          dispatch(actions.removeShowPopupPoiDataReducer());
+          dispatch(actions.removeShowPopupPoiData());
         }, 5000);
       }
 

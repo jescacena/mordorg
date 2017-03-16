@@ -34,6 +34,8 @@ export function flyTo(flyToPoint, leafletMap, showPopupPoiData) {
   if(showPopupPoiData) {
     marker.openPopup();
   }
+
+  return marker;
 }
 
 /*
@@ -87,5 +89,7 @@ export function addActiveLayers(layers, fitToBounds, leafletMap) {
   //       });
   //
   });
+
+  return leafletMap;
 
 }

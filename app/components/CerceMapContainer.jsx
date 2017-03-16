@@ -25,12 +25,25 @@ export class CerceMapContainer extends React.Component {
     let poikey = null;
     let layerid = null;
 
-    if(this.props.params && this.props.params.layerid && this.props.params.poikey){
-      poikey = this.props.params.poikey;
-      layerid = this.props.params.layerid;
-      dispatch(actions.startViewPOI(layerid, poikey));
+    const currentLocation = this.props.location.pathname;
+    console.log('JESS CerceMapContainer currentLocation', currentLocation);
+
+    if(currentLocation.indexOf('/layer/')!==-1) {
+      if(this.props.params && this.props.params.layerid){
+        layerid = this.props.params.layerid;
+        dispatch(actions.startToggleLayer(layerid));
+      }
+    } else if(currentLocation.indexOf('/poi/')!==-1) {
+      if(this.props.params && this.props.params.layerid && this.props.params.poikey){
+        poikey = this.props.params.poikey;
+        layerid = this.props.params.layerid;
+        dispatch(actions.startViewPOI(layerid, poikey));
+      }
+    } else {
+      const defaultLayer = 'schools';
+      dispatch(actions.startToggleLayer(defaultLayer));
     }
-    console.log('JESS componentWillMount poikey', poikey);
+
   }
 
   render() {

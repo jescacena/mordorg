@@ -12,6 +12,18 @@ describe('actions', () => {
   beforeEach(()=> {
   });
 
+  it('should generate SET_SHOW_POPUP_POI_DATA action', ()=> {
+    const action = {
+      type: 'SET_SHOW_POPUP_POI_DATA',
+      data: {
+        name:'test'
+      }
+    };
+
+    const res = actions.setShowPopupPoiData(action.data);
+
+    expect(res).toEqual(action);
+  });
   it('should generate SET_MODAL_MESSAGE_TEXT action', ()=> {
     const action = {
       type: 'SET_MODAL_MESSAGE_TEXT',
@@ -67,6 +79,13 @@ describe('actions', () => {
     const res = actions.removeFitToBounds();
     expect(res).toEqual(action);
   });
+  it('should generate REMOVE_SHOW_POPUP_POI_DATA action', () => {
+    const action = {
+      type: 'REMOVE_SHOW_POPUP_POI_DATA'
+    };
+    const res = actions.removeShowPopupPoiData();
+    expect(res).toEqual(action);
+  });
   it('should generate TOGGLE_LAYER_SELECTOR action', () => {
     const action = {
       type: 'TOGGLE_LAYER_SELECTOR'
@@ -79,6 +98,13 @@ describe('actions', () => {
       type: 'TOGGLE_SEARCH_BOX'
     };
     const res = actions.toggleSearchbox();
+    expect(res).toEqual(action);
+  });
+  it('should generate TOGGLE_FULL_SCREEN action', () => {
+    const action = {
+      type: 'TOGGLE_FULL_SCREEN'
+    };
+    const res = actions.toggleFullScreen();
     expect(res).toEqual(action);
   });
   it('should generate SHOW_LOADING action', () => {
@@ -140,6 +166,33 @@ describe('actions', () => {
     const res = actions.toggleLayer(action.layerId);
 
     expect(res).toEqual(action);
+  });
+
+  describe('startViewPOI action', ()=> {
+    it('should get POI data and dispatch setShowPopupPoiData and setFlyToPoint actions', (done)=> {
+      const store = createMockStore({showPopupPoiData: {}});
+      const action = actions.startViewPOI('school', '58');
+
+      store.dispatch(action).then(() => {
+        setTimeout(function () {
+          const mockActions = store.getActions();
+
+          expect(mockActions).toInclude({
+            type: 'SET_SHOW_POPUP_POI_DATA'
+          }, (item1, item2)=> {
+            return item1.type === item2.type;
+          });
+          expect(mockActions).toInclude({
+            type: 'SET_FLYTO_POINT'
+          }, (item1, item2)=> {
+            return item1.type === item2.type;
+          });
+          done();
+
+        }, 10);
+      }, done);
+
+    });
   });
 
   describe('START_TOGGLE_LAYER action', ()=> {

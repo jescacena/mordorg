@@ -107,14 +107,14 @@ export const hideModal = () => {
   };
 };
 
-export const setShowPopupPoiDataReducer = (data) => {
+export const setShowPopupPoiData = (data) => {
   return {
     type: 'SET_SHOW_POPUP_POI_DATA',
     data: data
   };
 };
 
-export const removeShowPopupPoiDataReducer = () => {
+export const removeShowPopupPoiData = () => {
   return {
     type: 'REMOVE_SHOW_POPUP_POI_DATA'
   };
@@ -134,7 +134,7 @@ export const startViewPOI= (layerid, poiKey) => {
         imgUrl: response.image_front.guid,
         gsvLink: response.google_streetview_link
       };
-      dispatch(setShowPopupPoiDataReducer(poiData));
+      dispatch(setShowPopupPoiData(poiData));
       const point = response.latlon.split(',');
       dispatch(setFlyToPoint(point[0], point[1], 11));
     });
