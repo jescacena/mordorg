@@ -21,10 +21,17 @@ export const CERCE_BOUNDS = new global.google.maps.LatLngBounds(
     new global.google.maps.LatLng(40.79613778833378, -3.980140686035156)
 );
 
+
+//Font awesome icons
 export const CUSTOM_LAYER_ICONS = {
   public_transports: {
     icon: 'bus',
     markerColor: 'red',
+    prefix: 'fa'
+  },
+  municipal_services: {
+    icon: 'building-o',
+    markerColor: 'orange',
     prefix: 'fa'
   },
   schools: {

@@ -82,8 +82,7 @@ export class LayerList extends React.Component {
         <ListGroupItem
           onClick={(event)=> {
             $(event.target).blur();
-            // this.onClickHandler('hotels');
-            this.showModalMessage('Datos aún no disponibles');
+            this.onClickHandler('municipal_services');
           }}
           className={dynamicClassMunicipalServices}
           active={(layers.municipal_services && layers.municipal_services.show) ? true : false}>Servicios Municipales</ListGroupItem>
