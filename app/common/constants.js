@@ -5,10 +5,11 @@ const Promise = require('q').Promise;
 export const API_NO_LAYER_DATA_MESSAGE = 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/no_layer_data.json';
 
 export const API_URLS = {
-  CERCEPOI_GET_ONE: 'http://jesidea.com/cercepois/wp-json/wp/v2/school/',
+  CERCEPOI_GET_ONE: 'http://jesidea.com/cercepois/wp-json/wp/v2/',
   PUBLIC_TRANSPORTS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_public_transports.json',
   SCHOOLS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_schools.json',
-  HEALTH: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_health.json'
+  HEALTH: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_health.json',
+  MUNICIPAL_SERVICES: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_muniservice.json'
 };
 
 export const CERCE_CENTER = new global.google.maps.LatLng(40.71863980562837, -4.092063903808594);

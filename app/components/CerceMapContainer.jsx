@@ -23,10 +23,12 @@ export class CerceMapContainer extends React.Component {
   componentWillMount() {
     let {dispatch} = this.props;
     let poikey = null;
+    let layerid = null;
 
-    if(this.props.params && this.props.params.poikey){
+    if(this.props.params && this.props.params.layerid && this.props.params.poikey){
       poikey = this.props.params.poikey;
-      dispatch(actions.startViewPOI(poikey));
+      layerid = this.props.params.layerid;
+      dispatch(actions.startViewPOI(layerid, poikey));
     }
     console.log('JESS componentWillMount poikey', poikey);
   }

@@ -39,6 +39,9 @@
             &.active.health {
               background-color: $green;
             }
+            &.active.municipal_services {
+              background-color: $orange;
+            }
             color:#fff;
           }
           &:focus {
@@ -94,6 +97,12 @@
       background: url('svgs/letter.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
       &.selected {
         background: url('svgs/letter-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      }
+    }
+    &.municipal_services {
+      background: url('svgs/building.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      &.selected {
+        background: url('svgs/building-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
       }
     }
   }

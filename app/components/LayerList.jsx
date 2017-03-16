@@ -30,6 +30,7 @@ export class LayerList extends React.Component {
     const dynamicClassRestaurants = (layers.restaurants && layers.restaurants.show) ? 'icon-decorator restaurants selected' : 'icon-decorator restaurants';
     const dynamicClassPublicTransports = (layers.public_transports && layers.public_transports.show) ? 'icon-decorator public-transports selected' : 'icon-decorator public-transports';
     const dynamicClassHotels = (layers.hotels && layers.hotels.show) ? 'icon-decorator hotels selected' : 'icon-decorator hotels';
+    const dynamicClassMunicipalServices = (layers.municipal_services && layers.municipal_services.show) ? 'icon-decorator municipal_services selected' : 'icon-decorator municipal_services';
 
     const listgroupInstance = (
       <ListGroup>
@@ -78,6 +79,14 @@ export class LayerList extends React.Component {
           }}
           className={dynamicClassHotels}
           active={(layers.hotels && layers.hotels.show) ? true : false}>Alojamiento</ListGroupItem>
+        <ListGroupItem
+          onClick={(event)=> {
+            $(event.target).blur();
+            // this.onClickHandler('hotels');
+            this.showModalMessage('Datos aún no disponibles');
+          }}
+          className={dynamicClassMunicipalServices}
+          active={(layers.municipal_services && layers.municipal_services.show) ? true : false}>Servicios Municipales</ListGroupItem>
       </ListGroup>
     );
 

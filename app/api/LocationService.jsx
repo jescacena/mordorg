@@ -8,8 +8,8 @@ module.exports = {
   * Get POD data fpr one CCPOI by id
   * @param ccpoiKey {string}
   */
-  getCCPoiDataById(ccpoiKey = '58') {
-    let requestUrl = API_URLS.CERCEPOI_GET_ONE + ccpoiKey;
+  getCCPoiDataById(layerid = 'school', ccpoiKey = '58') {
+    let requestUrl = API_URLS.CERCEPOI_GET_ONE + layerid + '/' + ccpoiKey;
     console.log('LocationService getGeoJsonDataById requestUrl --->', requestUrl);
     return axios.get(requestUrl).then(function (res) {
       if (res.data.cod && res.data.message) {

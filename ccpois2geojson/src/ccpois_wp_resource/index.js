@@ -23,6 +23,10 @@ class Ccpois_wordpress_gateway {
      var url = WP_CCPOIS_URL + "public_transport";
      return this._get(url);
    }
+   fetchMunicipalServicesCCPS () {
+     var url = WP_CCPOIS_URL + "muniservice";
+     return this._get(url);
+   }
    fetchHealthCCPS () {
      var url = WP_CCPOIS_URL + "health";
      return this._get(url);

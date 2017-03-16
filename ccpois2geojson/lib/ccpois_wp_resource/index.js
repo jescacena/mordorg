@@ -37,6 +37,12 @@ var Ccpois_wordpress_gateway = function () {
       return this._get(url);
     }
   }, {
+    key: 'fetchMunicipalServicesCCPS',
+    value: function fetchMunicipalServicesCCPS() {
+      var url = WP_CCPOIS_URL + "muniservice";
+      return this._get(url);
+    }
+  }, {
     key: 'fetchHealthCCPS',
     value: function fetchHealthCCPS() {
       var url = WP_CCPOIS_URL + "health";

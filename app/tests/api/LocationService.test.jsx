@@ -30,7 +30,7 @@ describe('LocationService', () => {
     });
 
     it('getCCPoiDataById should get valid geojson data for one ccpoi key', (done) => {
-      LocationService.getCCPoiDataById('58').then((response) => {
+      LocationService.getCCPoiDataById('school', '58').then((response) => {
 
         setTimeout(function () {
           expect(response).toNotBe(null);
@@ -40,8 +40,5 @@ describe('LocationService', () => {
         }, 10);
       });
     });
-
-
-
   });
 });

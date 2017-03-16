@@ -40,7 +40,7 @@ setTimeout(function () {
       <Router history={hashHistory}>
         <Route path="/" component={CerceMapContainer} />
         <Route path="/layer/:layerid" component={CerceMapContainer} />
-        <Route path="/poi/:poikey" component={CerceMapContainer} />
+        <Route path="/poi/:layerid/:poikey" component={CerceMapContainer} />
       </Router>
     </Provider>,
     document.getElementById('app')

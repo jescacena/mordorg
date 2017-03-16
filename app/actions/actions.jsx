@@ -121,9 +121,9 @@ export const removeShowPopupPoiDataReducer = () => {
 };
 
 
-export const startViewPOI= (poiKey) => {
+export const startViewPOI= (layerid, poiKey) => {
   return (dispatch, getState) => {
-    const locationServicePromise = LocationService.getCCPoiDataById(poiKey);
+    const locationServicePromise = LocationService.getCCPoiDataById(layerid, poiKey);
     return locationServicePromise.then((response)=> {
 
       const poiData = {
