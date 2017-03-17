@@ -186,7 +186,7 @@ main {
   position:absolute;
   top:20%;
   left:30%;
-  width:42%;
+  width:45%;
 
   @include handset-tablet {
     position:inherit;
@@ -336,7 +336,7 @@ main {
 }
 
 footer {
-  padding-top:7em;
+  padding:7em 2em 0 2em;
   text-align:center;
   font-family: 'Questrial', sans-serif;
   text-align: center;
@@ -346,16 +346,55 @@ footer {
   width:100%;
   font-size: 0.7em;
   line-height: 1.5em;
-  color:$yellow;
-
-  img {
-    width: 3em;
-    vertical-align: middle;
+  color:$base-color;
+  a {
+    position:relative;
+    top:1em;
   }
+
+  span.copyright {
+    position:relative;
+    top:1em;
+    img {
+      width: 3em;
+      vertical-align: middle;
+    }
+    @include handset {
+      font-size: 0.9em;
+    }
+  }
+
 
   @include handset-tablet {
-    // position:inherit;
+    text-align: left;
+    padding:7em 1em 0 1em;
+    color: $dark-blue;
   }
+
+  .social-networks {
+    // border-top: 1px solid $base-color;
+    text-align: center;
+    // width: 90%;
+    // margin: 7em auto 0 auto;
+    // z-index:111111;
+    float:right;
+    display: inline-block;
+    position:relative;
+    top:-0.5em;
+
+
+
+    ul {
+      display: inline-block;
+      margin:0 auto;
+      li {
+        float: left;
+        padding: 0 0.5em;
+      }
+    }
+  }
+
+
 }
 
 .logotxt {
