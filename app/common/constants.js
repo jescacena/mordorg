@@ -39,6 +39,21 @@ export const CUSTOM_SUBTYPE_ICONS = {
     markerColor: 'green',
     prefix: 'fa'
   },
+  taxi: {
+    icon: 'taxi',
+    markerColor: 'red',
+    prefix: 'fa'
+  },
+  renfe: {
+    icon: 'train',
+    markerColor: 'red',
+    prefix: 'fa'
+  },
+  bus: {
+    icon: 'bus',
+    markerColor: 'red',
+    prefix: 'fa'
+  },
   centro_salud: {
     icon: 'medkit',
     markerColor: 'green',
@@ -47,7 +62,7 @@ export const CUSTOM_SUBTYPE_ICONS = {
 };
 
 export const CUSTOM_LAYER_ICONS = {
-  public_transports: {
+  public_transport: {
     icon: 'bus',
     markerColor: 'red',
     prefix: 'fa'

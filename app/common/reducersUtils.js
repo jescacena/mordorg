@@ -2,6 +2,7 @@
 import {CUSTOM_LAYER_ICONS, CUSTOM_SUBTYPE_ICONS, POPUP_TEMPLATE, POPUP_OPTIONS} from 'constants';
 
 export function createGeoJsonLayer(layerId, data) {
+  layerId = layerId || 'default';
   const icon = L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS[layerId]);
 
   const onEachFeature = (feature, layer) => {
