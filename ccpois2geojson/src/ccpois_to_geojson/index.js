@@ -11,6 +11,7 @@ class Ccpois_to_geojson {
          "properties": {
            "name":item.nombre,
            "type":item.type,
+           "tipo": (item.tipo)? item.tipo[0] : null,
            "nature":item.naturaleza,
            "subtype": (item.subtipo)? item.subtipo[0] : null,
            "address":item.direccion,

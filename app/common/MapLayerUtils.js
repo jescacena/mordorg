@@ -1,6 +1,6 @@
 /* global L */
 import {CUSTOM_LAYER_ICONS, POPUP_OPTIONS, POPUP_TEMPLATE} from 'constants';
-const $ = require('jQuery');
+// const $ = require('jQuery');
 
 /*
 * flyTo: Fly to point and add a marker

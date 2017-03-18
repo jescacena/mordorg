@@ -23,6 +23,29 @@ export const CERCE_BOUNDS = new global.google.maps.LatLngBounds(
 
 
 //Font awesome icons
+export const CUSTOM_SUBTYPE_ICONS = {
+  escuela_de_musica: {
+    icon: 'music',
+    markerColor: 'blue',
+    prefix: 'fa'
+  },
+  guarderia: {
+    icon: 'child',
+    markerColor: 'blue',
+    prefix: 'fa'
+  },
+  farmacia: {
+    icon: 'plus-square',
+    markerColor: 'green',
+    prefix: 'fa'
+  },
+  centro_salud: {
+    icon: 'medkit',
+    markerColor: 'green',
+    prefix: 'fa'
+  }
+};
+
 export const CUSTOM_LAYER_ICONS = {
   public_transports: {
     icon: 'bus',
@@ -40,7 +63,7 @@ export const CUSTOM_LAYER_ICONS = {
     prefix: 'fa'
   },
   health: {
-    icon: 'medkit',
+    icon: 'ambulance',
     markerColor: 'green',
     prefix: 'fa'
   },

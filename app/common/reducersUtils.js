@@ -1,5 +1,5 @@
 /* global L */
-import {CUSTOM_LAYER_ICONS, POPUP_TEMPLATE, POPUP_OPTIONS} from 'constants';
+import {CUSTOM_LAYER_ICONS, CUSTOM_SUBTYPE_ICONS, POPUP_TEMPLATE, POPUP_OPTIONS} from 'constants';
 
 export function createGeoJsonLayer(layerId, data) {
   const icon = L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS[layerId]);
@@ -31,7 +31,15 @@ export function createGeoJsonLayer(layerId, data) {
   };
 
   return L.geoJSON(data, {
-    pointToLayer: function (geoJsonPoint, latlng) {
+    pointToLayer: function (feature, latlng) {
+      if(feature.properties.subtype) {
+        const subtypeIcon = L.AwesomeMarkers.icon(CUSTOM_SUBTYPE_ICONS[feature.properties.subtype]);
+        return L.marker(latlng, {icon: subtypeIcon});
+      }
+      if(feature.properties.tipo) {
+        const subtypeIcon = L.AwesomeMarkers.icon(CUSTOM_SUBTYPE_ICONS[feature.properties.tipo]);
+        return L.marker(latlng, {icon: subtypeIcon});
+      }
       return L.marker(latlng, {icon: icon});
     },
     onEachFeature: onEachFeature
