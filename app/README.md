@@ -30,6 +30,16 @@ version is bumped into **package.json**
 npm run-script dist-major
 npm run-script dist-minor
 npm run-script dist-patch
+-----------
+cd app
+npm version major/minor/patch
+NODE_ENV=production webpack -p --config ./webpack.production.config.js
+cd ..
+git tag vX.X.X
+git add .
+git commit -m 'XXXX'
+git push origin master
+
 ```
 * Run local server in dist folder
 ```
