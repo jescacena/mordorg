@@ -14,6 +14,11 @@ class Ccpois_wordpress_gateway {
         throw new Error(res);
       });
     }
+   fetchBazaarsCCPS() {
+     var url = WP_CCPOIS_URL + "bazaars";
+     return this._get(url);
+
+   }
    fetchFoodCCPS() {
      var url = WP_CCPOIS_URL + "food";
      return this._get(url);

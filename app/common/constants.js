@@ -11,7 +11,6 @@ export const API_URLS = {
   HEALTH: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_health.json',
   FOOD: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_food.json',
   MUNICIPAL_SERVICES: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_muniservice.json',
-  HARDWARE_STORES: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_hardware_stores.json',
   CLOTHES: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_clothes.json',
   BAZAARS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_bazaars.json'
 };
@@ -88,6 +87,11 @@ export const CUSTOM_SUBTYPE_ICONS = {
     markerColor: 'cadetblue',
     prefix: 'fa'
   },
+  supermercado: {
+    icon: 'shopping-basket',
+    markerColor: 'cadetblue',
+    prefix: 'fa'
+  },
   pescaderia: {
     icon: 'shopping-basket',
     markerColor: 'cadetblue',
@@ -108,6 +112,11 @@ export const CUSTOM_SUBTYPE_ICONS = {
     markerColor: 'darkgreen',
     prefix: 'fa'
   },
+  bazar_chino: {
+    icon: 'wrench',
+    markerColor: 'darkgreen',
+    prefix: 'fa'
+  }
 
 };
 
@@ -140,11 +149,6 @@ export const CUSTOM_LAYER_ICONS = {
   clothes: {
     icon: 'shopping-bag',
     markerColor: 'magenta',
-    prefix: 'fa'
-  },
-  hardware_stores: {
-    icon: 'wrench',
-    markerColor: 'darkgreen',
     prefix: 'fa'
   },
   bazaars: {

@@ -18,6 +18,9 @@ var _saveFile = (data, filename) => {
 
 };
 
+Ccpois_wordpress_resource.fetchBazaarsCCPS().then((data) => {
+  _saveFile(Ccpois_to_geojson.convertToFeatureCollection(data), './json/ccpois_bazaars.json');
+});
 Ccpois_wordpress_resource.fetchFoodCCPS().then((data) => {
   _saveFile(Ccpois_to_geojson.convertToFeatureCollection(data), './json/ccpois_food.json');
 });

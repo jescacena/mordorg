@@ -48,9 +48,6 @@
             &.active.clothes {
               background-color: $magenta;
             }
-            &.active.hardware_stores {
-              background-color: $dark-green;
-            }
             &.active.bazaars {
               background-color: $purple;
             }
@@ -117,12 +114,6 @@
         background: url('svgs/building-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
       }
     }
-    &.hardware_stores {
-      background: url('svgs/tool.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
-      &.selected {
-        background: url('svgs/tool-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
-      }
-    }
     &.clothes {
       background: url('svgs/clothes.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
       &.selected {
@@ -130,9 +121,9 @@
       }
     }
     &.bazaars {
-      background: url('svgs/man.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      background: url('svgs/bazaar.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
       &.selected {
-        background: url('svgs/man-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+        background: url('svgs/bazaar-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
       }
     }
   }

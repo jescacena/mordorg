@@ -19,6 +19,9 @@ var _saveFile = function _saveFile(data, filename) {
   });
 };
 
+Ccpois_wordpress_resource.fetchBazaarsCCPS().then(function (data) {
+  _saveFile(Ccpois_to_geojson.convertToFeatureCollection(data), './json/ccpois_bazaars.json');
+});
 Ccpois_wordpress_resource.fetchFoodCCPS().then(function (data) {
   _saveFile(Ccpois_to_geojson.convertToFeatureCollection(data), './json/ccpois_food.json');
 });

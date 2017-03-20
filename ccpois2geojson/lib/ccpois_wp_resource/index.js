@@ -25,6 +25,12 @@ var Ccpois_wordpress_gateway = function () {
       });
     }
   }, {
+    key: 'fetchBazaarsCCPS',
+    value: function fetchBazaarsCCPS() {
+      var url = WP_CCPOIS_URL + "bazaars";
+      return this._get(url);
+    }
+  }, {
     key: 'fetchFoodCCPS',
     value: function fetchFoodCCPS() {
       var url = WP_CCPOIS_URL + "food";
