@@ -69,6 +69,11 @@ export const CUSTOM_SUBTYPE_ICONS = {
     markerColor: 'orange',
     prefix: 'fa'
   },
+  centro_deportivo: {
+    icon: 'building-o',
+    markerColor: 'orange',
+    prefix: 'fa'
+  },
   centro_cultural: {
     icon: 'building-o',
     markerColor: 'orange',
