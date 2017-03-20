@@ -64,6 +64,16 @@ export const CUSTOM_SUBTYPE_ICONS = {
     markerColor: 'green',
     prefix: 'fa'
   },
+  biblioteca: {
+    icon: 'book',
+    markerColor: 'orange',
+    prefix: 'fa'
+  },
+  centro_cultural: {
+    icon: 'building-o',
+    markerColor: 'orange',
+    prefix: 'fa'
+  },
   local_municipal: {
     icon: 'building-o',
     markerColor: 'orange',
