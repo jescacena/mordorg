@@ -67,7 +67,7 @@
           <br>
             Servicios municipales
         </li>
-        <li class="feature food" style="opacity:0;" data-ccm-subject="public_transports">
+        <li class="feature public_transport" style="opacity:0;" data-ccm-subject="public_transports">
           <div class="fa-stack fa-large">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-bus fa-stack-1x fa-inverse"></i>
@@ -75,7 +75,7 @@
           <br>
             Transporte público
         </li>
-        <li class="feature hotel" style="opacity:0;" data-ccm-subject="schools">
+        <li class="feature schools" style="opacity:0;" data-ccm-subject="schools">
           <div class="fa-stack fa-large">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-graduation-cap fa-stack-1x fa-inverse"></i>
@@ -83,13 +83,13 @@
           <br>
             Centros educativos
         </li>
-        <li class="feature walks" style="opacity:0;" data-ccm-subject="hotel">
+        <li class="feature food" style="opacity:0;" data-ccm-subject="food">
           <div class="fa-stack fa-large">
             <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-h-square fa-stack-1x fa-inverse"></i>
+            <i class="fa fa-shopping-basket fa-stack-1x fa-inverse"></i>
           </div>
           <br>
-            Alojamiento
+            Alimentación
         </li>
       </ul>
     </div>
@@ -155,15 +155,15 @@
       }, 200);
 
       setTimeout(function(){ // animate cnet logo
-        $('.food').show().addClass('animated fadeInDown');
+        $('.public_transport').show().addClass('animated fadeInDown');
       }, 400);
 
       setTimeout(function(){ // animate verge logo
-        $('.hotel').show().addClass('animated fadeInDown');
+        $('.schools').show().addClass('animated fadeInDown');
       }, 500);
 
       setTimeout(function(){ // animate buzzfeed logo
-        $('.walks').show().addClass('animated fadeInDown');
+        $('.food').show().addClass('animated fadeInDown');
       }, 600);
     }, 700);
 
