@@ -63,6 +63,11 @@ export const CUSTOM_SUBTYPE_ICONS = {
     icon: 'h-square',
     markerColor: 'green',
     prefix: 'fa'
+  },
+  local_municipal: {
+    icon: 'building-o',
+    markerColor: 'orange',
+    prefix: 'fa'
   }
 };
 
