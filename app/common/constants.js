@@ -9,7 +9,7 @@ export const API_URLS = {
   PUBLIC_TRANSPORTS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_public_transports.json',
   SCHOOLS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_schools.json',
   HEALTH: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_health.json',
-  FOOD: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/food.json',
+  FOOD: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_food.json',
   MUNICIPAL_SERVICES: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_muniservice.json',
   HARDWARE_STORES: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_hardware_stores.json',
   CLOTHES: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_clothes.json',
@@ -80,7 +80,7 @@ export const CUSTOM_SUBTYPE_ICONS = {
   },
   panaderia: {
     icon: 'shopping-basket',
-    markerColor: 'brown',
+    markerColor: 'cadetblue',
     prefix: 'fa'
   },
   centro_cultural: {
@@ -92,7 +92,13 @@ export const CUSTOM_SUBTYPE_ICONS = {
     icon: 'building-o',
     markerColor: 'orange',
     prefix: 'fa'
-  }
+  },
+  ferreteria: {
+    icon: 'wrench',
+    markerColor: 'darkgreen',
+    prefix: 'fa'
+  },
+
 };
 
 export const CUSTOM_LAYER_ICONS = {
@@ -118,7 +124,7 @@ export const CUSTOM_LAYER_ICONS = {
   },
   food: {
     icon: 'shopping-cart',
-    markerColor: 'brown',
+    markerColor: 'cadetblue',
     prefix: 'fa'
   },
   clothes: {
@@ -128,7 +134,7 @@ export const CUSTOM_LAYER_ICONS = {
   },
   hardware_stores: {
     icon: 'wrench',
-    markerColor: 'olive-green',
+    markerColor: 'darkgreen',
     prefix: 'fa'
   },
   bazaars: {
