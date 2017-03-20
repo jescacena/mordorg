@@ -9,7 +9,11 @@ export const API_URLS = {
   PUBLIC_TRANSPORTS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_public_transports.json',
   SCHOOLS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_schools.json',
   HEALTH: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_health.json',
-  MUNICIPAL_SERVICES: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_muniservice.json'
+  FOOD: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/food.json',
+  MUNICIPAL_SERVICES: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_muniservice.json',
+  HARDWARE_STORES: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_hardware_stores.json',
+  CLOTHES: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_clothes.json',
+  BAZAARS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_bazaars.json'
 };
 
 export const CERCE_CENTER = new global.google.maps.LatLng(40.71863980562837, -4.092063903808594);
@@ -74,6 +78,11 @@ export const CUSTOM_SUBTYPE_ICONS = {
     markerColor: 'orange',
     prefix: 'fa'
   },
+  panaderia: {
+    icon: 'shopping-basket',
+    markerColor: 'brown',
+    prefix: 'fa'
+  },
   centro_cultural: {
     icon: 'building-o',
     markerColor: 'orange',
@@ -105,6 +114,26 @@ export const CUSTOM_LAYER_ICONS = {
   health: {
     icon: 'ambulance',
     markerColor: 'green',
+    prefix: 'fa'
+  },
+  food: {
+    icon: 'shopping-cart',
+    markerColor: 'brown',
+    prefix: 'fa'
+  },
+  clothes: {
+    icon: 'shopping-bag',
+    markerColor: 'magenta',
+    prefix: 'fa'
+  },
+  hardware_stores: {
+    icon: 'wrench',
+    markerColor: 'olive-green',
+    prefix: 'fa'
+  },
+  bazaars: {
+    icon: 'wrench',
+    markerColor: 'purple',
     prefix: 'fa'
   },
   default: {

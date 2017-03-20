@@ -14,6 +14,11 @@ class Ccpois_wordpress_gateway {
         throw new Error(res);
       });
     }
+   fetchFoodCCPS() {
+     var url = WP_CCPOIS_URL + "food";
+     return this._get(url);
+
+   }
    fetchSchoolsCCPS() {
      var url = WP_CCPOIS_URL + "school";
      return this._get(url);

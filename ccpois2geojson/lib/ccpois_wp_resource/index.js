@@ -25,6 +25,12 @@ var Ccpois_wordpress_gateway = function () {
       });
     }
   }, {
+    key: 'fetchFoodCCPS',
+    value: function fetchFoodCCPS() {
+      var url = WP_CCPOIS_URL + "food";
+      return this._get(url);
+    }
+  }, {
     key: 'fetchSchoolsCCPS',
     value: function fetchSchoolsCCPS() {
       var url = WP_CCPOIS_URL + "school";

@@ -31,6 +31,9 @@ export class LayerList extends React.Component {
     const dynamicClassPublicTransports = (layers.public_transports && layers.public_transports.show) ? 'icon-decorator public-transports selected' : 'icon-decorator public-transports';
     const dynamicClassHotels = (layers.hotels && layers.hotels.show) ? 'icon-decorator hotels selected' : 'icon-decorator hotels';
     const dynamicClassMunicipalServices = (layers.municipal_services && layers.municipal_services.show) ? 'icon-decorator municipal_services selected' : 'icon-decorator municipal_services';
+    const dynamicClassHardwareStores = (layers.hardware_stores && layers.hardware_stores.show) ? 'icon-decorator hardware_stores selected' : 'icon-decorator hardware_stores';
+    const dynamicClassClothes = (layers.clothes && layers.clothes.show) ? 'icon-decorator clothes selected' : 'icon-decorator clothes';
+    const dynamicClassBazaars = (layers.bazaars && layers.bazaars.show) ? 'icon-decorator bazaars selected' : 'icon-decorator bazaars';
 
     const listgroupInstance = (
       <ListGroup>
@@ -41,6 +44,7 @@ export class LayerList extends React.Component {
           }}
           className={dynamicClassSchools}
           active={(layers.schools && layers.schools.show) ? true : false}>Centros educativos</ListGroupItem>
+
         <ListGroupItem
           onClick={(event)=> {
             $(event.target).blur();
@@ -48,14 +52,17 @@ export class LayerList extends React.Component {
           }}
           className={dynamicClassPublicTransports}
           active={(layers.public_transports && layers.public_transports.show) ? true : false}>Transporte público</ListGroupItem>
+
         <ListGroupItem
           onClick={(event)=> {
             $(event.target).blur();
             //this.onClickHandler('food');
-            this.showModalMessage('Datos aún no disponibles');
+            // this.showModalMessage('Datos aún no disponibles');
+            this.onClickHandler('food');
           }}
           className={dynamicClassFood}
           active={(layers.food && layers.food.show) ? true : false}>Alimentación</ListGroupItem>
+
         <ListGroupItem
           onClick={(event)=> {
             $(event.target).blur();
@@ -63,22 +70,38 @@ export class LayerList extends React.Component {
           }}
           className={dynamicClassHealth}
           active={(layers.health && layers.health.show) ? true : false}>Farmacias y salud</ListGroupItem>
+
         <ListGroupItem
           onClick={(event)=> {
             $(event.target).blur();
             // this.onClickHandler('restaurants');
-            this.showModalMessage('Datos aún no disponibles');
+            //this.showModalMessage('Datos aún no disponibles');
+            this.onClickHandler('clothes');
+
           }}
-          className={dynamicClassRestaurants}
-          active={(layers.restaurants && layers.restaurants.show) ? true : false}>Restaurantes</ListGroupItem>
+          className={dynamicClassClothes}
+          active={(layers.clothes && layers.clothes.show) ? true : false}>Tiendas de textil</ListGroupItem>
+
         <ListGroupItem
           onClick={(event)=> {
             $(event.target).blur();
             // this.onClickHandler('hotels');
-            this.showModalMessage('Datos aún no disponibles');
+            // this.showModalMessage('Datos aún no disponibles');
+            this.onClickHandler('hardware_stores');
           }}
-          className={dynamicClassHotels}
-          active={(layers.hotels && layers.hotels.show) ? true : false}>Alojamiento</ListGroupItem>
+          className={dynamicClassHardwareStores}
+          active={(layers.hotels && layers.hotels.show) ? true : false}>Ferreterías</ListGroupItem>
+
+        <ListGroupItem
+          onClick={(event)=> {
+            $(event.target).blur();
+            // this.onClickHandler('hotels');
+            // this.showModalMessage('Datos aún no disponibles');
+            this.onClickHandler('bazaars');
+          }}
+          className={dynamicClassBazaars}
+          active={(layers.hotels && layers.hotels.show) ? true : false}>Bazares</ListGroupItem>
+
         <ListGroupItem
           onClick={(event)=> {
             $(event.target).blur();
@@ -86,6 +109,7 @@ export class LayerList extends React.Component {
           }}
           className={dynamicClassMunicipalServices}
           active={(layers.municipal_services && layers.municipal_services.show) ? true : false}>Servicios Municipales</ListGroupItem>
+
       </ListGroup>
     );
 

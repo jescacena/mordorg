@@ -16,7 +16,7 @@
     // transition: top .35s ease-in-out;
     transition: top .35s cubic-bezier(.48,-0.28,.41,1.4);
     position: absolute;
-    top:-20em;
+    top:-30em;
     left: -12.2em;
     .list-group {
       margin:0;
@@ -41,6 +41,18 @@
             }
             &.active.municipal_services {
               background-color: $orange;
+            }
+            &.active.food {
+              background-color: $brown;
+            }
+            &.active.clothes {
+              background-color: $magenta;
+            }
+            &.active.hardware_stores {
+              background-color: $olive-green;
+            }
+            &.active.bazaars {
+              background-color: $purple;
             }
             color:#fff;
           }
@@ -103,6 +115,24 @@
       background: url('svgs/building.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
       &.selected {
         background: url('svgs/building-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      }
+    }
+    &.hardware_stores {
+      background: url('svgs/tool.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      &.selected {
+        background: url('svgs/tool-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      }
+    }
+    &.clothes {
+      background: url('svgs/clothes.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      &.selected {
+        background: url('svgs/clothes-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      }
+    }
+    &.bazaars {
+      background: url('svgs/man.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      &.selected {
+        background: url('svgs/man-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
       }
     }
   }
