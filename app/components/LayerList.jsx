@@ -100,7 +100,7 @@ export class LayerList extends React.Component {
             this.onClickHandler('bazaars');
           }}
           className={dynamicClassBazaars}
-          active={(layers.bazaars && layers.bazaars.show) ? true : false}>Ferreterías / Bazares</ListGroupItem>
+          active={(layers.bazaars && layers.bazaars.show) ? true : false}>Otros</ListGroupItem>
 
 
       </ListGroup>
