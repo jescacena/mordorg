@@ -82,6 +82,11 @@ export const CUSTOM_SUBTYPE_ICONS = {
     markerColor: 'cadetblue',
     prefix: 'fa'
   },
+  fruteria: {
+    icon: 'shopping-basket',
+    markerColor: 'cadetblue',
+    prefix: 'fa'
+  },
   carniceria: {
     icon: 'shopping-basket',
     markerColor: 'cadetblue',
