@@ -123,7 +123,7 @@ export const CUSTOM_SUBTYPE_ICONS = {
     prefix: 'fa'
   },
   bazar: {
-    icon: 'wrench',
+    icon: 'bullseye',
     markerColor: 'purple',
     prefix: 'fa'
   }
@@ -162,7 +162,7 @@ export const CUSTOM_LAYER_ICONS = {
     prefix: 'fa'
   },
   bazaars: {
-    icon: 'wrench',
+    icon: 'bullseye',
     markerColor: 'purple',
     prefix: 'fa'
   },
