@@ -58,6 +58,11 @@ export const CUSTOM_SUBTYPE_ICONS = {
     icon: 'medkit',
     markerColor: 'green',
     prefix: 'fa'
+  },
+  hospital: {
+    icon: 'h-square',
+    markerColor: 'green',
+    prefix: 'fa'
   }
 };
 
