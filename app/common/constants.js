@@ -109,12 +109,12 @@ export const CUSTOM_SUBTYPE_ICONS = {
   },
   ferreteria: {
     icon: 'wrench',
-    markerColor: 'darkgreen',
+    markerColor: 'purple',
     prefix: 'fa'
   },
-  bazar_chino: {
+  bazar: {
     icon: 'wrench',
-    markerColor: 'darkgreen',
+    markerColor: 'purple',
     prefix: 'fa'
   }
 
