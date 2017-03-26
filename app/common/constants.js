@@ -13,7 +13,7 @@ export const API_URLS = {
   MUNICIPAL_SERVICES: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_muniservice.json',
   CLOTHES: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_clothes.json',
   BAZAARS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_bazaars.json',
-  BANKS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_banks.json'm
+  BANKS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_banks.json',
   POLICE: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_police.json'
 };
 
@@ -134,6 +134,11 @@ export const CUSTOM_SUBTYPE_ICONS = {
     markerColor: 'purple',
     prefix: 'fa'
   },
+  gasolinera: {
+    icon: 'tint',
+    markerColor: 'purple',
+    prefix: 'fa'
+  },
   caja_ahorro: {
     icon: 'eur',
     markerColor: 'darkred',
@@ -143,7 +148,18 @@ export const CUSTOM_SUBTYPE_ICONS = {
     icon: 'eur',
     markerColor: 'darkred',
     prefix: 'fa'
+  },
+  policia_municipal: {
+    icon: 'shield',
+    markerColor: 'darkgreen',
+    prefix: 'fa'
+  },
+  guardia_civil: {
+    icon: 'shield',
+    markerColor: 'darkgreen',
+    prefix: 'fa'
   }
+
 
 
 };
@@ -190,7 +206,7 @@ export const CUSTOM_LAYER_ICONS = {
     prefix: 'fa'
   },
   police: {
-    icon: 'eur',
+    icon: 'shield',
     markerColor: 'darkgreen',
     prefix: 'fa'
   },

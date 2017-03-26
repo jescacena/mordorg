@@ -1,5 +1,8 @@
+.leaflet-popup-pane {
+  z-index:111111111;
+}
 .ccm-marker-popup {
-  z-index:111111;
+  z-index:111111111;
 
   a.leaflet-popup-close-button {
     color:#fff;
@@ -22,10 +25,12 @@
     100% {-webkit-transform: rotate(360deg);}
   }
   .leaflet-popup-content-wrapper {
+    z-index:111111111;
     background-color: $light-green;
     border-radius: 4px;
 
     .leaflet-popup-content {
+      z-index:111111111;
       margin: 0em;
       ul.properties {
         margin:0;

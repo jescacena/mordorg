@@ -112,7 +112,7 @@ export class LayerList extends React.Component {
             this.onClickHandler('police');
           }}
           className={dynamicClassPolice}
-          active={(layers.police && layers.police.show) ? true : false}>Policía/G.Civil</ListGroupItem>
+          active={(layers.police && layers.police.show) ? true : false}>Policía/Guardia Civil</ListGroupItem>
 
         <ListGroupItem
           onClick={(event)=> {
