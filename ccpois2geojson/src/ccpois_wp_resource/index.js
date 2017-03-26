@@ -49,6 +49,10 @@ class Ccpois_wordpress_gateway {
      var url = WP_CCPOIS_URL + "health";
      return this._get(url);
    }
+   fetchClothesCCPS () {
+     var url = WP_CCPOIS_URL + "clothes";
+     return this._get(url);
+   }
  }
 
  module.exports = Ccpois_wordpress_gateway;

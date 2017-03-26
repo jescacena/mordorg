@@ -72,6 +72,12 @@ var Ccpois_wordpress_gateway = function () {
       var url = WP_CCPOIS_URL + "health";
       return this._get(url);
     }
+  }, {
+    key: 'fetchClothesCCPS',
+    value: function fetchClothesCCPS() {
+      var url = WP_CCPOIS_URL + "clothes";
+      return this._get(url);
+    }
   }]);
 
   return Ccpois_wordpress_gateway;

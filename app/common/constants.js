@@ -173,7 +173,13 @@ export const CUSTOM_SUBTYPE_ICONS = {
     icon: 'shield',
     markerColor: 'darkgreen',
     prefix: 'fa'
-  }
+  },
+  ropa: {
+    icon: 'shopping-bag',
+    markerColor: 'darkpurple',
+    prefix: 'fa'
+  },
+
 
 
 
@@ -207,7 +213,7 @@ export const CUSTOM_LAYER_ICONS = {
   },
   clothes: {
     icon: 'shopping-bag',
-    markerColor: 'magenta',
+    markerColor: 'darkpurple',
     prefix: 'fa'
   },
   bazaars: {

@@ -40,6 +40,9 @@ Ccpois_wordpress_resource.fetchHealthCCPS().then(function (data) {
 Ccpois_wordpress_resource.fetchPoliceCCPS().then(function (data) {
   _saveFile(Ccpois_to_geojson.convertToFeatureCollection(data), './json/ccpois_police.json');
 });
+Ccpois_wordpress_resource.fetchClothesCCPS().then(function (data) {
+  _saveFile(Ccpois_to_geojson.convertToFeatureCollection(data), './json/ccpois_clothes.json');
+});
 Ccpois_wordpress_resource.fetchMunicipalServicesCCPS().then(function (data) {
   _saveFile(Ccpois_to_geojson.convertToFeatureCollection(data), './json/ccpois_muniservice.json');
 });

@@ -87,8 +87,8 @@ export class LayerList extends React.Component {
           onClick={(event)=> {
             $(event.target).blur();
             // this.onClickHandler('restaurants');
-            this.showModalMessage('Datos aún no disponibles');
-            // this.onClickHandler('clothes');
+            // this.showModalMessage('Datos aún no disponibles');
+            this.onClickHandler('clothes');
 
           }}
           className={dynamicClassClothes}
