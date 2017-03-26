@@ -97,14 +97,15 @@ export class MapLayer extends React.Component {
     // Tile sources
     // url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
     //http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey={apikey}
-    //
+    //https://a.tiles.mapbox.com/v3/mapbox.world-bright/{z}/{x}/{y}.png
     //http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png
+    //http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png
 
     const map = (
         <Map ref="map" className="ccm-maplayer" center={position} zoom={zoom}>
           <TileLayer
             detectRetina='true'
-            url='http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png'
+            url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
         </Map>
