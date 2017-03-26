@@ -58,16 +58,6 @@ export class LayerList extends React.Component {
         <ListGroupItem
           onClick={(event)=> {
             $(event.target).blur();
-            this.showModalMessage('Datos aún no disponibles');
-
-            // this.onClickHandler('public_transports');
-          }}
-          className={dynamicClassPublicTransports}
-          active={(layers.public_transports && layers.public_transports.show) ? true : false}>Transporte público</ListGroupItem>
-
-        <ListGroupItem
-          onClick={(event)=> {
-            $(event.target).blur();
             //this.onClickHandler('food');
             // this.showModalMessage('Datos aún no disponibles');
             this.onClickHandler('food');
@@ -92,7 +82,7 @@ export class LayerList extends React.Component {
 
           }}
           className={dynamicClassClothes}
-          active={(layers.clothes && layers.clothes.show) ? true : false}>Ropa / Zapatos</ListGroupItem>
+          active={(layers.clothes && layers.clothes.show) ? true : false}>Ropa / Complementos</ListGroupItem>
 
         <ListGroupItem
           onClick={(event)=> {
@@ -102,7 +92,7 @@ export class LayerList extends React.Component {
             this.onClickHandler('banks');
           }}
           className={dynamicClassBanks}
-          active={(layers.banks && layers.banks.show) ? true : false}>Bancos/Cajeros</ListGroupItem>
+          active={(layers.banks && layers.banks.show) ? true : false}>Bancos / Cajeros</ListGroupItem>
 
         <ListGroupItem
           onClick={(event)=> {
@@ -112,7 +102,7 @@ export class LayerList extends React.Component {
             this.onClickHandler('police');
           }}
           className={dynamicClassPolice}
-          active={(layers.police && layers.police.show) ? true : false}>Policía/Guardia Civil</ListGroupItem>
+          active={(layers.police && layers.police.show) ? true : false}>Policía / Guardia Civil</ListGroupItem>
 
         <ListGroupItem
           onClick={(event)=> {
@@ -127,6 +117,18 @@ export class LayerList extends React.Component {
 
       </ListGroup>
     );
+
+    /*
+    // <ListGroupItem
+    //   onClick={(event)=> {
+    //     $(event.target).blur();
+    //     this.showModalMessage('Datos aún no disponibles');
+    //
+    //     // this.onClickHandler('public_transports');
+    //   }}
+    //   className={dynamicClassPublicTransports}
+    //   active={(layers.public_transports && layers.public_transports.show) ? true : false}>Transporte público</ListGroupItem>
+*/
 
     const dynamicClass = 'ccm-layer-list ' + ((showLayerSelector)?'open':'');
     return (
