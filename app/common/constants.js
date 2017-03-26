@@ -64,6 +64,11 @@ export const CUSTOM_SUBTYPE_ICONS = {
     markerColor: 'green',
     prefix: 'fa'
   },
+  zona_infantil: {
+    icon: 'child',
+    markerColor: 'orange',
+    prefix: 'fa'
+  },
   hospital: {
     icon: 'h-square',
     markerColor: 'green',
@@ -105,6 +110,11 @@ export const CUSTOM_SUBTYPE_ICONS = {
     prefix: 'fa'
   },
   supermercado: {
+    icon: 'shopping-basket',
+    markerColor: 'cadetblue',
+    prefix: 'fa'
+  },
+  bazar_alimentacion: {
     icon: 'shopping-basket',
     markerColor: 'cadetblue',
     prefix: 'fa'
@@ -179,6 +189,11 @@ export const CUSTOM_SUBTYPE_ICONS = {
     markerColor: 'darkpurple',
     prefix: 'fa'
   },
+  complementos: {
+    icon: 'shopping-bag',
+    markerColor: 'darkpurple',
+    prefix: 'fa'
+  }
 
 
 
