@@ -7,4 +7,10 @@
   text-align: center;
   /*top:1em;
   left:1em;*/
+
+  .leaflet-control-container {
+    .leaflet-top.leaflet-left {
+      z-index:1111111111;
+    }
+  }
 }

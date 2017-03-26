@@ -4,7 +4,7 @@ const LocationService = require('LocationService');
 const MapLayerUtils = require('MapLayerUtils');
 const actions = require('actions');
 import {CUSTOM_LAYER_ICONS} from 'constants';
-import { Map, Marker, Popup, TileLayer, GeoJSON } from 'react-leaflet';
+import { Map, Marker, Popup, TileLayer, GeoJSON, ScaleControl } from 'react-leaflet';
 const screenfull = require('screenfull');
 
 
@@ -38,7 +38,7 @@ export class MapLayer extends React.Component {
   componentWillMount() {
     let {dispatch} = this.props;
     // const defaultLayer = 'schools';
-    // 
+    //
     // dispatch(actions.startToggleLayer(defaultLayer));
   }
 
@@ -46,9 +46,14 @@ export class MapLayer extends React.Component {
     if(this.refs.map && this.refs.map.leafletElement) {
       let {flyToPoint, layers, fitToBounds, fullScreenMode, showPopupPoiData, dispatch} = this.props;
 
+      this.refs.map.leafletElement._layersMaxZoom = 17;
+
+
       MapLayerUtils.addActiveLayers(layers, fitToBounds, this.refs.map.leafletElement);
 
-      if(fitToBounds) {
+      console.log('JESSSSS this.refs.map.leafletElement', this.refs.map.leafletElement);
+
+       if(fitToBounds) {
         // Reset fly to point
         setTimeout(()=> {
           dispatch(actions.removeFitToBounds());
@@ -72,6 +77,14 @@ export class MapLayer extends React.Component {
       } else {
         screenfull.exit();
       }
+
+      if(!this.refs.map.leafletElement._controlCorners.bottomleft.firstChild) {
+        L.control.scale({
+          position: 'bottomleft',
+          imperial: false
+        }).addTo(this.refs.map.leafletElement);
+      }
+
     }
   }
 
@@ -81,14 +94,20 @@ export class MapLayer extends React.Component {
     let position = [center.lat, center.lon];
     let zoom = center.zoom;
 
+    // Tile sources
+    // url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+    //http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey={apikey}
+    //
+    //http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png
+
     const map = (
-      <Map ref="map" className="ccm-maplayer" center={position} zoom={zoom}>
-        <TileLayer
-          detectRetina='true'
-          url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        />
-      </Map>
+        <Map ref="map" className="ccm-maplayer" center={position} zoom={zoom}>
+          <TileLayer
+            detectRetina='true'
+            url='http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png'
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          />
+        </Map>
     );
 
     return map;
@@ -101,7 +120,7 @@ MapLayer.defaultProps = {
   center: {
     lat: 40.7410,
     lon: -4.0574,
-    zoom: 14
+    zoom: 16
   }
 };
 
