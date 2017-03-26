@@ -129,6 +129,21 @@ export const CUSTOM_SUBTYPE_ICONS = {
     markerColor: 'purple',
     prefix: 'fa'
   },
+  papeleria: {
+    icon: 'book',
+    markerColor: 'purple',
+    prefix: 'fa'
+  },
+  libreria: {
+    icon: 'book',
+    markerColor: 'purple',
+    prefix: 'fa'
+  },
+  informatica: {
+    icon: 'laptop',
+    markerColor: 'purple',
+    prefix: 'fa'
+  },
   bazar: {
     icon: 'bullseye',
     markerColor: 'purple',
