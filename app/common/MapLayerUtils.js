@@ -1,5 +1,7 @@
 /* global L */
 import {CUSTOM_LAYER_ICONS, POPUP_OPTIONS, POPUP_TEMPLATE} from 'constants';
+const $ = require('jQuery');
+
 // const $ = require('jQuery');
 
 /*
@@ -16,7 +18,7 @@ export function flyTo(flyToPoint, leafletMap, showPopupPoiData) {
   const icon = L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS.default);
   let marker = L.marker(leafletPoint, {icon: icon});
 
-  if(showPopupPoiData) {
+  if(showPopupPoiData && !$.isEmptyObject(showPopupPoiData)) {
     const context = {
       name: showPopupPoiData.name,
       address: showPopupPoiData.address,

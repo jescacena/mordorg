@@ -267,7 +267,8 @@ export const GOOGLE_MAP_KEY = 'AIzaSyC4hAxLWQYK86JGwSCI3FB4TiuAGRU-ez4';
 export const POPUP_OPTIONS = {
   maxWidth: '250',
   className: 'ccm-marker-popup',
-  autoPanPadding: [100, 100]
+  // autoPanPadding: [100, 100]
+  autoPanPaddingTopLeft: [100, 180]
 };
 
 // export const googleMapsClient = require('@google/maps').createClient({
