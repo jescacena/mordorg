@@ -69,6 +69,11 @@ export const CUSTOM_SUBTYPE_ICONS = {
     markerColor: 'orange',
     prefix: 'fa'
   },
+  punto_limpio: {
+    icon: 'recycle',
+    markerColor: 'orange',
+    prefix: 'fa'
+  },
   hospital: {
     icon: 'h-square',
     markerColor: 'green',
