@@ -51,6 +51,9 @@
             &.active.bazaars {
               background-color: $magenta;
             }
+            &.active.banks {
+              background-color: $darkred;
+            }
             color:#fff;
           }
           &:focus {
@@ -124,6 +127,12 @@
       background: url('svgs/bazaar.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
       &.selected {
         background: url('svgs/bazaar-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      }
+    }
+    &.banks {
+      background: url('svgs/euro.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      &.selected {
+        background: url('svgs/euro-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
       }
     }
   }

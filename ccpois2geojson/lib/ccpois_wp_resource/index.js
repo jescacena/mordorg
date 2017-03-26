@@ -43,6 +43,12 @@ var Ccpois_wordpress_gateway = function () {
       return this._get(url);
     }
   }, {
+    key: 'fetchBanksCCPS',
+    value: function fetchBanksCCPS() {
+      var url = WP_CCPOIS_URL + "banks";
+      return this._get(url);
+    }
+  }, {
     key: 'fetchPublicTransportsCCPS',
     value: function fetchPublicTransportsCCPS() {
       var url = WP_CCPOIS_URL + "public_transport";
