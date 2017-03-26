@@ -78,6 +78,11 @@ export const CUSTOM_SUBTYPE_ICONS = {
     markerColor: 'orange',
     prefix: 'fa'
   },
+  cuerpo_seguridad: {
+    icon: 'shield',
+    markerColor: 'orange',
+    prefix: 'fa'
+  },
   panaderia: {
     icon: 'shopping-basket',
     markerColor: 'cadetblue',
@@ -127,7 +132,18 @@ export const CUSTOM_SUBTYPE_ICONS = {
     icon: 'bullseye',
     markerColor: 'purple',
     prefix: 'fa'
+  },
+  caja_ahorro: {
+    icon: 'eur',
+    markerColor: 'darkred',
+    prefix: 'fa'
+  },
+  banco: {
+    icon: 'eur',
+    markerColor: 'darkred',
+    prefix: 'fa'
   }
+
 
 };
 
