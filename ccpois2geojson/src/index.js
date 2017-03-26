@@ -36,6 +36,9 @@ Ccpois_wordpress_resource.fetchBanksCCPS().then((data) => {
 Ccpois_wordpress_resource.fetchHealthCCPS().then((data) => {
   _saveFile(Ccpois_to_geojson.convertToFeatureCollection(data), './json/ccpois_health.json');
 });
+Ccpois_wordpress_resource.fetchPoliceCCPS().then((data) => {
+  _saveFile(Ccpois_to_geojson.convertToFeatureCollection(data), './json/ccpois_police.json');
+});
 Ccpois_wordpress_resource.fetchMunicipalServicesCCPS().then((data) => {
   _saveFile(Ccpois_to_geojson.convertToFeatureCollection(data), './json/ccpois_muniservice.json');
 });

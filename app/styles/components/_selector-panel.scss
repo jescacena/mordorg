@@ -54,6 +54,9 @@
             &.active.banks {
               background-color: $darkred;
             }
+            &.active.police {
+              background-color: $darkgreen;
+            }
             color:#fff;
           }
           &:focus {
@@ -133,6 +136,12 @@
       background: url('svgs/euro.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
       &.selected {
         background: url('svgs/euro-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      }
+    }
+    &.police {
+      background: url('svgs/shield.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
+      &.selected {
+        background: url('svgs/shield-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
       }
     }
   }

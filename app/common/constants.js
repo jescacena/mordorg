@@ -13,7 +13,8 @@ export const API_URLS = {
   MUNICIPAL_SERVICES: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_muniservice.json',
   CLOTHES: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_clothes.json',
   BAZAARS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_bazaars.json',
-  BANKS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_banks.json'
+  BANKS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_banks.json'm
+  POLICE: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_police.json'
 };
 
 export const CERCE_CENTER = new global.google.maps.LatLng(40.71863980562837, -4.092063903808594);
@@ -186,6 +187,11 @@ export const CUSTOM_LAYER_ICONS = {
   banks: {
     icon: 'eur',
     markerColor: 'darkred',
+    prefix: 'fa'
+  },
+  police: {
+    icon: 'eur',
+    markerColor: 'darkgreen',
     prefix: 'fa'
   },
   default: {

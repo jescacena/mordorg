@@ -29,10 +29,13 @@ class Ccpois_wordpress_gateway {
      return this._get(url);
 
    }
+   fetchPoliceCCPS() {
+     var url = WP_CCPOIS_URL + "police";
+     return this._get(url);
+   }
    fetchBanksCCPS() {
      var url = WP_CCPOIS_URL + "banks";
      return this._get(url);
-
    }
    fetchPublicTransportsCCPS () {
      var url = WP_CCPOIS_URL + "public_transport";
