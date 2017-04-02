@@ -12,6 +12,7 @@ const {searchTextReducer,
   modalMessageReducer,
   fitToBoundsReducer,
   showPopupPoiDataReducer,
+  locateUserPositionReducer,
   flyToPointReducer} = require('reducers');
 
 export const configure = (initialState = {
@@ -26,6 +27,7 @@ export const configure = (initialState = {
   showSearchbox: false,
   fullScreenMode: false,
   showModal: false,
+  locateUserPosition: false,
   modalMessageText: 'Todas las caras de la verdad',
   layers: {},
   showPopupPoiData: {}
@@ -42,7 +44,8 @@ export const configure = (initialState = {
     modalMessageText: modalMessageReducer,
     flyToPoint: flyToPointReducer,
     showPopupPoiData: showPopupPoiDataReducer,
-    fitToBounds: fitToBoundsReducer
+    fitToBounds: fitToBoundsReducer,
+    locateUserPosition: locateUserPositionReducer
   });
 
   const store = redux.createStore(reducer, initialState, redux.compose(

@@ -10,6 +10,16 @@ export const showPopupPoiDataReducer = (state = {}, action) => {
   }
 };
 
+export const locateUserPositionReducer = (state = false, action) => {
+  switch(action.type) {
+  case 'LOCATE_USER_POSITION':
+    return true;
+  case 'DISABLE_LOCATE_USER_POSITION':
+    return false;
+  default:
+    return state;
+  }
+};
 export const modalReducer = (state = false, action) => {
   switch(action.type) {
   case 'SHOW_MODAL':

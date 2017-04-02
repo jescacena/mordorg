@@ -61,3 +61,29 @@ $desktop-width: 1024px;
     @content;
   }
 }
+
+@mixin glowing {
+  @-webkit-keyframes glowing {
+    0% { background-color: $blue-marine; -webkit-box-shadow: 0 0 3px $blue-marine; }
+    50% { background-color: $blue; -webkit-box-shadow: 0 0 40px $blue; }
+    100% { background-color: $blue-marine; -webkit-box-shadow: 0 0 3px $blue-marine; }
+  }
+
+  @-moz-keyframes glowing {
+    0% { background-color: $blue-marine; -moz-box-shadow: 0 0 3px $blue-marine; }
+    50% { background-color: $blue; -moz-box-shadow: 0 0 40px $blue; }
+    100% { background-color: $blue-marine; -moz-box-shadow: 0 0 3px $blue-marine; }
+  }
+
+  @-o-keyframes glowing {
+    0% { background-color: $blue-marine; box-shadow: 0 0 3px $blue-marine; }
+    50% { background-color: $blue; box-shadow: 0 0 40px $blue; }
+    100% { background-color: $blue-marine; box-shadow: 0 0 3px $blue-marine; }
+  }
+
+  @keyframes glowing {
+    0% { background-color: $blue-marine; box-shadow: 0 0 3px $blue-marine; }
+    50% { background-color: $blue; box-shadow: 0 0 40px $blue; }
+    100% { background-color: $blue-marine; box-shadow: 0 0 3px $blue-marine; }
+  }
+}

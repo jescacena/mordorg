@@ -10,16 +10,19 @@ export class SelectorPanel extends React.Component {
 
 
   componentDidMount() {
+    console.log('componentWillUpdate SelectorPanel', this.props);
+
   }
   render() {
     console.log('SelectorPanel props', this.props);
-    const {dispatch, showLayerSelector, showSearchbox, layers} = this.props;
+    const {dispatch, showLayerSelector, showSearchbox, locateUserPosition, layers} = this.props;
 
     return (
       <div className="ccm-selector-panel">
         <IconGroup dispatch={dispatch} layers={layers}
           showLayerSelector={showLayerSelector}
-          showSearchbox={showSearchbox}/>
+          showSearchbox={showSearchbox}
+          locateUserPosition={locateUserPosition}/>
         <LayerList dispatch={dispatch} layers={layers} showLayerSelector={showLayerSelector}/>
         <SearchBox dispatch={dispatch} showSearchbox={showSearchbox}/>
       </div>
@@ -30,7 +33,8 @@ export class SelectorPanel extends React.Component {
 SelectorPanel.defaultProps = {
   layers: {},
   showLayerSelector: false,
-  showSearchbox: false
+  showSearchbox: false,
+  locateUserPosition: false
 };
 
 // SelectorPanel.contextTypes = {
@@ -40,7 +44,8 @@ SelectorPanel.defaultProps = {
 SelectorPanel.propTypes = {
   layers: React.PropTypes.object,
   showLayerSelector: React.PropTypes.bool,
-  showSearchbox: React.PropTypes.bool
+  showSearchbox: React.PropTypes.bool,
+  locateUserPosition: React.PropTypes.bool
 };
 
 export default connect(
@@ -48,7 +53,8 @@ export default connect(
     return {
       layers: state.layers,
       showLayerSelector: state.showLayerSelector,
-      showSearchbox: state.showSearchbox
+      showSearchbox: state.showSearchbox,
+      locateUserPosition: state.locateUserPosition
     };
   }
 )(SelectorPanel);

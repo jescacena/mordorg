@@ -59,6 +59,18 @@ export const setFitToBounds = () => {
   };
 };
 
+export const locateUserPosition = () => {
+  return {
+    type: 'LOCATE_USER_POSITION'
+  };
+};
+
+export const disableLocateUserPosition = () => {
+  return {
+    type: 'DISABLE_LOCATE_USER_POSITION'
+  };
+};
+
 export const removeFitToBounds = () => {
   return {
     type: 'REMOVE_FIT_TO_BOUNDS'

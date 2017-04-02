@@ -12,6 +12,7 @@ export class MapLayer extends React.Component {
 
   constructor(props) {
     super(props);
+    this.userMarker = null;
     this.state = {
       locationData: {
         type: 'Feature',
@@ -44,7 +45,8 @@ export class MapLayer extends React.Component {
 
   componentDidUpdate() {
     if(this.refs.map && this.refs.map.leafletElement) {
-      let {flyToPoint, layers, fitToBounds, fullScreenMode, showPopupPoiData, dispatch} = this.props;
+      let {flyToPoint, layers, fitToBounds,
+        fullScreenMode, showPopupPoiData, locateUserPosition, dispatch} = this.props;
 
       this.refs.map.leafletElement._layersMaxZoom = 17;
 
@@ -78,11 +80,38 @@ export class MapLayer extends React.Component {
         screenfull.exit();
       }
 
+      //Scale control
       if(!this.refs.map.leafletElement._controlCorners.bottomleft.firstChild) {
         L.control.scale({
           position: 'bottomleft',
           imperial: false
         }).addTo(this.refs.map.leafletElement);
+      }
+
+      if(locateUserPosition) {
+        var leafletMap = this.refs.map.leafletElement;
+        let PersonIcon = L.Icon.extend({
+           options: {
+                 iconUrl: 'img/people-new-2.png',
+                 iconSize: [28, 28]
+                //  shadowUrl: 'my-icon-shadow.png',
+           }
+        });
+        const personIcon = new PersonIcon();
+
+        leafletMap.locate({setView: true, maxZoom: 16});
+
+        leafletMap.on('locationfound', function(e) {
+            if(this.userMarker) {
+              leafletMap.removeLayer(this.userMarker);
+            }
+            this.userMarker = L.marker(e.latlng, {icon: personIcon});
+            this.userMarker.addTo(leafletMap);
+            dispatch(actions.disableLocateUserPosition());
+        });
+        this.refs.map.leafletElement.on('locationerror', function(e) {
+            console.log(e);
+        });
       }
 
     }
@@ -131,6 +160,7 @@ MapLayer.propTypes = {
   showPopupPoiData: React.PropTypes.object,
   fitToBounds: React.PropTypes.bool,
   fullScreenMode: React.PropTypes.bool,
+  locateUserPosition: React.PropTypes.bool,
   layers: React.PropTypes.object
 };
 
@@ -142,7 +172,8 @@ export default connect(
       fitToBounds: state.fitToBounds,
       layers: state.layers,
       fullScreenMode: state.fullScreenMode,
-      showPopupPoiData: state.showPopupPoiData
+      showPopupPoiData: state.showPopupPoiData,
+      locateUserPosition: state.locateUserPosition
     };
   }
 )(MapLayer);
