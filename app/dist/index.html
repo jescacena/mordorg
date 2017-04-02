@@ -10,6 +10,18 @@
     <link rel="apple-touch-icon-precomposed" sizes="192x192" href="img/logo-192x192.png">
 
     <title>Cercemap App</title>
+    <style media="screen">
+      #app {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: #709dc3;
+      }
+    </style>
+    <link href="./css/spinner.css" rel="stylesheet">
+
 
     <script src="https://use.fontawesome.com/6ff81cb10b.js"></script>
 
