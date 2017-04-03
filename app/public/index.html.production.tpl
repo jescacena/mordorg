@@ -30,7 +30,15 @@
 
     <input type="hidden" name="version" id="version" value="{version}"/>
 
-    <div id="app"></div>
+    <div id="app">
+      <div class="spinner">
+        <div class="loading-text">
+          <h3>Cargando mapa</h3>
+        </div>
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+    </div>
 
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4hAxLWQYK86JGwSCI3FB4TiuAGRU-ez4&libraries=places"></script>
 
