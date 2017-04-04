@@ -14,7 +14,7 @@ export class ModalMessage extends React.Component {
       <div className={dynamicClass}>
         <i className="fa fa-large fa-info-circle" aria-hidden="true" />
         <div className="message">
-          <h1>{modalMessageText}</h1>
+          <p>{modalMessageText}</p>
           <button onClick={() => {
             const {dispatch} = this.props;
             dispatch(actions.hideModal());

@@ -40,10 +40,19 @@ html, body {
     .message {
       // position:absolute;
       top:1em;
-      h1 {
+      p {
+        padding:2.1em;
         font-size: 2em;
+        text-align: left;
+        @include handset-tablet {
+          font-size: 0.7em;
+        }
         color:white;
-        padding: 0.2em;
+        // padding: 0.2em;
+      }
+
+      button {
+        background-color: #fff;
       }
     }
 

@@ -5,7 +5,7 @@ export class Logo extends React.Component {
     return (
       <div>
         <div className="ccm-logo">
-          <a href="http://www.cercemap.org">cercemap.org</a>
+          <a href="http://www.cercemap.org/index_welcome.html">cercemap.org</a>
         </div>
       </div>
     );

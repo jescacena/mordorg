@@ -37,7 +37,7 @@ export class MapLayer extends React.Component {
   }
 
   componentWillMount() {
-    let {dispatch} = this.props;
+    // let {dispatch} = this.props;
     // const defaultLayer = 'schools';
     //
     // dispatch(actions.startToggleLayer(defaultLayer));
@@ -53,7 +53,7 @@ export class MapLayer extends React.Component {
 
       MapLayerUtils.addActiveLayers(layers, fitToBounds, this.refs.map.leafletElement);
 
-      console.log('JESSSSS this.refs.map.leafletElement', this.refs.map.leafletElement);
+      console.log('MapLayer this.refs.map.leafletElement', this.refs.map.leafletElement);
 
        if(fitToBounds) {
         // Reset fly to point
@@ -111,6 +111,11 @@ export class MapLayer extends React.Component {
         });
         this.refs.map.leafletElement.on('locationerror', function(e) {
             console.log(e);
+            dispatch(actions.disableLocateUserPosition());
+            dispatch(actions.setModalMessageText('No se ha podido capturar su ubicación. Es necesario conceder permisos de ubicación.'));
+            dispatch(actions.showModal());
+
+
         });
       }
 
@@ -150,7 +155,7 @@ MapLayer.defaultProps = {
   center: {
     lat: 40.7410,
     lon: -4.0574,
-    zoom: 16
+    zoom: 18
   }
 };
 

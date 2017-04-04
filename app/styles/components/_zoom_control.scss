@@ -1,0 +1,9 @@
+.leaflet-control-zoom {
+  &.leaflet-bar a {
+    @include handset {
+      width: 25px;
+      height: 25px;
+      font-size: 1.2em;
+      line-height: 25px;    }
+  }
+}

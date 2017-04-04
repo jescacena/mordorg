@@ -25,6 +25,10 @@
       button {
         height: 3em;
         font-size: 0.9em;
+        @include handset {
+          font-size: 0.75em;
+        }
+
         padding-left:2.5em;
         margin-bottom:0.05em;
 
@@ -152,6 +156,10 @@
     cursor: pointer;
     height: 3em;
     width: 3em;
+    @include handset {
+      height: 2em;
+      width: 2em;
+    }
     margin-bottom: 0.2em;
     border-radius:5px;
     border:2px solid rgba(0,0,0,0.5);
@@ -159,6 +167,9 @@
     background-color: $light-grey;
     background-repeat: no-repeat;
     background-size: 1.5em 1.5em;
+    @include handset {
+      background-size: 1em 1em;
+    }
     &.glowing {
       -webkit-animation: glowing 1500ms infinite;
       -moz-animation: glowing 1500ms infinite;

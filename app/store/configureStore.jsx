@@ -20,7 +20,7 @@ export const configure = (initialState = {
     address: 'Hello',
     lat: 40.7410,
     lon: -4.0574,
-    zoom: 14
+    zoom: 18
   },
   flyToPoint: null,
   showLayerSelector: false,

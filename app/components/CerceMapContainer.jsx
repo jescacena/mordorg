@@ -40,8 +40,8 @@ export class CerceMapContainer extends React.Component {
         dispatch(actions.startViewPOI(layerid, poikey));
       }
     } else {
-      const defaultLayer = 'schools';
-      dispatch(actions.startToggleLayer(defaultLayer));
+      // const defaultLayer = 'schools';
+      // dispatch(actions.startToggleLayer(defaultLayer));
     }
 
   }
