@@ -92,7 +92,7 @@ export class MapLayer extends React.Component {
         var leafletMap = this.refs.map.leafletElement;
         let PersonIcon = L.Icon.extend({
            options: {
-                 iconUrl: 'img/people-new-2.png',
+                 iconUrl: 'img/people-new-3.png',
                  iconSize: [28, 28]
                 //  shadowUrl: 'my-icon-shadow.png',
            }

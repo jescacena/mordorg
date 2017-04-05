@@ -15,10 +15,10 @@ export class ModalMessage extends React.Component {
         <i className="fa fa-large fa-info-circle" aria-hidden="true" />
         <div className="message">
           <p>{modalMessageText}</p>
-          <button onClick={() => {
+          <button className="btn btn-info btn-sm" onClick={() => {
             const {dispatch} = this.props;
             dispatch(actions.hideModal());
-          }}>Close</button>
+          }}>Cerrar</button>
         </div>
       </div>
     );

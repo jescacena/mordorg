@@ -15,7 +15,8 @@ html, body {
     display:none;
     text-align: center;
     width: 42%;
-    height: 27%;
+    /* height: 27%; */
+    padding: 0.2em;
     top: 31%;
     left: 29%;
     z-index: 2222;
@@ -41,18 +42,20 @@ html, body {
       // position:absolute;
       top:1em;
       p {
-        padding:2.1em;
-        font-size: 2em;
-        text-align: left;
-        @include handset-tablet {
-          font-size: 0.7em;
+        margin-top: 1em;
+        padding:1em;
+        font-size: 1em;
+        text-align: center;
+        @include handset {
+          font-size: 0.8em;
         }
         color:white;
         // padding: 0.2em;
       }
 
       button {
-        background-color: #fff;
+        // background-color: #fff;
+        margin:0 1em 1em 1em;
       }
     }
 
