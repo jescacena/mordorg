@@ -119,6 +119,21 @@ export const CUSTOM_SUBTYPE_ICONS = {
     markerColor: 'purple',
     prefix: 'fa'
   },
+  electrodomesticos: {
+    icon: 'bullseye',
+    markerColor: 'purple',
+    prefix: 'fa'
+  },
+  joyeria: {
+    icon: 'bullseye',
+    markerColor: 'purple',
+    prefix: 'fa'
+  },
+  estanco: {
+    icon: 'bullseye',
+    markerColor: 'purple',
+    prefix: 'fa'
+  },
   carniceria: {
     icon: 'shopping-basket',
     markerColor: 'cadetblue',
