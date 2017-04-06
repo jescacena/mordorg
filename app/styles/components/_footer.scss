@@ -7,12 +7,6 @@
   z-index: 1111;
   text-align: center;
 
-  @include handset-tablet {
-    bottom: 1px;
-    left: 0.5em;
-    text-align: left;
-  }
-
   a {
     // letter-spacing: -1px;
     color: rgba(69,85,102,.9);
@@ -34,5 +28,21 @@
     font-weight: 700;
     left:0.2em;
   }
+
+  @include handset-tablet {
+    bottom: 1px;
+    left: 0.5em;
+    text-align: left;
+  }
+
+  @include handset {
+    .copyright {
+      display: none;
+    }
+    .version {
+      display: none;
+    }
+  }
+
 
 }

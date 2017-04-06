@@ -109,6 +109,16 @@ export const CUSTOM_SUBTYPE_ICONS = {
     markerColor: 'purple',
     prefix: 'fa'
   },
+  taller_mecanico: {
+    icon: 'car',
+    markerColor: 'purple',
+    prefix: 'fa'
+  },
+  tienda_bicicletas: {
+    icon: 'bicycle',
+    markerColor: 'purple',
+    prefix: 'fa'
+  },
   carniceria: {
     icon: 'shopping-basket',
     markerColor: 'cadetblue',
@@ -265,10 +275,10 @@ export const POPUP_TEMPLATE = require('../templates/popup.handlebars');
 export const GOOGLE_MAP_KEY = 'AIzaSyC4hAxLWQYK86JGwSCI3FB4TiuAGRU-ez4';
 
 export const POPUP_OPTIONS = {
-  maxWidth: '250',
+  maxWidth: (window.innerWidth < 700)? '200':'250',
   className: 'ccm-marker-popup',
-  // autoPanPadding: [100, 100]
-  autoPanPaddingTopLeft: [100, 180]
+  // autoPanPadding: (window.innerWidth < 700)? [0, 100] : [100, 180]
+  autoPanPaddingTopLeft: (window.innerWidth < 700)? [0, 100] : [100, 180]
 };
 
 // export const googleMapsClient = require('@google/maps').createClient({

@@ -11,6 +11,13 @@
   .leaflet-control-container {
     .leaflet-top.leaflet-left {
       z-index:1111111111;
+
+      @include handset {
+        .leaflet-control {
+          margin-top:5px;
+          margin-left:5px;
+        }
+      }
     }
   }
 }

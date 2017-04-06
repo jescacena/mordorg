@@ -11,6 +11,7 @@ export function createGeoJsonLayer(layerId, data) {
         name: feature.properties.name,
         address: feature.properties.address,
         imageFront: feature.properties.image_front,
+        imageWidth: (window.innerWidth < 700)? '200':'250',
         tfnos: feature.properties.tfnos,
         gsvLink: feature.properties.google_streetview_link,
         website: feature.properties.website

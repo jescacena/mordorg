@@ -2,6 +2,9 @@
   display: inline-block;
   position: fixed;
   top: 10px;
+  @include handset {
+    top: 2px;
+  }
   width: 100%;
   z-index: 1000;
   text-align: center;
@@ -14,6 +17,9 @@
     background: url('svgs/escudo-cercedilla.svg') -0em center / 1.5em 1.5em no-repeat;
     color: rgba(69,85,102,.9);
     font-size: 1.7em;
+    @include handset {
+      font-size: 1em;
+    }
     font-weight: 700;
     text-decoration: none;
     text-shadow: 0 0 2px #ffefef;

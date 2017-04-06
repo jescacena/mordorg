@@ -38,6 +38,9 @@
         list-style: none;
         li {
           width: 19em;
+          @include handset {
+            width: 16em;
+          }
           // white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;

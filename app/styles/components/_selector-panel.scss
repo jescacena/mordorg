@@ -2,6 +2,9 @@
   background-color: rgba(0,0,0,0);
   position:absolute;
   top:1em;
+  @include handset {
+    top:0.5em;
+  }
   right:2em;
   z-index:2222;
 

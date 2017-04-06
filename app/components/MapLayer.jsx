@@ -119,6 +119,9 @@ export class MapLayer extends React.Component {
         });
       }
 
+      // dispatch(actions.showLoading());
+
+
     }
   }
 

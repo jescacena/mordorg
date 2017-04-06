@@ -23,6 +23,7 @@ export function flyTo(flyToPoint, leafletMap, showPopupPoiData) {
       name: showPopupPoiData.name,
       address: showPopupPoiData.address,
       imageFront: showPopupPoiData.imgUrl,
+      imageWidth: (window.innerWidth < 700)? '200':'250',
       gsvLink: showPopupPoiData.gsvLink
     };
 
