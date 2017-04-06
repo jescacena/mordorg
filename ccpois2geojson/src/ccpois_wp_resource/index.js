@@ -3,7 +3,7 @@
 var axios = require('axios');
 
 const WP_CCPOIS_URL = 'http://jesidea.com/cercepois/wp-json/wp/v2/';
-const per_page = 1000;
+const per_page = 100;
 
 class Ccpois_wordpress_gateway {
 

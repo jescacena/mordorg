@@ -8,7 +8,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var axios = require('axios');
 
 var WP_CCPOIS_URL = 'http://jesidea.com/cercepois/wp-json/wp/v2/';
-var per_page = 1000;
+var per_page = 100;
 
 var Ccpois_wordpress_gateway = function () {
   function Ccpois_wordpress_gateway() {
