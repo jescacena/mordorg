@@ -47,10 +47,20 @@ export class CerceMapContainer extends React.Component {
   }
 
   render() {
+
+    // dispatch(actions.showLoading());
+    console.log('CerceMapContainer render this.props.location.query.fb-->',this.props);
+    let invalidate = false;
+    if(this.props.location.search.indexOf('fb=1')!==-1) {
+      //console.log('JESSSS FB invalidateSize!!');
+      // this.refs.map.leafletElement.invalidateSize();
+      invalidate = true;
+    }
+
     return (
       <div className="ccm-container">
         <Logo />
-        <MapLayer />
+        <MapLayer invalidate={invalidate}/>
         <SelectorPanel />
         <Footer />
         <LoadingSpinner />

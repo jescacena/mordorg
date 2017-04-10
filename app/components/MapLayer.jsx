@@ -36,6 +36,16 @@ export class MapLayer extends React.Component {
     };
   }
 
+  componentDidMount() {
+    console.log('componentDidMountthis.props.invalidate',this.props.invalidate);
+    if(this.props.invalidate && this.refs.map && this.refs.map.leafletElement) {
+
+      console.log('componentDidMount FB invalidateSize!!');
+      this.refs.map.leafletElement.invalidateSize();
+      // this.props.invalidate = false;
+    }
+
+  }
   componentWillMount() {
     // let {dispatch} = this.props;
     // const defaultLayer = 'schools';
@@ -43,17 +53,22 @@ export class MapLayer extends React.Component {
     // dispatch(actions.startToggleLayer(defaultLayer));
   }
 
+  componentWillUpdate() {
+  }
+
   componentDidUpdate() {
     if(this.refs.map && this.refs.map.leafletElement) {
+      let leafletMap = this.refs.map.leafletElement;
+
       let {flyToPoint, layers, fitToBounds,
         fullScreenMode, showPopupPoiData, locateUserPosition, dispatch} = this.props;
 
       this.refs.map.leafletElement._layersMaxZoom = 17;
 
 
-      MapLayerUtils.addActiveLayers(layers, fitToBounds, this.refs.map.leafletElement);
+      MapLayerUtils.addActiveLayers(layers, fitToBounds, leafletMap);
 
-      console.log('MapLayer this.refs.map.leafletElement', this.refs.map.leafletElement);
+      console.log('MapLayer this.refs.map.leafletElement', leafletMap);
 
        if(fitToBounds) {
         // Reset fly to point
@@ -64,7 +79,7 @@ export class MapLayer extends React.Component {
 
       if(flyToPoint) {
         console.log('MapLayer componentWillUpdate flyToPoint', flyToPoint);
-        MapLayerUtils.flyTo(flyToPoint, this.refs.map.leafletElement,showPopupPoiData);
+        MapLayerUtils.flyTo(flyToPoint, leafletMap,showPopupPoiData);
         // Reset fly to point
         setTimeout(()=> {
           dispatch(actions.removeFlyToPoint());
@@ -81,15 +96,14 @@ export class MapLayer extends React.Component {
       }
 
       //Scale control
-      if(!this.refs.map.leafletElement._controlCorners.bottomleft.firstChild) {
+      if(!leafletMap._controlCorners.bottomleft.firstChild) {
         L.control.scale({
           position: 'bottomleft',
           imperial: false
-        }).addTo(this.refs.map.leafletElement);
+        }).addTo(leafletMap);
       }
 
       if(locateUserPosition) {
-        var leafletMap = this.refs.map.leafletElement;
         let PersonIcon = L.Icon.extend({
            options: {
                  iconUrl: 'img/people-new-3.png',
@@ -109,7 +123,7 @@ export class MapLayer extends React.Component {
             this.userMarker.addTo(leafletMap);
             dispatch(actions.disableLocateUserPosition());
         });
-        this.refs.map.leafletElement.on('locationerror', function(e) {
+        leafletMap.on('locationerror', function(e) {
             console.log(e);
             dispatch(actions.disableLocateUserPosition());
             dispatch(actions.setModalMessageText('No se ha podido capturar su ubicación. Es necesario conceder permisos de ubicación.'));
@@ -117,10 +131,9 @@ export class MapLayer extends React.Component {
 
 
         });
+
+
       }
-
-      // dispatch(actions.showLoading());
-
 
     }
   }
@@ -168,6 +181,7 @@ MapLayer.propTypes = {
   showPopupPoiData: React.PropTypes.object,
   fitToBounds: React.PropTypes.bool,
   fullScreenMode: React.PropTypes.bool,
+  invalidate: React.PropTypes.bool,
   locateUserPosition: React.PropTypes.bool,
   layers: React.PropTypes.object
 };

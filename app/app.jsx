@@ -1,6 +1,8 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const {Route, Router, hashHistory} = require('react-router');
+// const {Route, Router, hashHistory} = require('react-router');
+import { HashRouter as Router, Route } from 'react-router-dom';
+
 const {Provider, dispatch} = require('react-redux');
 const actions = require('actions');
 
@@ -37,10 +39,12 @@ require('style!css!sass!applicationStyles');
 setTimeout(function () {
   ReactDOM.render(
     <Provider store = {store}>
-      <Router history={hashHistory}>
-        <Route path="/" component={CerceMapContainer} />
-        <Route path="/layer/:layerid" component={CerceMapContainer} />
-        <Route path="/poi/:layerid/:poikey" component={CerceMapContainer} />
+      <Router>
+        <div>
+          <Route path="/" component={CerceMapContainer} />
+          <Route path="/layer/:layerid" component={CerceMapContainer} />
+          <Route path="/poi/:layerid/:poikey" component={CerceMapContainer} />
+        </div>
       </Router>
     </Provider>,
     document.getElementById('app')
