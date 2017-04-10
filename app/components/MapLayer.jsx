@@ -155,7 +155,7 @@ export class MapLayer extends React.Component {
         <Map ref="map" className="ccm-maplayer" center={position} zoom={zoom}>
           <TileLayer
             detectRetina='true'
-            url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+            url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
         </Map>
