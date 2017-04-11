@@ -24,6 +24,7 @@ var Ccpois_to_geojson = function () {
             "nature": item.naturaleza,
             "subtype": item.subtipo ? item.subtipo[0] : null,
             "address": item.direccion,
+            "image_front_for_facebook_app": item.image_front ? "https://cercemap.org/img/" + item.image_front.post_title + ".png" : "",
             "image_front": item.image_front ? item.image_front.guid : "",
             "tfnos": item.tfnos,
             "google_streetview_link": item.google_streetview_link,

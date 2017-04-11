@@ -1,16 +1,19 @@
 /* global L */
 import {CUSTOM_LAYER_ICONS, CUSTOM_SUBTYPE_ICONS, POPUP_TEMPLATE, POPUP_OPTIONS} from 'constants';
 
-export function createGeoJsonLayer(layerId, data) {
+export function createGeoJsonLayer(layerId, data, isFacebookBuiltInBrowser) {
   layerId = layerId || 'default';
   const icon = L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS[layerId]);
 
   const onEachFeature = (feature, layer) => {
     if (feature.properties) {
+      //Replace base url in image_front if isFacebookBuiltInBrowser
+      // const imageFront = (isFacebookBuiltInBrowser)? feature.properties.image_front.replace('') : feature.properties.image_front;
       const context = {
         name: feature.properties.name,
         address: feature.properties.address,
-        imageFront: feature.properties.image_front,
+        imageFront: feature.properties.image_front_for_facebook_app,
+        // imageFront: feature.properties.image_front,
         imageWidth: (window.innerWidth < 700)? '200':'250',
         tfnos: feature.properties.tfnos,
         gsvLink: feature.properties.google_streetview_link,

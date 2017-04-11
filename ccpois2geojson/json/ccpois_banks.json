@@ -1,1 +1,74 @@
-{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"name":"Banco Santander","type":"banks","tipo":"banco","subtype":null,"address":"Plaza de María Mínguez, 1","image_front":"http://jesidea.com/cercepois/wp-content/uploads/2017/03/banco_santander_popup.png","tfnos":"918 52 34 66","google_streetview_link":"http://bit.ly/2n6LQxk","website":"http://bancosantander.es","opening_time":"domingo Cerrado lunes 8:30–14:30 martes 8:30–14:30 miércoles 8:30–14:30 jueves 8:30–14:30 viernes 8:30–14:30 sábado Cerrado"},"geometry":{"type":"Point","coordinates":[-4.0553586,40.7410358]}},{"type":"Feature","properties":{"name":"BBVA","type":"banks","tipo":"banco","subtype":null,"address":"Calle Mayor, 6","image_front":"http://jesidea.com/cercepois/wp-content/uploads/2017/03/bbva_popup.png","tfnos":"918 52 33 73","google_streetview_link":"http://bit.ly/2n6OgvW","website":"http://bbva.es","opening_time":"domingo Cerrado lunes 8:30–14:15 martes 8:30–14:15 miércoles 8:30–14:15 jueves 8:30–14:15 viernes 8:30–14:15 sábado Cerrado"},"geometry":{"type":"Point","coordinates":[-4.0559997,40.7411587]}},{"type":"Feature","properties":{"name":"La Caixa","type":"banks","tipo":"caja_ahorro","subtype":null,"address":"C/ Mayor, 25","image_front":"http://jesidea.com/cercepois/wp-content/uploads/2017/03/la_caixa_popup.png","tfnos":"918 42 60 50","google_streetview_link":"http://bit.ly/2nBpDKY","website":"http://caixabank.es","opening_time":""},"geometry":{"type":"Point","coordinates":[-4.0568517,40.740648]}}]}
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Banco Santander",
+        "type": "banks",
+        "tipo": "banco",
+        "subtype": null,
+        "address": "Plaza de María Mínguez, 1",
+        "image_front_for_facebook_app": "https://cercemap.org/img/banco_santander_popup.png",
+        "image_front": "http://jesidea.com/cercepois/wp-content/uploads/2017/03/banco_santander_popup.png",
+        "tfnos": "918 52 34 66",
+        "google_streetview_link": "http://bit.ly/2n6LQxk",
+        "website": "http://bancosantander.es",
+        "opening_time": "domingo Cerrado lunes 8:30–14:30 martes 8:30–14:30 miércoles 8:30–14:30 jueves 8:30–14:30 viernes 8:30–14:30 sábado Cerrado"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.0553586,
+          40.7410358
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "BBVA",
+        "type": "banks",
+        "tipo": "banco",
+        "subtype": null,
+        "address": "Calle Mayor, 6",
+        "image_front_for_facebook_app": "https://cercemap.org/img/bbva_popup.png",
+        "image_front": "http://jesidea.com/cercepois/wp-content/uploads/2017/03/bbva_popup.png",
+        "tfnos": "918 52 33 73",
+        "google_streetview_link": "http://bit.ly/2n6OgvW",
+        "website": "http://bbva.es",
+        "opening_time": "domingo Cerrado lunes 8:30–14:15 martes 8:30–14:15 miércoles 8:30–14:15 jueves 8:30–14:15 viernes 8:30–14:15 sábado Cerrado"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.0559997,
+          40.7411587
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "La Caixa",
+        "type": "banks",
+        "tipo": "caja_ahorro",
+        "subtype": null,
+        "address": "C/ Mayor, 25",
+        "image_front_for_facebook_app": "https://cercemap.org/img/la_caixa_popup.png",
+        "image_front": "http://jesidea.com/cercepois/wp-content/uploads/2017/03/la_caixa_popup.png",
+        "tfnos": "918 42 60 50",
+        "google_streetview_link": "http://bit.ly/2nBpDKY",
+        "website": "http://caixabank.es",
+        "opening_time": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.0568517,
+          40.740648
+        ]
+      }
+    }
+  ]
+}
