@@ -79,6 +79,12 @@ var Ccpois_wordpress_gateway = function () {
       var url = WP_CCPOIS_URL + "clothes" + "?per_page=" + per_page;
       return this._get(url);
     }
+  }, {
+    key: 'fetchPoilistsCCPS',
+    value: function fetchPoilistsCCPS() {
+      var url = WP_CCPOIS_URL + "ccpoilist" + "?per_page=" + per_page;
+      return this._get(url);
+    }
   }]);
 
   return Ccpois_wordpress_gateway;

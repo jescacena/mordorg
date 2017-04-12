@@ -54,6 +54,10 @@ class Ccpois_wordpress_gateway {
      var url = WP_CCPOIS_URL + "clothes" + "?per_page=" + per_page;
      return this._get(url);
    }
+   fetchPoilistsCCPS () {
+     var url = WP_CCPOIS_URL + "ccpoilist" + "?per_page=" + per_page;
+     return this._get(url);
+   }
  }
 
  module.exports = Ccpois_wordpress_gateway;

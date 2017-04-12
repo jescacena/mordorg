@@ -44,6 +44,7 @@ setTimeout(function () {
           <Route path="/" component={CerceMapContainer} />
           <Route path="/layer/:layerid" component={CerceMapContainer} />
           <Route path="/poi/:layerid/:poikey" component={CerceMapContainer} />
+          <Route path="/poilist/:listkey" component={CerceMapContainer} />
         </div>
       </Router>
     </Provider>,
