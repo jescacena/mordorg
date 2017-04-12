@@ -133,6 +133,26 @@ export const removeShowPopupPoiData = () => {
 };
 
 
+export const startViewPoiList= (listkey) => {
+  return (dispatch, getState) => {
+    const locationServicePromise = LocationService.getCCPoiListDataByKey(listkey);
+    return locationServicePromise.then((response)=> {
+
+      const poiData = {
+        type: response.type,
+        name: response.nombre,
+        address: response.direccion,
+        coords: response.latlon,
+        imgUrl: response.image_front.guid,
+        gsvLink: response.google_streetview_link
+      };
+      dispatch(setShowPopupPoiData(poiData));
+      const point = response.latlon.split(',');
+      dispatch(setFlyToPoint(point[0], point[1], 11));
+    });
+  };
+};
+
 export const startViewPOI= (layerid, poiKey) => {
   return (dispatch, getState) => {
     const locationServicePromise = LocationService.getCCPoiDataById(layerid, poiKey);

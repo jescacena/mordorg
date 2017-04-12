@@ -23,6 +23,7 @@ export class CerceMapContainer extends React.Component {
   componentWillMount() {
     let {dispatch} = this.props;
     let poikey = null;
+    let listkey = null;
     let layerid = null;
 
     const currentLocation = this.props.location.pathname;
@@ -38,6 +39,11 @@ export class CerceMapContainer extends React.Component {
         poikey = this.props.params.poikey;
         layerid = this.props.params.layerid;
         dispatch(actions.startViewPOI(layerid, poikey));
+      }
+    } else if(currentLocation.indexOf('/poilist/')!==-1) {
+      if(this.props.params && this.props.params.listkey){
+        listkey = this.props.params.listkey;
+        dispatch(actions.startViewPoiLit(listkey));
       }
     } else {
       // const defaultLayer = 'schools';
