@@ -6,10 +6,10 @@ import {IconButton} from 'IconButton';
 export class IconGroup extends React.Component {
 
   componentWillUpdate() {
-    console.log('componentWillUpdate IconGroup', this.props);
+    // console.log('componentWillUpdate IconGroup', this.props);
   }
   render() {
-    console.log('IconGroup props', this.props);
+    // console.log('IconGroup props', this.props);
 
     const {dispatch, locateUserPosition} = this.props;
     const that = this;

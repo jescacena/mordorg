@@ -14,6 +14,13 @@ export const setModalMessageText = (modalMessageText) => {
   };
 };
 
+export const togglePoiList = (listkey) => {
+  return {
+    type: 'TOGGLE_POI_LIST',
+    listkey
+  };
+};
+
 export const toggleLayer = (layerId) => {
   return {
     type: 'TOGGLE_LAYER',
@@ -28,6 +35,14 @@ export const setLayerData = (layerId, data) => {
     data
   };
 };
+export const setPoiListData = (listkey, data) => {
+  return {
+    type: 'SET_POI_LIST_DATA',
+    listkey,
+    data
+  };
+};
+
 
 export const setCenter = (lat, lon, zoom) => {
   return {
@@ -135,20 +150,17 @@ export const removeShowPopupPoiData = () => {
 
 export const startViewPoiList= (listkey) => {
   return (dispatch, getState) => {
-    const locationServicePromise = LocationService.getCCPoiListDataByKey(listkey);
+    const locationServicePromise = LocationService.getGeoJsonDataListByKey(listkey);
     return locationServicePromise.then((response)=> {
-
-      const poiData = {
-        type: response.type,
-        name: response.nombre,
-        address: response.direccion,
-        coords: response.latlon,
-        imgUrl: response.image_front.guid,
-        gsvLink: response.google_streetview_link
-      };
-      dispatch(setShowPopupPoiData(poiData));
-      const point = response.latlon.split(',');
-      dispatch(setFlyToPoint(point[0], point[1], 11));
+      if(response && !response.no_layer_data && response.features) {
+        dispatch(togglePoiList(listkey));
+        dispatch(setPoiListData(listkey, response.features));
+        dispatch(hideLoading());
+        dispatch(setFitToBounds());
+      } else if(response.no_layer_data) {
+        console.log(response.no_layer_data);
+      }
+      return;
     });
   };
 };
@@ -169,6 +181,8 @@ export const startViewPOI= (layerid, poiKey) => {
       dispatch(setShowPopupPoiData(poiData));
       const point = response.latlon.split(',');
       dispatch(setFlyToPoint(point[0], point[1], 11));
+      dispatch(hideLoading());
+
     });
   };
 };
@@ -185,6 +199,7 @@ export const startToggleLayer = (layerId) => {
           dispatch(toggleLayer(layerId));
           dispatch(setLayerData(layerId, response.features));
           dispatch(hideLoading());
+          dispatch(setFitToBounds());
         } else if(response.no_layer_data) {
           console.log(response.no_layer_data);
         }

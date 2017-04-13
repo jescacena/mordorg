@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 
 const {searchTextReducer,
   layerReducer,
+  poilistsReducer,
   setCenterReducer,
   toggleLayerSelectorReducer,
   toggleSearchboxReducer,
@@ -30,11 +31,13 @@ export const configure = (initialState = {
   locateUserPosition: false,
   modalMessageText: 'Todas las caras de la verdad',
   layers: {},
+  poilists: {},
   showPopupPoiData: {}
 }) => {
   const reducer = redux.combineReducers({
     searchText: searchTextReducer,
     layers: layerReducer,
+    poilists: poilistsReducer,
     center: setCenterReducer,
     showLayerSelector: toggleLayerSelectorReducer,
     showSearchbox: toggleSearchboxReducer,

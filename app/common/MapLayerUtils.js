@@ -42,6 +42,42 @@ export function flyTo(flyToPoint, leafletMap, showPopupPoiData) {
 }
 
 /*
+* addActivePoiLists: loop over poilists array and add active ones to base map
+* @type method
+* @returns void
+*/
+export function addActivePoiLists(poilists, fitToBounds, leafletMap) {
+  let latlngArray = [];
+
+  Object.keys(poilists).forEach(function (poilistKey) {
+    if(poilists[poilistKey] && poilists[poilistKey].leafleftLayer && poilists[poilistKey].show) {
+      console.log('MapLayer: Geojson poilist to be added:', poilists[poilistKey].data);
+
+      // Gathering latlng bounds
+      let leaflet_layers = poilists[poilistKey].leafleftLayer._layers;
+      Object.keys(leaflet_layers).forEach(function (key) {
+        latlngArray.push(leaflet_layers[key]._latlng);
+      });
+
+      poilists[poilistKey].leafleftLayer.addTo(leafletMap);
+    } else if(poilists[poilistKey].leafleftLayer && !poilists[poilistKey].show) {
+      poilists[poilistKey].leafleftLayer.remove();
+    }
+  });
+
+  // Fit to bounds to all markers
+  if(latlngArray.length>0 && fitToBounds) {
+    const latlngbounds = new L.latLngBounds(latlngArray);
+    console.log('MapLayer: Fitting to bounds', latlngbounds);
+    leafletMap.fitBounds(latlngbounds, {
+      paddingTopLeft: [10, 10],
+      paddingTopRight: [10, 10]
+    });
+  }
+
+}
+
+/*
 * addActiveLayers: loop over layers array and add active ones to base map
 * @type method
 * @returns void

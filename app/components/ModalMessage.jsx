@@ -5,7 +5,7 @@ const actions = require('actions');
 
 export class ModalMessage extends React.Component {
   render() {
-    console.log('ModalMessage props', this.props);
+    // console.log('ModalMessage props', this.props);
     const {showModal , modalMessageText} = this.props;
     const show = (showModal)? 'show' : '';
     const dynamicClass = 'ccm-modal-message ' + show;

@@ -3,7 +3,7 @@ const {connect} = require('react-redux');
 
 export class LoadingSpinner extends React.Component {
   render() {
-    console.log('LoadingSpinner props', this.props);
+    // console.log('LoadingSpinner props', this.props);
     const {showLoading} = this.props;
     const show = (showLoading)? 'show' : '';
     const dynamicClass = 'ccm-loading-spinner ' + show;

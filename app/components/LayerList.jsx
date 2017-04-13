@@ -20,7 +20,7 @@ export class LayerList extends React.Component {
   }
 
   render() {
-    console.log('LayerList props', this.props);
+    // console.log('LayerList props', this.props);
 
     const {dispatch, layers, showLayerSelector} = this.props;
 

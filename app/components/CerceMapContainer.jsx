@@ -20,53 +20,19 @@ export class CerceMapContainer extends React.Component {
     //   layersSerialized: null
     // };
   }
-  componentWillMount() {
-    let {dispatch} = this.props;
-    let poikey = null;
-    let listkey = null;
-    let layerid = null;
-
-    const currentLocation = this.props.location.pathname;
-    console.log('JESS CerceMapContainer currentLocation', currentLocation);
-
-    if(currentLocation.indexOf('/layer/')!==-1) {
-      if(this.props.params && this.props.params.layerid){
-        layerid = this.props.params.layerid;
-        dispatch(actions.startToggleLayer(layerid));
-      }
-    } else if(currentLocation.indexOf('/poi/')!==-1) {
-      if(this.props.params && this.props.params.layerid && this.props.params.poikey){
-        poikey = this.props.params.poikey;
-        layerid = this.props.params.layerid;
-        dispatch(actions.startViewPOI(layerid, poikey));
-      }
-    } else if(currentLocation.indexOf('/poilist/')!==-1) {
-      if(this.props.params && this.props.params.listkey){
-        listkey = this.props.params.listkey;
-        dispatch(actions.startViewPoiLit(listkey));
-      }
-    } else {
-      // const defaultLayer = 'schools';
-      // dispatch(actions.startToggleLayer(defaultLayer));
-    }
-
-  }
+  // componentWillMount() {
+  // }
 
   render() {
 
     // dispatch(actions.showLoading());
-    console.log('CerceMapContainer render this.props.location.query.fb-->',this.props);
-    let invalidate = false;
-    if(this.props.location.search.indexOf('fb=1')!==-1) {
-      //console.log('JESSSS FB invalidateSize!!');
-      // this.refs.map.leafletElement.invalidateSize();
-      invalidate = true;
-    }
+    // console.log('CerceMapContainer render this.props.location.query.fb-->',this.props);
+    const path = this.props.location.pathname;
 
     return (
       <div className="ccm-container">
         <Logo />
-        <MapLayer invalidate={invalidate}/>
+        <MapLayer path={path}/>
         <SelectorPanel />
         <Footer />
         <LoadingSpinner />

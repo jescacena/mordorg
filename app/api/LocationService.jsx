@@ -55,5 +55,31 @@ module.exports = {
       console.log('ERROR res-->', res);
       return [];
     });
+  },
+
+  /*
+  * Get GeoJson data for one poi list
+  * @param layerKey {string}
+  */
+  getGeoJsonDataListByKey(listkey = 'ferreterias') {
+    let requestUrl = API_URLS[listkey.toUpperCase()] || API_NO_LAYER_DATA_MESSAGE;
+    console.log('LocationService getGeoJsonDataListByKey requestUrl --->', requestUrl);
+
+    return axios.get(requestUrl).then(function (res) {
+      if (res.data.cod && res.data.message) {
+        throw new Error(res.data.message);
+      } else {
+        if(!res.data.no_layer_data) {
+          return res.data;
+        }
+        // TODO mostrar mensaje de error
+        console.log(res.data.no_layer_data);
+        return res;
+      }
+    }, function (res) {
+      // throw new Error(res.data);
+      console.log('ERROR res-->', res);
+      return [];
+    });
   }
 };

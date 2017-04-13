@@ -61,6 +61,36 @@ export const searchTextReducer = (state = '', action) => {
   }
 };
 
+export const poilistsReducer = (state={}, action) => {
+  let listkey = action.listkey;
+  let data = action.data;
+  let res;
+
+  switch (action.type) {
+    case 'TOGGLE_POI_LIST':
+      res = {
+        ...state,
+        [listkey]: {
+          ...state[listkey],
+          show: (state[listkey])? !state[listkey].show : true
+        }
+      };
+      return res;
+    case 'SET_POI_LIST_DATA':
+      res = {
+        ...state,
+        [listkey]: {
+          ...state[listkey],
+          data: data,
+          leafleftLayer: createGeoJsonLayer(listkey, data)
+        }
+      };
+      return res;
+    default:
+      return state;
+  }
+};
+
 export const layerReducer = (state={}, action) => {
   let layerId = action.layerId;
   let data = action.data;

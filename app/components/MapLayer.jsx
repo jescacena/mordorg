@@ -37,48 +37,83 @@ export class MapLayer extends React.Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMountthis.props.invalidate',this.props.invalidate);
-    if(this.props.invalidate && this.refs.map && this.refs.map.leafletElement) {
+    let {dispatch, path} = this.props;
+    let poikey = null;
+    let listkey = null;
+    let layerid = null;
 
-      console.log('componentDidMount FB invalidateSize!!');
-      this.refs.map.leafletElement.invalidateSize();
-      // this.props.invalidate = false;
+    console.log('JESS MapLayer path', path);
+
+    if(path.indexOf('/layer/')!==-1) {
+      const tokens = path.split('/');
+      if(tokens[2]){
+        layerid = tokens[2];
+        dispatch(actions.showLoading());
+        dispatch(actions.startToggleLayer(layerid));
+      }
+    } else if(path.indexOf('/poi/')!==-1) {
+      const tokens = path.split('/');
+      if(tokens[2] && tokens[3]){
+        poikey = tokens[3];
+        layerid = tokens[2];
+        dispatch(actions.showLoading());
+        dispatch(actions.startViewPOI(layerid, poikey));
+      }
+    } else if(path.indexOf('/poilist/')!==-1) {
+      const tokens = path.split('/');
+      if(tokens[2]){
+        listkey = tokens[2];
+        dispatch(actions.showLoading());
+        dispatch(actions.startViewPoiList(listkey));
+      }
+    } else {
+      // const defaultLayer = 'schools';
+      // dispatch(actions.startToggleLayer(defaultLayer));
     }
 
-  }
-  componentWillMount() {
-    // let {dispatch} = this.props;
-    // const defaultLayer = 'schools';
+    // console.log('componentDidMountthis.props.invalidate',this.props.invalidate);
+    // if(this.props.invalidate && this.refs.map && this.refs.map.leafletElement) {
     //
-    // dispatch(actions.startToggleLayer(defaultLayer));
-  }
+    //   console.log('componentDidMount FB invalidateSize!!');
+    //   this.refs.map.leafletElement.invalidateSize();
+    //   // this.props.invalidate = false;
+    // }
 
-  componentWillUpdate() {
   }
+  // componentWillMount() {
+  //   // let {dispatch} = this.props;
+  //   // const defaultLayer = 'schools';
+  //   //
+  //   // dispatch(actions.startToggleLayer(defaultLayer));
+  // }
+  //
+  // componentWillUpdate() {
+  // }
 
   componentDidUpdate() {
     if(this.refs.map && this.refs.map.leafletElement) {
       let leafletMap = this.refs.map.leafletElement;
 
-      let {flyToPoint, layers, fitToBounds,
+      let {flyToPoint, layers, poilists, fitToBounds,
         fullScreenMode, showPopupPoiData, locateUserPosition, dispatch} = this.props;
 
       this.refs.map.leafletElement._layersMaxZoom = 17;
 
+      MapLayerUtils.addActivePoiLists(poilists, fitToBounds, leafletMap);
 
       MapLayerUtils.addActiveLayers(layers, fitToBounds, leafletMap);
 
-      console.log('MapLayer this.refs.map.leafletElement', leafletMap);
+      // console.log('MapLayer this.refs.map.leafletElement', leafletMap);
 
-       if(fitToBounds) {
-        // Reset fly to point
-        setTimeout(()=> {
-          dispatch(actions.removeFitToBounds());
-        }, 2000);
-      }
+      //  if(fitToBounds) {
+      //   // Reset fly to point
+      //   setTimeout(()=> {
+      //     dispatch(actions.removeFitToBounds());
+      //   }, 2000);
+      // }
 
       if(flyToPoint) {
-        console.log('MapLayer componentWillUpdate flyToPoint', flyToPoint);
+        // console.log('MapLayer componentWillUpdate flyToPoint', flyToPoint);
         MapLayerUtils.flyTo(flyToPoint, leafletMap,showPopupPoiData);
         // Reset fly to point
         setTimeout(()=> {
@@ -139,7 +174,7 @@ export class MapLayer extends React.Component {
   }
 
   render() {
-    console.log('MapLayer props', this.props);
+    // console.log('MapLayer props', this.props);
     let {center} = this.props;
     let position = [center.lat, center.lon];
     let zoom = center.zoom;
@@ -181,8 +216,9 @@ MapLayer.propTypes = {
   showPopupPoiData: React.PropTypes.object,
   fitToBounds: React.PropTypes.bool,
   fullScreenMode: React.PropTypes.bool,
-  invalidate: React.PropTypes.bool,
+  path: React.PropTypes.string,
   locateUserPosition: React.PropTypes.bool,
+  poilists: React.PropTypes.object,
   layers: React.PropTypes.object
 };
 
@@ -193,6 +229,7 @@ export default connect(
       flyToPoint: state.flyToPoint,
       fitToBounds: state.fitToBounds,
       layers: state.layers,
+      poilists: state.poilists,
       fullScreenMode: state.fullScreenMode,
       showPopupPoiData: state.showPopupPoiData,
       locateUserPosition: state.locateUserPosition

@@ -34,6 +34,9 @@ require('style!css!sass!applicationStyles');
 
 // store.dispatch(actions.setSearchText('Recoge la colada'));
 // store.dispatch(actions.toggleLayer('schools'));
+// <Route path="/layer/:layerid" component={CerceMapContainer} />
+// <Route path="/poi/:layerid/:poikey" component={CerceMapContainer} />
+// <Route path="/poilist/:listkey" component={CerceMapContainer} />
 
 
 setTimeout(function () {
@@ -42,9 +45,6 @@ setTimeout(function () {
       <Router>
         <div>
           <Route path="/" component={CerceMapContainer} />
-          <Route path="/layer/:layerid" component={CerceMapContainer} />
-          <Route path="/poi/:layerid/:poikey" component={CerceMapContainer} />
-          <Route path="/poilist/:listkey" component={CerceMapContainer} />
         </div>
       </Router>
     </Provider>,

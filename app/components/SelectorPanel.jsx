@@ -10,11 +10,11 @@ export class SelectorPanel extends React.Component {
 
 
   componentDidMount() {
-    console.log('componentWillUpdate SelectorPanel', this.props);
+    // console.log('componentWillUpdate SelectorPanel', this.props);
 
   }
   render() {
-    console.log('SelectorPanel props', this.props);
+    // console.log('SelectorPanel props', this.props);
     const {dispatch, showLayerSelector, showSearchbox, locateUserPosition, layers} = this.props;
 
     return (
