@@ -85,6 +85,12 @@ var Ccpois_wordpress_gateway = function () {
       var url = WP_CCPOIS_URL + "ccpoilist" + "?per_page=" + per_page;
       return this._get(url);
     }
+  }, {
+    key: 'fetchPoilistsFoodCCPS',
+    value: function fetchPoilistsFoodCCPS() {
+      var url = WP_CCPOIS_URL + "ccpoilist_food" + "?per_page=" + per_page;
+      return this._get(url);
+    }
   }]);
 
   return Ccpois_wordpress_gateway;
