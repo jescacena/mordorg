@@ -207,6 +207,11 @@ export const CUSTOM_SUBTYPE_ICONS = {
     markerColor: 'purple',
     prefix: 'fa'
   },
+  bazares_chinos: {
+    icon: 'bullseye',
+    markerColor: 'purple',
+    prefix: 'fa'
+  },
   gasolinera: {
     icon: 'tint',
     markerColor: 'purple',

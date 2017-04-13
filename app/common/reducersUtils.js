@@ -1,8 +1,8 @@
 /* global L */
 import {CUSTOM_LAYER_ICONS, CUSTOM_SUBTYPE_ICONS, POPUP_TEMPLATE, POPUP_OPTIONS} from 'constants';
 
-export function createGeoJsonLayer(layerId, data, isFacebookBuiltInBrowser) {
-  layerId = layerId || 'default';
+export function createGeoJsonLayer(layerId = 'default', data, isFacebookBuiltInBrowser = false) {
+  // layerId = layerId || 'default';
   const icon = L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS[layerId]);
 
   const onEachFeature = (feature, layer) => {
@@ -39,12 +39,15 @@ export function createGeoJsonLayer(layerId, data, isFacebookBuiltInBrowser) {
     pointToLayer: function (feature, latlng) {
       if(feature.properties.subtype) {
         const subtypeIcon = L.AwesomeMarkers.icon(CUSTOM_SUBTYPE_ICONS[feature.properties.subtype]);
+        console.log("reducersUtils subtype",feature.properties);
         return L.marker(latlng, {icon: subtypeIcon});
       }
       if(feature.properties.tipo) {
         const subtypeIcon = L.AwesomeMarkers.icon(CUSTOM_SUBTYPE_ICONS[feature.properties.tipo]);
+        console.log("reducersUtils subtype",feature.properties);
         return L.marker(latlng, {icon: subtypeIcon});
       }
+      console.log("reducersUtils icon layerId",layerId);
       return L.marker(latlng, {icon: icon});
     },
     onEachFeature: onEachFeature

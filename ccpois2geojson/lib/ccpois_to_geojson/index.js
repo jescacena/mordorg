@@ -20,9 +20,9 @@ var Ccpois_to_geojson = function () {
           "properties": {
             "name": item.nombre,
             "type": item.type,
-            "tipo": item.tipo ? item.tipo[0] : null,
+            "subtype": item.tipo && typeof item.tipo === 'string' ? item.tipo : typeof item.tipo !== 'string' ? item.tipo[0] : null,
             "nature": item.naturaleza,
-            "subtype": item.subtipo ? item.subtipo[0] : null,
+            //  "subtype": (item.subtipo)? item.subtipo[0] : null,
             "address": item.direccion,
             "image_front_for_facebook_app": item.image_front ? "https://cercemap.org/img/" + item.image_front.post_title + ".png" : "",
             "image_front": item.image_front ? item.image_front.guid : "",
