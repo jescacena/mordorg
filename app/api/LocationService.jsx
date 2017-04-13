@@ -20,8 +20,9 @@ module.exports = {
         if(!res.data.no_layer_data) {
           //Find ccpoi by wpid
           let poidata;
-          for(let poi in res.data.features) {
-            if(poi.wpid === ccpoiKey){
+          for(let poi of res.data.features) {
+            console.log('JES amosssss-->', poi);
+            if(poi.properties.wpid === parseInt(ccpoiKey)){
               poidata = poi;
             }
           }

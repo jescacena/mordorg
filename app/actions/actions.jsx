@@ -170,18 +170,20 @@ export const startViewPOI= (layerid, poiKey) => {
     const locationServicePromise = LocationService.getGeoJsonDataById(layerid, poiKey);
     return locationServicePromise.then((response)=> {
 
-      console.log("JESSSS startViewPOI-->" , response);
       const poiData = {
-        type: response.type,
-        name: response.nombre,
-        address: response.direccion,
-        coords: response.latlon,
-        imgUrl: response.image_front.guid,
-        gsvLink: response.google_streetview_link
+        type: response.properties.type,
+        name: response.properties.name,
+        address: response.properties.address,
+        tfnos: response.properties.tfnos,
+        website: response.properties.website,
+        coords: response.geometry.coordinates[1] + ',' + response.geometry.coordinates[0],
+        imgUrl: response.properties.image_front_for_facebook_app,
+        gsvLink: response.properties.google_streetview_link,
+        navLink: 'https://www.google.es/maps/dir/Current+Location/'+response.geometry.coordinates[1] + ',' + response.geometry.coordinates[0],
+
       };
       dispatch(setShowPopupPoiData(poiData));
-      const point = response.latlon.split(',');
-      dispatch(setFlyToPoint(point[0], point[1], 11));
+      dispatch(setFlyToPoint(response.geometry.coordinates[1], response.geometry.coordinates[0], 11));
       dispatch(hideLoading());
 
     });

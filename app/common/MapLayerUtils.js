@@ -22,9 +22,12 @@ export function flyTo(flyToPoint, leafletMap, showPopupPoiData) {
     const context = {
       name: showPopupPoiData.name,
       address: showPopupPoiData.address,
+      tfnos: showPopupPoiData.tfnos,
+      website: showPopupPoiData.website,
       imageFront: showPopupPoiData.imgUrl,
       imageWidth: (window.innerWidth < 700)? '200':'250',
-      gsvLink: showPopupPoiData.gsvLink
+      gsvLink: showPopupPoiData.gsvLink,
+      navLink: showPopupPoiData.navLink
     };
 
     const html = POPUP_TEMPLATE(context);

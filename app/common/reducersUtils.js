@@ -17,6 +17,7 @@ export function createGeoJsonLayer(layerId = 'default', data, isFacebookBuiltInB
         imageWidth: (window.innerWidth < 700)? '200':'250',
         tfnos: feature.properties.tfnos,
         gsvLink: feature.properties.google_streetview_link,
+        navLink: 'https://www.google.es/maps/dir/Current+Location/'+feature.geometry.coordinates[1] + ',' + feature.geometry.coordinates[0],
         website: feature.properties.website
       };
 
