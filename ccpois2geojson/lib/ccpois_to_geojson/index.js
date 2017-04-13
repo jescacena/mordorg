@@ -18,6 +18,7 @@ var Ccpois_to_geojson = function () {
         return {
           "type": "Feature",
           "properties": {
+            "wpid": item.id,
             "name": item.nombre,
             "type": item.type,
             "subtype": item.tipo && typeof item.tipo === 'string' ? item.tipo : typeof item.tipo !== 'string' ? item.tipo[0] : null,
