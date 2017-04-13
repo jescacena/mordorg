@@ -167,9 +167,10 @@ export const startViewPoiList= (listkey) => {
 
 export const startViewPOI= (layerid, poiKey) => {
   return (dispatch, getState) => {
-    const locationServicePromise = LocationService.getCCPoiDataById(layerid, poiKey);
+    const locationServicePromise = LocationService.getGeoJsonDataById(layerid, poiKey);
     return locationServicePromise.then((response)=> {
 
+      console.log("JESSSS startViewPOI-->" , response);
       const poiData = {
         type: response.type,
         name: response.nombre,

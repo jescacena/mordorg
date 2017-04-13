@@ -19,12 +19,6 @@ var _saveFile = function _saveFile(data, filename) {
   });
 };
 
-Ccpois_wordpress_resource.fetchPoilistsCCPS().then(function (dataList) {
-  dataList.forEach(function (list) {
-    var filename = 'ccpois_' + list.key;
-    _saveFile(Ccpois_to_geojson.convertToFeatureCollection(list.lista), './json/' + filename + '.json');
-  });
-});
 Ccpois_wordpress_resource.fetchBazaarsCCPS().then(function (data) {
   _saveFile(Ccpois_to_geojson.convertToFeatureCollection(data), './json/ccpois_bazaars.json');
 });
@@ -51,4 +45,10 @@ Ccpois_wordpress_resource.fetchClothesCCPS().then(function (data) {
 });
 Ccpois_wordpress_resource.fetchMunicipalServicesCCPS().then(function (data) {
   _saveFile(Ccpois_to_geojson.convertToFeatureCollection(data), './json/ccpois_muniservice.json');
+});
+Ccpois_wordpress_resource.fetchPoilistsCCPS().then(function (dataList) {
+  dataList.forEach(function (list) {
+    var filename = 'ccpois_' + list.key;
+    _saveFile(Ccpois_to_geojson.convertToFeatureCollection(list.lista), './json/' + filename + '.json');
+  });
 });

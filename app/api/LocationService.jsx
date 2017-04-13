@@ -8,15 +8,29 @@ module.exports = {
   * Get POD data fpr one CCPOI by id
   * @param ccpoiKey {string}
   */
-  getCCPoiDataById(layerid = 'school', ccpoiKey = '58') {
-    let requestUrl = API_URLS.CERCEPOI_GET_ONE + layerid + '/' + ccpoiKey;
+  getGeoJsonDataById(layerid = 'school', ccpoiKey = '58') {
+    // let requestUrl = API_URLS.CERCEPOI_GET_ONE + layerid + '/' + ccpoiKey;
+    let requestUrl = API_URLS[layerid.toUpperCase()] || API_NO_LAYER_DATA_MESSAGE;
+
     console.log('LocationService getGeoJsonDataById requestUrl --->', requestUrl);
     return axios.get(requestUrl).then(function (res) {
       if (res.data.cod && res.data.message) {
         throw new Error(res.data.message);
       } else {
         if(!res.data.no_layer_data) {
-          return res.data;
+          //Find ccpoi by wpid
+          let poidata;
+          for(let poi in res.data.features) {
+            if(poi.wpid === ccpoiKey){
+              poidata = poi;
+            }
+          }
+
+          if(poidata) {
+            return poidata;
+          } else {
+            throw new Error('getGeoJsonDataById POI NO ENCONTRADO con el ID:' + ccpoiKey);
+          }
         }
         // TODO mostrar mensaje de error
         console.log(res.data.no_layer_data);
