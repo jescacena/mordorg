@@ -4,6 +4,10 @@ export const VERSION_APP = VERSION;
 const Promise = require('q').Promise;
 export const API_NO_LAYER_DATA_MESSAGE = 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/no_layer_data.json';
 
+export const API_AREA_URLS = {
+  SIERRA_GUADARRAMA_LIMITS: 'https://cercemap.org/app/json/limites_parque_nacional_sierra_guadarrama.json'
+};
+
 export const API_URLS = {
   CERCEPOI_GET_ONE: 'http://jesidea.com/cercepois/wp-json/wp/v2/',
   PUBLIC_TRANSPORTS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_public_transports.json',
@@ -314,6 +318,7 @@ export const CUSTOM_LAYER_ICONS = {
 
 /* handlebars templates */
 export const POPUP_TEMPLATE = require('../templates/popup.handlebars');
+export const POPUP_AREA_TEMPLATE = require('../templates/popup-area.handlebars');
 
 // API console: https://console.developers.google.com/apis/credentials?project=cerce-api-project&hl=ES
 export const GOOGLE_MAP_KEY = 'AIzaSyC4hAxLWQYK86JGwSCI3FB4TiuAGRU-ez4';

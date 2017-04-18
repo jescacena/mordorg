@@ -81,6 +81,29 @@ export function addActivePoiLists(poilists, fitToBounds, leafletMap) {
 }
 
 /*
+* addActiveAreas: loop over areas array and add active ones to base map
+* @type method
+* @returns void
+*/
+export function addActiveAreas(areas, leafletMap) {
+  Object.keys(areas).forEach(function (areaId) {
+    if(areas[areaId] && areas[areaId].leafleftLayer && areas[areaId].show) {
+      console.log('MapLayer: Geojson area to be added:', areas[areaId].leafleftLayer);
+
+      // Gathering latlng bounds
+      // let leaflet_layers = layers[layerKey].leafleftLayer._layers;
+      // Object.keys(leaflet_layers).forEach(function (key) {
+      //   latlngArray.push(leaflet_layers[key]._latlng);
+      // });
+
+      areas[areaId].leafleftLayer.addTo(leafletMap);
+    } else if(areas[areaId].leafleftLayer && !areas[areaId].show) {
+      areas[areaId].leafleftLayer.remove();
+    }
+  });
+}
+
+/*
 * addActiveLayers: loop over layers array and add active ones to base map
 * @type method
 * @returns void

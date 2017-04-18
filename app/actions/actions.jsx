@@ -28,10 +28,24 @@ export const toggleLayer = (layerId) => {
   };
 };
 
+export const toggleArea = (areaId) => {
+  return {
+    type: 'TOGGLE_AREA',
+    areaId
+  };
+};
+
 export const setLayerData = (layerId, data) => {
   return {
     type: 'SET_LAYER_DATA',
     layerId,
+    data
+  };
+};
+export const setAreaData = (areaId, data) => {
+  return {
+    type: 'SET_AREA_DATA',
+    areaId,
     data
   };
 };
@@ -164,6 +178,18 @@ export const startViewPoiList= (listkey) => {
     });
   };
 };
+export const startViewArea= (areaId) => {
+  return (dispatch, getState) => {
+    const locationServicePromise = LocationService.getGeoJsonDataArea(areaId);
+    return locationServicePromise.then((response)=> {
+      console.log('JESSS startViewArea response',response);
+      dispatch(setAreaData(areaId,response.features));
+      dispatch(toggleArea(areaId));
+      dispatch(hideLoading());
+    });
+  };
+};
+
 
 export const startViewPOI= (layerid, poiKey) => {
   return (dispatch, getState) => {

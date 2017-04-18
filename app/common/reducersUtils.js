@@ -1,5 +1,32 @@
 /* global L */
-import {CUSTOM_LAYER_ICONS, CUSTOM_SUBTYPE_ICONS, POPUP_TEMPLATE, POPUP_OPTIONS} from 'constants';
+import {CUSTOM_LAYER_ICONS,
+  CUSTOM_SUBTYPE_ICONS,
+  POPUP_TEMPLATE,
+  POPUP_AREA_TEMPLATE,
+  POPUP_OPTIONS} from 'constants';
+
+export function createGeoJsonAreaLayer(data) {
+  const onEachFeature = (feature, layer) => {
+    if (feature.properties) {
+      const context = {
+        name: feature.properties.description
+      };
+
+      const html = POPUP_AREA_TEMPLATE(context);
+      const popup = layer.bindPopup(html);
+      layer.on('mouseover', function (e) {
+          popup.openPopup();
+      });
+      layer.on('mouseout', function (e) {
+          popup.closePopup();
+      })
+    }
+  };
+
+  return L.geoJSON(data, {
+    onEachFeature: onEachFeature
+  });
+}
 
 export function createGeoJsonLayer(layerId = 'default', data, isFacebookBuiltInBrowser = false) {
   // layerId = layerId || 'default';

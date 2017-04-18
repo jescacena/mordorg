@@ -22,7 +22,7 @@ describe('MapLayer', () => {
   describe('render', () => {
     it('should render div with ccm-maplayer class', () => {
       const spy = expect.createSpy();
-      const domObj = TestUtils.renderIntoDocument(<MapLayer dispatch={spy}/>);
+      const domObj = TestUtils.renderIntoDocument(<MapLayer dispatch={spy} path="/"/>);
       const $el = $(ReactDOM.findDOMNode(domObj));
       const result = $el.hasClass('ccm-maplayer');
       expect(result).toBe(true);
@@ -30,7 +30,7 @@ describe('MapLayer', () => {
 
     it('should contain a leaflet map inside', ()=> {
       const spy = expect.createSpy();
-      const domObj = TestUtils.renderIntoDocument(<MapLayer dispatch={spy}/>);
+      const domObj = TestUtils.renderIntoDocument(<MapLayer dispatch={spy} path="/"/>);
       const $el = $(ReactDOM.findDOMNode(domObj));
       const result = $el.find('.leaflet-pane');
       expect(result.length).toBeGreaterThan(0);

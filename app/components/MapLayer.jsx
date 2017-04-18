@@ -41,6 +41,7 @@ export class MapLayer extends React.Component {
     let poikey = null;
     let listkey = null;
     let layerid = null;
+    let areaId = null;
 
     console.log('JESS MapLayer path', path);
 
@@ -65,6 +66,13 @@ export class MapLayer extends React.Component {
         listkey = tokens[2];
         dispatch(actions.showLoading());
         dispatch(actions.startViewPoiList(listkey));
+      }
+    } else if(path.indexOf('/area/')!==-1) {
+      const tokens = path.split('/');
+      if(tokens[2]){
+        areaId = tokens[2];
+        dispatch(actions.showLoading());
+        dispatch(actions.startViewArea(areaId));
       }
     } else {
       // const defaultLayer = 'schools';
@@ -94,7 +102,7 @@ export class MapLayer extends React.Component {
     if(this.refs.map && this.refs.map.leafletElement) {
       let leafletMap = this.refs.map.leafletElement;
 
-      let {flyToPoint, layers, poilists, fitToBounds,
+      let {flyToPoint, layers, areas, poilists, fitToBounds,
         fullScreenMode, showPopupPoiData, locateUserPosition, dispatch} = this.props;
 
       this.refs.map.leafletElement._layersMaxZoom = 17;
@@ -102,6 +110,8 @@ export class MapLayer extends React.Component {
       MapLayerUtils.addActivePoiLists(poilists, fitToBounds, leafletMap);
 
       MapLayerUtils.addActiveLayers(layers, fitToBounds, leafletMap);
+
+      MapLayerUtils.addActiveAreas(areas, leafletMap);
 
       // console.log('MapLayer this.refs.map.leafletElement', leafletMap);
 
@@ -219,7 +229,8 @@ MapLayer.propTypes = {
   path: React.PropTypes.string,
   locateUserPosition: React.PropTypes.bool,
   poilists: React.PropTypes.object,
-  layers: React.PropTypes.object
+  layers: React.PropTypes.object,
+  areas: React.PropTypes.object
 };
 
 export default connect(
@@ -229,6 +240,7 @@ export default connect(
       flyToPoint: state.flyToPoint,
       fitToBounds: state.fitToBounds,
       layers: state.layers,
+      areas: state.areas,
       poilists: state.poilists,
       fullScreenMode: state.fullScreenMode,
       showPopupPoiData: state.showPopupPoiData,

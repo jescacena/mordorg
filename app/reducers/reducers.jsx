@@ -1,4 +1,4 @@
-import {createGeoJsonLayer} from 'reducersUtils';
+import {createGeoJsonLayer, createGeoJsonAreaLayer} from 'reducersUtils';
 
 
 export const showPopupPoiDataReducer = (state = {}, action) => {
@@ -91,6 +91,35 @@ export const poilistsReducer = (state={}, action) => {
   }
 };
 
+export const areaReducer = (state={}, action) => {
+  let areaId = action.areaId;
+  let data = action.data;
+  let res;
+
+  switch (action.type) {
+  case 'TOGGLE_AREA':
+    res = {
+      ...state,
+      [areaId]: {
+        ...state[areaId],
+        show: (state[areaId])? !state[areaId].show : true
+      }
+    };
+    return res;
+  case 'SET_AREA_DATA':
+    res = {
+      ...state,
+      [areaId]: {
+        ...state[areaId],
+        data: data,
+        leafleftLayer: createGeoJsonAreaLayer(data)
+      }
+    };
+    return res;
+  default:
+    return state;
+  }
+};
 export const layerReducer = (state={}, action) => {
   let layerId = action.layerId;
   let data = action.data;

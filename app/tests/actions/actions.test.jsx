@@ -171,12 +171,11 @@ describe('actions', () => {
   describe('startViewPOI action', ()=> {
     it('should get POI data and dispatch setShowPopupPoiData and setFlyToPoint actions', (done)=> {
       const store = createMockStore({showPopupPoiData: {}});
-      const action = actions.startViewPOI('school', '58');
+      const action = actions.startViewPOI('schools', '58');
 
-      store.dispatch(action).then(() => {
+      store.dispatch(action).then((response) => {
         setTimeout(function () {
           const mockActions = store.getActions();
-
           expect(mockActions).toInclude({
             type: 'SET_SHOW_POPUP_POI_DATA'
           }, (item1, item2)=> {
@@ -189,7 +188,7 @@ describe('actions', () => {
           });
           done();
 
-        }, 10);
+        }, 1000);
       }, done);
 
     });
