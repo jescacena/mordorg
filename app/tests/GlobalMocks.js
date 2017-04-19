@@ -143,3 +143,40 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(window.map2);
 window.map2.setView(new L.LatLng(40.737, -73.923), 8);
+
+window.polygonData = {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -4.065284729003906,
+                40.73672207747068
+              ],
+              [
+                -4.046916961669922,
+                40.73672207747068
+              ],
+              [
+                -4.046916961669922,
+                40.74465591168391
+              ],
+              [
+                -4.065284729003906,
+                40.74465591168391
+              ],
+              [
+                -4.065284729003906,
+                40.73672207747068
+              ]
+            ]
+          ]
+        }
+      }
+    ]
+  };

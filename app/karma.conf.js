@@ -8,6 +8,7 @@ module.exports = function (config) {
     files: [
       'node_modules/leaflet/dist/leaflet.js',
       'node_modules/leaflet-geometryutil/src/leaflet.geometryutil.js',
+      'node_modules/@mapbox/leaflet-pip/leaflet-pip.min.js',
       // 'tests/**/GeometryService.test.jsx',
       'tests/**/*.test.jsx',
       'public/js/leaflet.awesome-markers.min.js'
