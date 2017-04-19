@@ -7,6 +7,7 @@ module.exports = function (config) {
     frameworks: ['mocha'],
     files: [
       'node_modules/leaflet/dist/leaflet.js',
+      './tests/index.html',
       './tests/**/*.test.jsx',
       'public/js/leaflet.awesome-markers.min.js'
     ],

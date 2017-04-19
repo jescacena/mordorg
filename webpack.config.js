@@ -59,6 +59,7 @@ module.exports = {
       LoadingSpinner: 'components/LoadingSpinner.jsx',
       ModalMessage: 'components/ModalMessage.jsx',
       LocationService: 'api/LocationService.jsx',
+      GeometryService: 'api/GeometryService.jsx',
       PlacesService: 'api/PlacesService.jsx',
       actions: 'actions/actions.jsx',
       reducers: 'reducers/reducers.jsx',

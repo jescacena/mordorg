@@ -58,6 +58,7 @@ module.exports = {
       LayersControlExample: 'components/LayersControlExample.jsx',
       LocationService: 'api/LocationService.jsx',
       PlacesService: 'api/PlacesService.jsx',
+      GeometryService: 'api/GeometryService.jsx',
       actions: 'actions/actions.jsx',
       reducers: 'reducers/reducers.jsx',
       reducersUtils: 'common/reducersUtils.js',

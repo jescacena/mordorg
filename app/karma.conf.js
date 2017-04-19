@@ -7,6 +7,8 @@ module.exports = function (config) {
     frameworks: ['mocha'],
     files: [
       'node_modules/leaflet/dist/leaflet.js',
+      'node_modules/leaflet-geometryutil/src/leaflet.geometryutil.js',
+      // 'tests/**/GeometryService.test.jsx',
       'tests/**/*.test.jsx',
       'public/js/leaflet.awesome-markers.min.js'
     ],

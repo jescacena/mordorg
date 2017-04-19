@@ -17,6 +17,9 @@ window.google = {
 };
 window.L = L;
 
+window.L.GeometryUtil = require('leaflet-geometryutil');
+
+
 window.L.AwesomeMarkers = {};
 
 window.L.AwesomeMarkers.version = '2.0.1';
@@ -124,3 +127,19 @@ window.L.AwesomeMarkers.icon = function (options) {
 
 
 window.jQuery = require('jQuery');
+
+window.jQuery('div#map2').remove();
+window.jQuery(window.document.body).append(window.jQuery('<div id="map2" style="display: none; height: 300px; width: 360px"></div>'));
+// if(!llMap) {
+// L.map('map').remove();
+// window.llMap = new L.map('map');
+// } else {
+  // console.log('JESSSS llMap-->',L.map('map'));
+// }
+// window.map2 = L.map('map2').fitWorld();
+window.map2 = L.map('map2');
+//L.map('map').remove();
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(window.map2);
+window.map2.setView(new L.LatLng(40.737, -73.923), 8);
