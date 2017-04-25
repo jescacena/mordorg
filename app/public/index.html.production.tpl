@@ -46,5 +46,8 @@
 
     <script src="./js/leaflet.awesome-markers.js"></script>
 
+    <script src="./js/leaflet.geometryutil.js"></script>
+
+
   </body>
 </html>
