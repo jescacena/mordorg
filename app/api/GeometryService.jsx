@@ -39,7 +39,8 @@ module.exports = {
   * @return {object} array of L.Polygon objects containing that point
   */
   pointInPolygon(latlng, gjLayer) {
-    // console.log('JESSSS gjLayer', gjLayer);
+    console.log('JESSSS latlng', latlng);
+    console.log('JESSSS gjLayer', gjLayer);
     const result = leafletPip.pointInLayer(latlng, gjLayer);
     console.log('GeometryService: pointInPolygon result length --->', result.length);
     return result;

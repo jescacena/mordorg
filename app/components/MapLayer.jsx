@@ -1,6 +1,8 @@
 const React = require('react');
 const {connect} = require('react-redux');
 const LocationService = require('LocationService');
+const GeometryService = require('GeometryService');
+const $ = require('jQuery');
 const MapLayerUtils = require('MapLayerUtils');
 const actions = require('actions');
 import {CUSTOM_LAYER_ICONS} from 'constants';
@@ -42,6 +44,8 @@ export class MapLayer extends React.Component {
     let listkey = null;
     let layerid = null;
     let areaId = null;
+    let lat = null;
+    let lng = null;
 
     console.log('JESS MapLayer path', path);
 
@@ -74,6 +78,32 @@ export class MapLayer extends React.Component {
         dispatch(actions.showLoading());
         dispatch(actions.startViewArea(areaId));
       }
+    } else if(path.indexOf('/locate-address-in-area/')!==-1) {
+      const tokens = path.split('/');
+      if(tokens[2]){
+        areaId = tokens[2];
+        console.log('JESSSS locate-address-in-area-->', areaId);
+
+        dispatch(actions.showLoading());
+        dispatch(actions.setLocateAddressInAreaAreaId(areaId));
+        dispatch(actions.startViewArea(areaId));
+        dispatch(actions.showLocateAddresInAreaForm());
+
+      }
+
+    } else if(path.indexOf('/point-in-area/')!==-1) {
+      const tokens = path.split('/');
+      if(tokens[2] && tokens[3] && tokens[4]){
+        lat = parseFloat(tokens[2]);
+        lng = parseFloat(tokens[3]);
+        areaId = tokens[4];
+        console.log('JESSSS point-in-area-->', lat,lng,areaId);
+
+        dispatch(actions.showLoading());
+        dispatch(actions.startViewArea(areaId,actions.checkPointInPolygon([lat,lng], areaId)));
+        dispatch(actions.addMarker(lat,lng));
+
+      }
     } else {
       // const defaultLayer = 'schools';
       // dispatch(actions.startToggleLayer(defaultLayer));
@@ -100,18 +130,25 @@ export class MapLayer extends React.Component {
 
   componentDidUpdate() {
     if(this.refs.map && this.refs.map.leafletElement) {
-      let leafletMap = this.refs.map.leafletElement;
+      let map = this.refs.map.leafletElement;
 
       let {flyToPoint, layers, areas, poilists, fitToBounds,
-        fullScreenMode, showPopupPoiData, locateUserPosition, dispatch} = this.props;
+        fullScreenMode, showPopupPoiData, locateAddressInAreaData, locateUserPosition,
+        center, zoom, markers, leafletMap, dispatch} = this.props;
 
-      this.refs.map.leafletElement._layersMaxZoom = 17;
+      if(!leafletMap || $.isEmptyObject(leafletMap)) {
+        dispatch(actions.setLeafletMapInstance(map));
+      }
 
-      MapLayerUtils.addActivePoiLists(poilists, fitToBounds, leafletMap);
+      map._layersMaxZoom = 17;
 
-      MapLayerUtils.addActiveLayers(layers, fitToBounds, leafletMap);
+      MapLayerUtils.addActivePoiLists(poilists, fitToBounds, map);
 
-      MapLayerUtils.addActiveAreas(areas, leafletMap);
+      MapLayerUtils.addActiveLayers(layers, fitToBounds, map);
+
+      MapLayerUtils.addActiveAreas(areas, map);
+
+      MapLayerUtils.addMarkers(markers, map);
 
       // console.log('MapLayer this.refs.map.leafletElement', leafletMap);
 
@@ -124,7 +161,7 @@ export class MapLayer extends React.Component {
 
       if(flyToPoint) {
         // console.log('MapLayer componentWillUpdate flyToPoint', flyToPoint);
-        MapLayerUtils.flyTo(flyToPoint, leafletMap,showPopupPoiData);
+        MapLayerUtils.flyTo(flyToPoint, map, showPopupPoiData, locateAddressInAreaData);
         // Reset fly to point
         setTimeout(()=> {
           dispatch(actions.removeFlyToPoint());
@@ -141,11 +178,11 @@ export class MapLayer extends React.Component {
       }
 
       //Scale control
-      if(!leafletMap._controlCorners.bottomleft.firstChild) {
+      if(!map._controlCorners.bottomleft.firstChild) {
         L.control.scale({
           position: 'bottomleft',
           imperial: false
-        }).addTo(leafletMap);
+        }).addTo(map);
       }
 
       if(locateUserPosition) {
@@ -158,14 +195,14 @@ export class MapLayer extends React.Component {
         });
         const personIcon = new PersonIcon();
 
-        leafletMap.locate({setView: true, maxZoom: 16});
+        map.locate({setView: true, maxZoom: 16});
 
-        leafletMap.on('locationfound', function(e) {
+        map.on('locationfound', function(e) {
             if(this.userMarker) {
               leafletMap.removeLayer(this.userMarker);
             }
             this.userMarker = L.marker(e.latlng, {icon: personIcon});
-            this.userMarker.addTo(leafletMap);
+            this.userMarker.addTo(map);
             dispatch(actions.disableLocateUserPosition());
         });
         leafletMap.on('locationerror', function(e) {
@@ -178,6 +215,11 @@ export class MapLayer extends React.Component {
         });
 
 
+      }
+
+      if(zoom && zoom > 0) {
+        let position = [center.lat, center.lon];
+        map.setView(position, zoom);
       }
 
     }
@@ -222,14 +264,18 @@ MapLayer.defaultProps = {
 
 MapLayer.propTypes = {
   center: React.PropTypes.object,
+  zoom: React.PropTypes.number,
   flyToPoint: React.PropTypes.object,
   showPopupPoiData: React.PropTypes.object,
+  locateAddressInAreaData: React.PropTypes.object,
   fitToBounds: React.PropTypes.bool,
   fullScreenMode: React.PropTypes.bool,
   path: React.PropTypes.string,
   locateUserPosition: React.PropTypes.bool,
   poilists: React.PropTypes.object,
   layers: React.PropTypes.object,
+  markers: React.PropTypes.array,
+  leafletMap: React.PropTypes.object,
   areas: React.PropTypes.object
 };
 
@@ -237,13 +283,17 @@ export default connect(
   (state) => {
     return {
       center: state.center,
+      zoom: state.zoom,
       flyToPoint: state.flyToPoint,
       fitToBounds: state.fitToBounds,
       layers: state.layers,
       areas: state.areas,
+      markers: state.markers,
       poilists: state.poilists,
       fullScreenMode: state.fullScreenMode,
       showPopupPoiData: state.showPopupPoiData,
+      locateAddressInAreaData: state.locateAddressInAreaData,
+      leafletMap: state.leafletMap,
       locateUserPosition: state.locateUserPosition
     };
   }

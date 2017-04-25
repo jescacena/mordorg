@@ -3,7 +3,12 @@ import {CUSTOM_LAYER_ICONS,
   CUSTOM_SUBTYPE_ICONS,
   POPUP_TEMPLATE,
   POPUP_AREA_TEMPLATE,
-  POPUP_OPTIONS} from 'constants';
+  POPUP_OPTIONS,
+  AREA_CENTER} from 'constants';
+
+export function getAreaLayerCenter(areaId) {
+  return AREA_CENTER[areaId.toUpperCase()];
+}
 
 export function createGeoJsonAreaLayer(data) {
   const onEachFeature = (feature, layer) => {
@@ -14,12 +19,12 @@ export function createGeoJsonAreaLayer(data) {
 
       const html = POPUP_AREA_TEMPLATE(context);
       const popup = layer.bindPopup(html);
-      layer.on('mouseover', function (e) {
-          popup.openPopup();
-      });
-      layer.on('mouseout', function (e) {
-          popup.closePopup();
-      })
+      // layer.on('mouseover', function (e) {
+      //     popup.openPopup();
+      // });
+      // layer.on('mouseout', function (e) {
+      //     popup.closePopup();
+      // })
     }
   };
 

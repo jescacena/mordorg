@@ -50,6 +50,7 @@ module.exports = {
       LayerList: 'components/LayerList.jsx',
       MapLayer: 'components/MapLayer.jsx',
       SearchBox: 'components/SearchBox.jsx',
+      LocateAddressForm: 'components/LocateAddressForm.jsx',
       Legend: 'components/Legend.jsx',
       Logo: 'components/Logo.jsx',
       Footer: 'components/Footer.jsx',

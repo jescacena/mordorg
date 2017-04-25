@@ -2,6 +2,8 @@ import * as redux from 'redux';
 import thunk from 'redux-thunk';
 
 const {searchTextReducer,
+  zoomReducer,
+  markerReducer,
   layerReducer,
   areaReducer,
   poilistsReducer,
@@ -14,7 +16,10 @@ const {searchTextReducer,
   modalMessageReducer,
   fitToBoundsReducer,
   showPopupPoiDataReducer,
+  locateAddressInAreaDataReducer,
   locateUserPositionReducer,
+  leafletMapReducer,
+  locateAddressInAreaFormReducer,
   flyToPointReducer} = require('reducers');
 
 export const configure = (initialState = {
@@ -24,22 +29,30 @@ export const configure = (initialState = {
     lon: -4.0574,
     zoom: 18
   },
+  zoom: 0,
   flyToPoint: null,
   showLayerSelector: false,
   showSearchbox: false,
   fullScreenMode: false,
   showModal: false,
+  showLocateAddressInAreaForm: false,
   locateUserPosition: false,
   modalMessageText: 'Todas las caras de la verdad',
   layers: {},
+  leafletMap: {},
+  markers: [],
   areas: {},
   poilists: {},
-  showPopupPoiData: {}
+  showPopupPoiData: {},
+  locateAddressInAreaData: {}
 }) => {
   const reducer = redux.combineReducers({
+    zoom: zoomReducer,
     searchText: searchTextReducer,
     layers: layerReducer,
+    markers: markerReducer,
     areas: areaReducer,
+    leafletMap: leafletMapReducer,
     poilists: poilistsReducer,
     center: setCenterReducer,
     showLayerSelector: toggleLayerSelectorReducer,
@@ -50,8 +63,10 @@ export const configure = (initialState = {
     modalMessageText: modalMessageReducer,
     flyToPoint: flyToPointReducer,
     showPopupPoiData: showPopupPoiDataReducer,
+    locateAddressInAreaData: locateAddressInAreaDataReducer,
     fitToBounds: fitToBoundsReducer,
-    locateUserPosition: locateUserPositionReducer
+    locateUserPosition: locateUserPositionReducer,
+    showLocateAddressInAreaForm: locateAddressInAreaFormReducer
   });
 
   const store = redux.createStore(reducer, initialState, redux.compose(

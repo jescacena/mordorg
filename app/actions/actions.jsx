@@ -1,4 +1,20 @@
+import {AREA_CENTER} from 'constants';
+
 const LocationService = require('LocationService');
+const GeometryService = require('GeometryService');
+
+
+export const showLocateAddresInAreaForm = () => {
+  return {
+    type: 'SHOW_LOCATE_ADDRESS_IN_AREA_FORM'
+  };
+};
+
+export const hideLocateAddresInAreaForm = () => {
+  return {
+    type: 'HIDE_LOCATE_ADDRESS_IN_AREA_FORM'
+  };
+};
 
 export const setSearchText = (searchText) => {
   return {
@@ -64,6 +80,21 @@ export const setCenter = (lat, lon, zoom) => {
     lat,
     lon,
     zoom
+  };
+};
+
+export const setZoom = (zoom) => {
+  return {
+    type: 'SET_ZOOM',
+    zoom
+  };
+};
+
+export const addMarker = (lat, lng) => {
+  return {
+    type: 'ADD_MARKER',
+    lat,
+    lng
   };
 };
 
@@ -148,6 +179,41 @@ export const hideModal = () => {
   };
 };
 
+export const setLeafletMapInstance = (leafletMapInstance) => {
+  return {
+    type: 'SET_LEAFLET_MAP_INSTANCE',
+    leafletMapInstance: leafletMapInstance
+  };
+};
+
+export const setPopupMessageLocateAddressInAreaData = (data) => {
+  return {
+    type: 'SET_POPUP_MESSAGE_LAIA_DATA',
+    data: data
+  };
+};
+
+export const setLocateAddressInAreaAreaId = (areaId) => {
+  return {
+    type: 'SET_LAIA_AREAID',
+    areaId: areaId
+  };
+};
+
+export const setLocateAddressInAreaPointFrom = (pointFrom) => {
+  return {
+    type: 'SET_LAIA_POINT_FROM',
+    areaId: pointFrom
+  };
+};
+
+export const setLocateAddressInAreaPointTo = (pointTo) => {
+  return {
+    type: 'SET_LAIA_POINT_TO',
+    areaId: pointTo
+  };
+};
+
 export const setShowPopupPoiData = (data) => {
   return {
     type: 'SET_SHOW_POPUP_POI_DATA',
@@ -161,6 +227,27 @@ export const removeShowPopupPoiData = () => {
   };
 };
 
+export const fetchClosestPointToPolygon = (latlng, areaId) => {
+  return (dispatch, getState) => {
+    //TODO
+  };
+}
+
+export const checkPointInPolygon = (latlng, areaId) => {
+  return (dispatch, getState) => {
+    const polygon = getState().areas[areaId];
+      const ll = L.latLng(latlng[0],latlng[1]);
+      // const plainPolygonData = MapLayerUtils.getPolygon(areas.sierra_guadarrama_limits.data);
+      // console.log("JESSSS EOOOO plainPolygonData---->", JSON.stringify(plainPolygonData));
+      console.log("JESSSS checkPointInPolygon polygon---->", polygon);
+
+      let gjLayer = L.geoJson(polygon.data.features);
+      // let result = GeometryService.pointInPolygon(ll, gjLayer);
+      let result = GeometryService.pointInPolygon(ll, gjLayer);
+
+      console.log("JESSSS checkPointInPolygon result---->", result);
+  };
+};
 
 export const startViewPoiList= (listkey) => {
   return (dispatch, getState) => {
@@ -178,13 +265,18 @@ export const startViewPoiList= (listkey) => {
     });
   };
 };
-export const startViewArea= (areaId) => {
+export const startViewArea= (areaId, postAction) => {
   return (dispatch, getState) => {
     const locationServicePromise = LocationService.getGeoJsonDataArea(areaId);
     return locationServicePromise.then((response)=> {
       console.log('JESSS startViewArea response',response);
-      dispatch(setAreaData(areaId,response.features));
+      dispatch(setAreaData(areaId,response));
       dispatch(toggleArea(areaId));
+      const center = AREA_CENTER[areaId.toUpperCase()];
+      dispatch(setCenter(center[0], center[1], center[2]));
+      if(postAction) {
+        dispatch(postAction);
+      }
       dispatch(hideLoading());
     });
   };

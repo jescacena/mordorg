@@ -1,5 +1,8 @@
 /* global L */
-import {CUSTOM_LAYER_ICONS, POPUP_OPTIONS, POPUP_TEMPLATE} from 'constants';
+import {CUSTOM_LAYER_ICONS,
+  POPUP_OPTIONS,
+  POPUP_TEMPLATE,
+  POPUP_LOCATE_ADDRESS_IN_AREA} from 'constants';
 const $ = require('jQuery');
 
 // const $ = require('jQuery');
@@ -9,10 +12,14 @@ const $ = require('jQuery');
 * @type method
 * @param flyToPoint point (coords) to fly
 * @param leafletMap base map
-* @param showPoiData data to show in popup
+* @param showPopupPoiData data to show in popup
+* @param showPopupLocateAddressInAreaData data to show in popup
 * @returns void
 */
-export function flyTo(flyToPoint, leafletMap, showPopupPoiData) {
+export function flyTo(flyToPoint,
+                      leafletMap,
+                      showPopupPoiData,
+                      locateAddressInAreaData) {
   let leafletPoint = new L.LatLng(flyToPoint.lat, flyToPoint.lon);
   leafletMap.flyTo(leafletPoint, 17);
   const icon = L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS.default);
@@ -35,9 +42,19 @@ export function flyTo(flyToPoint, leafletMap, showPopupPoiData) {
     marker.bindPopup(html, POPUP_OPTIONS);
   }
 
+  if(locateAddressInAreaData && locateAddressInAreaData.data) {
+    const context = {
+      message: locateAddressInAreaData.data.message
+    };
+
+    const html = POPUP_LOCATE_ADDRESS_IN_AREA(context);
+
+    marker.bindPopup(html, POPUP_OPTIONS);
+  }
+
   marker.addTo(leafletMap);
 
-  if(showPopupPoiData) {
+  if(showPopupPoiData || locateAddressInAreaData) {
     marker.openPopup();
   }
 
@@ -78,6 +95,50 @@ export function addActivePoiLists(poilists, fitToBounds, leafletMap) {
     });
   }
 
+}
+
+/*
+* plainPolygonData: convert geojson data in linestring array to polygon
+* @type method
+* @returns void
+*/
+export function getPolygon(linestringArray) {
+  console.log("JES getPolygon", linestringArray);
+  let result =
+  {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {},
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[]]
+          }
+        }
+      ]
+    };
+
+  for(let item of linestringArray) {
+    for(let coord of item.geometry.coordinates) {
+      result.features[0].geometry.coordinates[0].push(coord);
+    }
+  }
+
+  return result;
+}
+
+/*
+* addMarkers: loop over markers array and add them to base map
+* @type method
+* @returns void
+*/
+export function addMarkers(markers, leafletMap) {
+  const icon = L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS['default']);
+
+  for(let marker of markers) {
+    L.marker(marker, {icon: icon}).addTo(leafletMap);
+  }
 }
 
 /*

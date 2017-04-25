@@ -144,7 +144,8 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 }).addTo(window.map2);
 window.map2.setView(new L.LatLng(40.737, -73.923), 8);
 
-window.polygonData = {
+window.polygonData =
+{
     "type": "FeatureCollection",
     "features": [
       {

@@ -5,7 +5,12 @@ const Promise = require('q').Promise;
 export const API_NO_LAYER_DATA_MESSAGE = 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/no_layer_data.json';
 
 export const API_AREA_URLS = {
-  SIERRA_GUADARRAMA_LIMITS: 'https://cercemap.org/app/json/limites_parque_nacional_sierra_guadarrama.json'
+  SIERRA_GUADARRAMA_LIMITS: 'https://cercemap.org/app/json/limites_parque_nacional_sierra_guadarrama-polygon.json'
+};
+
+// [center_lat, center_lng, zoom]
+export const AREA_CENTER = {
+  SIERRA_GUADARRAMA_LIMITS: [40.80757278825516, -3.961257934570312, 11]
 };
 
 export const API_URLS = {
@@ -319,6 +324,7 @@ export const CUSTOM_LAYER_ICONS = {
 /* handlebars templates */
 export const POPUP_TEMPLATE = require('../templates/popup.handlebars');
 export const POPUP_AREA_TEMPLATE = require('../templates/popup-area.handlebars');
+export const POPUP_LAIA_TEMPLATE = require('../templates/popup-locate-address-in-area.handlebars');
 
 // API console: https://console.developers.google.com/apis/credentials?project=cerce-api-project&hl=ES
 export const GOOGLE_MAP_KEY = 'AIzaSyC4hAxLWQYK86JGwSCI3FB4TiuAGRU-ez4';
@@ -329,6 +335,14 @@ export const POPUP_OPTIONS = {
   // autoPanPadding: (window.innerWidth < 700)? [0, 100] : [100, 180]
   autoPanPaddingTopLeft: (window.innerWidth < 700)? [0, 100] : [100, 180]
 };
+
+export const POPUP_LAIA_OPTIONS = {
+  maxWidth: (window.innerWidth < 700)? '200':'250',
+  className: 'ccm-marker-popup-laia',
+  // autoPanPadding: (window.innerWidth < 700)? [0, 100] : [100, 180]
+  autoPanPaddingTopLeft: (window.innerWidth < 700)? [0, 100] : [100, 180]
+};
+
 
 // export const googleMapsClient = require('@google/maps').createClient({
 //   key: 'AIzaSyC4hAxLWQYK86JGwSCI3FB4TiuAGRU-ez4',

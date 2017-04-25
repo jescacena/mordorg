@@ -5,6 +5,7 @@ import SelectorPanel from 'SelectorPanel';
 // import Legend from 'Legend';
 import LoadingSpinner from 'LoadingSpinner';
 import ModalMessage from 'ModalMessage';
+import LocateAddressForm from 'LocateAddressForm';
 import MapLayer from 'MapLayer';
 import Logo from 'Logo';
 import Footer from 'Footer';
@@ -37,6 +38,7 @@ export class CerceMapContainer extends React.Component {
         <Footer />
         <LoadingSpinner />
         <ModalMessage />
+        <LocateAddressForm />
       </div>
     );
   }

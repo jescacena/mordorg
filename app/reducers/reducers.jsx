@@ -1,10 +1,46 @@
-import {createGeoJsonLayer, createGeoJsonAreaLayer} from 'reducersUtils';
+import {createGeoJsonLayer, createGeoJsonAreaLayer, getAreaLayerCenter} from 'reducersUtils';
 
 
 export const showPopupPoiDataReducer = (state = {}, action) => {
   switch(action.type) {
   case 'SET_SHOW_POPUP_POI_DATA':
     return action.data;
+  default:
+    return state;
+  }
+};
+
+export const leafletMapReducer = (state = {}, action) => {
+  switch(action.type) {
+  case 'SET_LEAFLET_MAP_INSTANCE':
+    return action.leafletMapInstance;
+  default:
+    return state;
+  }
+};
+
+export const locateAddressInAreaDataReducer = (state = {}, action) => {
+  switch(action.type) {
+  case 'SET_POPUP_MESSAGE_LAIA_DATA':
+    return {
+      ...state,
+      data: action.data
+    };
+  case 'SET_LAIA_AREAID':
+    return {
+      ...state,
+      areaId: action.areaId
+    };
+  case 'SET_LAIA_POINT_FROM':
+    return {
+      ...state,
+      pointFrom: action.pointFrom
+    };
+  case 'SET_LAIA_POINT_TO':
+    return {
+      ...state,
+      pointTo: action.pointTo
+    };
   default:
     return state;
   }
@@ -20,6 +56,18 @@ export const locateUserPositionReducer = (state = false, action) => {
     return state;
   }
 };
+
+export const locateAddressInAreaFormReducer = (state = false, action) => {
+  switch(action.type) {
+  case 'SHOW_LOCATE_ADDRESS_IN_AREA_FORM':
+    return true;
+  case 'HIDE_LOCATE_ADDRESS_IN_AREA_FORM':
+    return false;
+  default:
+    return state;
+  }
+};
+
 export const modalReducer = (state = false, action) => {
   switch(action.type) {
   case 'SHOW_MODAL':
@@ -91,6 +139,22 @@ export const poilistsReducer = (state={}, action) => {
   }
 };
 
+export const markerReducer = (state=[], action) => {
+
+  let res;
+  switch (action.type) {
+  case 'ADD_MARKER':
+    res = [...state, [parseFloat(action.lat) , parseFloat(action.lng)]];
+    return res;
+  case 'REMOVE_MARKER':
+    //TODO
+    return [];
+  default:
+    return state;
+  }
+
+};
+
 export const areaReducer = (state={}, action) => {
   let areaId = action.areaId;
   let data = action.data;
@@ -112,7 +176,8 @@ export const areaReducer = (state={}, action) => {
       [areaId]: {
         ...state[areaId],
         data: data,
-        leafleftLayer: createGeoJsonAreaLayer(data)
+        leafleftLayer: createGeoJsonAreaLayer(data),
+        center: getAreaLayerCenter(areaId)
       }
     };
     return res;
@@ -177,6 +242,15 @@ export const toggleFullScreenReducer = (state='', action) => {
   default:
     return state;
 
+  }
+};
+
+export const zoomReducer = (state = 0, action) => {
+  switch(action.type) {
+  case 'SET_ZOOM':
+    return action.zoom;
+  default:
+    return state;
   }
 };
 
