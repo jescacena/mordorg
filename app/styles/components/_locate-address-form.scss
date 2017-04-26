@@ -54,17 +54,21 @@
 
   h3 {
     font-size: 1em;
+    @include handset-tablet {
+      font-size: 0.8em;
+    }
     color: $light-grey-border;
   }
 
   .input-group {
-    display:block;
+    display:inline-block;
     padding:1em;
     input.form-control {
       height:3em;
+      width:32em;
       @include handset-tablet {
         right: 0.5em;
-        position: absolute;
+        // position: absolute;
         width: 14em;
       }
     }
