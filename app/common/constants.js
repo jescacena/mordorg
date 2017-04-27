@@ -32,7 +32,9 @@ export const API_URLS = {
   PESCADERIAS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_pescaderias.json',
   PANADERIAS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_panaderias.json',
   CARNICERIAS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_carnicerias.json',
-  SUPERMERCADOS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_supermercados.json'
+  SUPERMERCADOS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_supermercados.json',
+  CENTROS_CULTURALES: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_centros_culturales.json',
+  ZONAS_INFANTILES: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_zonas_infantiles.json'
 };
 
 export const CERCE_CENTER = new global.google.maps.LatLng(40.71863980562837, -4.092063903808594);
