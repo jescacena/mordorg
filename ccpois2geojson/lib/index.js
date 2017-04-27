@@ -58,3 +58,10 @@ Ccpois_wordpress_resource.fetchPoilistsFoodCCPS().then(function (dataList) {
     _saveFile(Ccpois_to_geojson.convertToFeatureCollection(list.lista), './json/' + filename + '.json');
   });
 });
+
+Ccpois_wordpress_resource.fetchPoilistsCultureCCPS().then(function (dataList) {
+  dataList.forEach(function (list) {
+    var filename = 'ccpois_' + list.key;
+    _saveFile(Ccpois_to_geojson.convertToFeatureCollection(list.lista), './json/' + filename + '.json');
+  });
+});

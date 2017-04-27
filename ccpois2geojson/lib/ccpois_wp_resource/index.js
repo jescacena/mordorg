@@ -91,6 +91,12 @@ var Ccpois_wordpress_gateway = function () {
       var url = WP_CCPOIS_URL + "ccpoilist_food" + "?per_page=" + per_page;
       return this._get(url);
     }
+  }, {
+    key: 'fetchPoilistsCultureCCPS',
+    value: function fetchPoilistsCultureCCPS() {
+      var url = WP_CCPOIS_URL + "ccpoilist_culture" + "?per_page=" + per_page;
+      return this._get(url);
+    }
   }]);
 
   return Ccpois_wordpress_gateway;
