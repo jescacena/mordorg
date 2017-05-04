@@ -97,6 +97,18 @@ var Ccpois_wordpress_gateway = function () {
       var url = WP_CCPOIS_URL + "ccpoilist_culture" + "?per_page=" + per_page;
       return this._get(url);
     }
+  }, {
+    key: 'fetchTimePubtraTrainCCPS',
+    value: function fetchTimePubtraTrainCCPS() {
+      var url = WP_CCPOIS_URL + "timepubtra-train-c2" + "?per_page=" + per_page;
+      return this._get(url);
+    }
+  }, {
+    key: 'fetchTimePubtraBus684CCPS',
+    value: function fetchTimePubtraBus684CCPS() {
+      var url = WP_CCPOIS_URL + "timepubtra-684" + "?per_page=" + per_page;
+      return this._get(url);
+    }
   }]);
 
   return Ccpois_wordpress_gateway;

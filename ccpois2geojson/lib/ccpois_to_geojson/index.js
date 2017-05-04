@@ -11,6 +11,28 @@ var Ccpois_to_geojson = function () {
   }
 
   _createClass(Ccpois_to_geojson, [{
+    key: "convertBus684Timetable",
+    value: function convertBus684Timetable(data) {
+      return {
+        nombre: data.nombre,
+        horario_salidas_cercedilla_madrid: data.horario_salidas_cercedilla_madrid,
+        horario_salidas_madrid_cercedilla: data.horario_salidas_madrid_cercedilla,
+        fecha_desde: data.fecha_desde,
+        fecha_hasta: data.fecha_hasta
+      };
+    }
+  }, {
+    key: "convertTrainTimetable",
+    value: function convertTrainTimetable(data) {
+      return {
+        nombre: data.nombre,
+        horario_salidas_cercedilla_atocha: data.horario_salidas_cercedilla_atocha,
+        horario_salidas_atocha_cercedilla: data.horario_salidas_atocha_cercedilla,
+        fecha_desde: data.fecha_desde,
+        fecha_hasta: data.fecha_hasta
+      };
+    }
+  }, {
     key: "convertToFeatureCollection",
     value: function convertToFeatureCollection(data) {
       var resultGeoJSON = data.map(function (item) {

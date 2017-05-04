@@ -66,6 +66,14 @@ class Ccpois_wordpress_gateway {
      var url = WP_CCPOIS_URL + "ccpoilist_culture" + "?per_page=" + per_page;
      return this._get(url);
    }
+   fetchTimePubtraTrainCCPS () {
+     var url = WP_CCPOIS_URL + "timepubtra-train-c2" + "?per_page=" + per_page;
+     return this._get(url);
+   }
+   fetchTimePubtraBus684CCPS () {
+     var url = WP_CCPOIS_URL + "timepubtra-684" + "?per_page=" + per_page;
+     return this._get(url);
+   }
  }
 
  module.exports = Ccpois_wordpress_gateway;
