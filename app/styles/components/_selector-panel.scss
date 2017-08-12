@@ -38,31 +38,31 @@
         &.list-group-item {
           &.active {
             &.active.schools {
-              background-color: $blue;
+              @include bg-blue;
             }
             &.active.public-transports {
-              background-color: $red;
+              @include bg-red;
             }
             &.active.health {
-              background-color: $green;
+              @include bg-green;
             }
             &.active.municipal_services {
-              background-color: $orange;
+              @include bg-orange;
             }
             &.active.food {
-              background-color: $cadetblue;
+              @include bg-cadetblue;
             }
             &.active.clothes {
-              background-color: $purple;
+              @include bg-purple;
             }
             &.active.bazaars {
-              background-color: $magenta;
+              @include bg-magenta;
             }
             &.active.banks {
-              background-color: $darkred;
+              @include bg-darkred;
             }
             &.active.police {
-              background-color: $darkgreen;
+              @include bg-darkgreen;
             }
             color:#fff;
           }
@@ -151,6 +151,7 @@
         background: url('svgs/shield-white.svg') 0.5em center / 1.5em 1.5em no-repeat #fff;
       }
     }
+
   }
 
   @include glowing;

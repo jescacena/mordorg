@@ -1,0 +1,104 @@
+.ccm-side-panel {
+  z-index:1111;
+  position:absolute;
+
+  max-width:200px;
+  @include handset {
+    max-width:100px;
+  }
+
+  button.side-nav {
+    position: absolute;
+    z-index: 111;
+
+    &.icon-decorator {
+      padding:0.8em;
+      font-size: 0.85em;
+      height: 3em;
+      &.left {
+        left: 16.7em;
+        @include handset {
+          left: 9.7em;
+        }
+        top: 1em;
+        // border-top:2px solid $black-transparent;
+        // border-right:2px solid $black-transparent;
+        // border-bottom:2px solid $black-transparent;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border: none;
+        background: url('svgs/eject-left-white.svg') 0.3em center / 0.8em 0.8em no-repeat $grey;
+        &.selected {
+          background: url('svgs/eject-left-white.svg') 0.3em center / 0.8em 0.8em no-repeat #fff;
+        }
+      }
+      &.right {
+        // border:2px solid $black-transparent;
+
+        background: url('svgs/eject-right-white.svg') 0.3em center / 0.8em 0.8em no-repeat $grey;
+        &.selected {
+          background: url('svgs/eject-right-white.svg') 0.3em center / 0.8em 0.8em no-repeat #fff;
+        }
+      }
+    }
+  }
+
+
+
+  .ccm-poi-list {
+    display: none;
+    position: absolute;
+    top: 0em;
+    width:14.2em;
+    @include handset {
+      width:8.2em;
+    }
+    z-index: 0;
+    &.open {
+      display: block;
+    }
+
+    .list-group {
+      max-height: 500px;
+      overflow: scroll;
+      border: 2px solid $grey;
+      border-radius: 10px;
+      .list-group-item {
+        border: 1px solid $light-grey-border;
+        background-color: $light-grey-transparent;
+        color:$grey;
+        padding:10px 10px 0px 10px;
+        cursor:pointer;
+        border-radius:0;
+        &:last-child {
+          padding:10px;
+        }
+        &.title {
+          padding:10px;
+          border:none;
+          &:not(:first-child) {
+            margin-top:1em;
+          }
+        }
+        h5 {
+          color:$light-grey;
+          margin:0;
+          font-size: 1.4em;
+          @include handset {
+            font-size: 1.2em;
+          }
+        }
+        img {
+          width: 150px;
+        }
+        @include handset {
+          font-size:0.8em;
+          img {
+            width: 89px;
+          }
+        }
+      }
+    }
+
+  }
+}

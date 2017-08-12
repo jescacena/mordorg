@@ -4,6 +4,8 @@ const actions = require('actions');
 
 import { ListGroup, ListGroupItem} from 'react-bootstrap';
 
+import {LAYERLABELS} from 'constants';
+
 export class LayerList extends React.Component {
 
   showModalMessage(msg) {
@@ -45,7 +47,7 @@ export class LayerList extends React.Component {
             this.onClickHandler('municipal_services');
           }}
           className={dynamicClassMunicipalServices}
-          active={(layers.municipal_services && layers.municipal_services.show) ? true : false}>Servicios Municipales</ListGroupItem>
+          active={(layers.municipal_services && layers.municipal_services.show) ? true : false}>{LAYERLABELS.MUNICIPAL_SERVICES}</ListGroupItem>
 
         <ListGroupItem
           onClick={()=> {
@@ -53,7 +55,7 @@ export class LayerList extends React.Component {
             this.onClickHandler('schools');
           }}
           className={dynamicClassSchools}
-          active={(layers.schools && layers.schools.show) ? true : false}>Centros educativos</ListGroupItem>
+          active={(layers.schools && layers.schools.show) ? true : false}>{LAYERLABELS.SCHOOLS}</ListGroupItem>
 
         <ListGroupItem
           onClick={(event)=> {
@@ -63,7 +65,7 @@ export class LayerList extends React.Component {
             this.onClickHandler('food');
           }}
           className={dynamicClassFood}
-          active={(layers.food && layers.food.show) ? true : false}>Alimentación</ListGroupItem>
+          active={(layers.food && layers.food.show) ? true : false}>{LAYERLABELS.FOOD}</ListGroupItem>
 
         <ListGroupItem
           onClick={(event)=> {
@@ -71,7 +73,7 @@ export class LayerList extends React.Component {
             this.onClickHandler('health');
           }}
           className={dynamicClassHealth}
-          active={(layers.health && layers.health.show) ? true : false}>Farmacias y salud</ListGroupItem>
+          active={(layers.health && layers.health.show) ? true : false}>{LAYERLABELS.HEALTH}</ListGroupItem>
 
         <ListGroupItem
           onClick={(event)=> {
@@ -82,7 +84,7 @@ export class LayerList extends React.Component {
 
           }}
           className={dynamicClassClothes}
-          active={(layers.clothes && layers.clothes.show) ? true : false}>Ropa / Complementos</ListGroupItem>
+          active={(layers.clothes && layers.clothes.show) ? true : false}>{LAYERLABELS.CLOTHES}</ListGroupItem>
 
         <ListGroupItem
           onClick={(event)=> {
@@ -92,7 +94,7 @@ export class LayerList extends React.Component {
             this.onClickHandler('banks');
           }}
           className={dynamicClassBanks}
-          active={(layers.banks && layers.banks.show) ? true : false}>Bancos / Cajeros</ListGroupItem>
+          active={(layers.banks && layers.banks.show) ? true : false}>{LAYERLABELS.BANKS}</ListGroupItem>
 
         <ListGroupItem
           onClick={(event)=> {
@@ -102,7 +104,7 @@ export class LayerList extends React.Component {
             this.onClickHandler('police');
           }}
           className={dynamicClassPolice}
-          active={(layers.police && layers.police.show) ? true : false}>Policía / Guardia Civil</ListGroupItem>
+          active={(layers.police && layers.police.show) ? true : false}>{LAYERLABELS.POLICE}</ListGroupItem>
 
         <ListGroupItem
           onClick={(event)=> {
@@ -112,7 +114,7 @@ export class LayerList extends React.Component {
             this.onClickHandler('bazaars');
           }}
           className={dynamicClassBazaars}
-          active={(layers.bazaars && layers.bazaars.show) ? true : false}>Otros</ListGroupItem>
+          active={(layers.bazaars && layers.bazaars.show) ? true : false}>{LAYERLABELS.BAZAARS}</ListGroupItem>
 
 
       </ListGroup>

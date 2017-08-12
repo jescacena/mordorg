@@ -6,7 +6,7 @@ const $ = require('jQuery');
 const MapLayerUtils = require('MapLayerUtils');
 const actions = require('actions');
 import {CUSTOM_LAYER_ICONS} from 'constants';
-import { Map, Marker, Popup, TileLayer, GeoJSON, ScaleControl } from 'react-leaflet';
+import { Map, Marker, Popup, TileLayer, GeoJSON, ScaleControl, ZoomControl } from 'react-leaflet';
 const screenfull = require('screenfull');
 
 
@@ -230,6 +230,7 @@ export class MapLayer extends React.Component {
     let {center} = this.props;
     let position = [center.lat, center.lon];
     let zoom = center.zoom;
+    const zoomControl = false;
 
     // Tile sources
     // url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
@@ -239,12 +240,15 @@ export class MapLayer extends React.Component {
     //http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png
 
     const map = (
-        <Map ref="map" className="ccm-maplayer" center={position} zoom={zoom}>
+        <Map ref="map" className="ccm-maplayer" center={position} zoom={zoom} zoomControl={zoomControl}>
           <TileLayer
             detectRetina='true'
             url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
+
+        <ZoomControl position="bottomright"/>
+
         </Map>
     );
 

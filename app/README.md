@@ -2,12 +2,16 @@
 Mapping application for Cercedilla Points of Interests
 
 ## Install
+App compile with **node version 5.12.0**
 ```
 npm install
 ```
 
 ## Local development
+* Open two terminals: one for run local server and other for run webpack build (with watch)
+
 * Local server
+
 ```
 npm start
 ```
