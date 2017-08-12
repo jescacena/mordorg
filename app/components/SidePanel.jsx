@@ -18,7 +18,7 @@ export class SidePanel extends React.Component {
   onClickHandler() {
     const {dispatch} = this.props;
     dispatch(actions.toggleSideNav());
-    dispatch(actions.toggleLayerSelector());
+    // dispatch(actions.toggleLayerSelector());
   }
 
 

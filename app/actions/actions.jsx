@@ -149,7 +149,6 @@ export const toggleSideNav = () => {
   };
 };
 
-
 export const toggleSearchbox = () => {
   return {
     type: 'TOGGLE_SEARCH_BOX'
@@ -308,6 +307,7 @@ export const startViewPOI= (layerid, poiKey) => {
 
       };
       dispatch(setShowPopupPoiData(poiData));
+      dispatch(removeFitToBounds());
       dispatch(setFlyToPoint(response.geometry.coordinates[1], response.geometry.coordinates[0], 11));
       dispatch(hideLoading());
 
@@ -329,8 +329,16 @@ export const startToggleLayer = (layerId) => {
           dispatch(hideLoading());
           dispatch(setFitToBounds());
           dispatch(toggleLayerSelector());
-          dispatch(toggleSideNav());
-
+          if(!getState().showSideNav) {
+            dispatch(toggleSideNav());
+          }
+          setTimeout(function () {
+            const layerHtmlElement = document.getElementById('#pl_'+layerId);
+            const poiListHtmlElement = document.getElementById('poilist-scrolling-div');
+            if(layerHtmlElement && poiListHtmlElement) {
+              poiListHtmlElement.scrollTop = layerHtmlElement.offsetTop;
+            }
+          }, 10);
         } else if(response.no_layer_data) {
           console.log(response.no_layer_data);
         }

@@ -15,9 +15,30 @@ export class PoiList extends React.Component {
     dispatch(actions.showModal());
   }
 
-  onPoiClickHandler(poiObject) {
-    console.log('onPoiClickHandler poiObject', poiObject);
-    poiObject.active = !poiObject.active;
+  onPoiClickHandler(layerId,poiData) {
+    const {dispatch} = this.props;
+
+    console.log('onPoiClickHandler layerId,poiData', layerId,poiData);
+    // poiObject.active = !poiObject.active;
+
+    const poiViewData = {
+      type: poiData.properties.type,
+      name: poiData.properties.name,
+      address: poiData.properties.address,
+      tfnos: poiData.properties.tfnos,
+      website: poiData.properties.website,
+      coords: poiData.geometry.coordinates[1] + ',' + poiData.geometry.coordinates[0],
+      imgUrl: poiData.properties.image_front_for_facebook_app,
+      gsvLink: poiData.properties.google_streetview_link,
+      navLink: 'https://www.google.es/maps/dir/Current+Location/'+poiData.geometry.coordinates[1] + ',' + poiData.geometry.coordinates[0],
+      layerId: layerId
+    };
+
+    dispatch(actions.setShowPopupPoiData(poiViewData));
+    dispatch(actions.removeFitToBounds());
+    dispatch(actions.setFlyToPoint(poiData.geometry.coordinates[1], poiData.geometry.coordinates[0], 11));
+    dispatch(actions.hideLoading());
+
   }
 
 
@@ -37,21 +58,21 @@ export class PoiList extends React.Component {
   //   });
   //   return result;
   // }
-  buildPoiList(poiArray) {
+  buildPoiList(layerId, poiArray) {
     let poiArraySorted = poiArray.sort(function(item1,item2) {
       return item1.properties.name.localeCompare(item2.properties.name);
     });
-    return poiArraySorted.map((item) => (
+    return poiArraySorted.map((feature) => (
                                    <ListGroupItem
-                                     key={item.properties.name}
+                                     key={feature.properties.name}
                                      active={ true }
                                      onClick={(event)=> {
                                       //  $(event.target).blur();
-                                        this.onPoiClickHandler(item);
+                                        this.onPoiClickHandler(layerId, feature);
 
                                      }}>
-                                     {item.properties.name}
-                                     <img src={item.properties.image_front} />
+                                     {feature.properties.name}
+                                     <img src={feature.properties.image_front} />
                                    </ListGroupItem>
                                  ));
   }
@@ -70,6 +91,7 @@ export class PoiList extends React.Component {
     Object.keys(layers).forEach(function (layerKey) {
       if(layers[layerKey] && layers[layerKey].leafleftLayer && layers[layerKey].show) {
         layerList.push({
+          key: layerKey,
           title: LAYERLABELS[layerKey.toUpperCase()],
           bgcolor: LAYER_BGCOLORCLASS[layerKey.toUpperCase()],
           active: false,
@@ -79,19 +101,19 @@ export class PoiList extends React.Component {
       }
     });
     jsxResult = layerList.map((item) => (
-                              <div key={item.title}>
+                              <div id={'#pl_' + item.key} key={item.title}>
                                 <ListGroupItem
                                   key={item.title}
                                   className={item.bgcolor + ' title'}
                                   active={ item.active }>
                                   <h5>{item.title}</h5>
                                 </ListGroupItem>
-                                {this.buildPoiList(item.data)}
+                                {this.buildPoiList(item.key,item.data)}
                               </div>
                            ));
 
     return (
-       <ListGroup>
+       <ListGroup id="poilist-scrolling-div">
          {jsxResult}
        </ListGroup>
     );

@@ -22,7 +22,9 @@ export function flyTo(flyToPoint,
                       locateAddressInAreaData) {
   let leafletPoint = new L.LatLng(flyToPoint.lat, flyToPoint.lon);
   leafletMap.flyTo(leafletPoint, 17);
-  const icon = L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS.default);
+  const icon = (showPopupPoiData.layerId)? L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS[showPopupPoiData.layerId])
+                                          :
+                                          L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS.default);
   let marker = L.marker(leafletPoint, {icon: icon});
 
   if(showPopupPoiData && !$.isEmptyObject(showPopupPoiData)) {
