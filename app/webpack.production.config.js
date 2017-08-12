@@ -40,6 +40,12 @@ module.exports = {
     // new GitRevisionPlugin(),
     // new GitSHAPlugin({shaLength: 7}),
 
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+
     new CleanWebpackPlugin(['dist'], {
       root: '/',
       verbose: true,
@@ -191,6 +197,6 @@ module.exports = {
     ]
   },
   // devtool: 'source-map'
-  devtool: process.env.NODE_ENV === 'production' ? undefined : 'cheap-module-eval-source-map'
+  devtool: process.env.NODE_ENV === 'production' ? undefined : 'cheap-module-source-map'
 
 };
