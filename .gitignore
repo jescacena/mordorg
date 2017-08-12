@@ -5,3 +5,4 @@ cercemap_app/node_modules
 cercemap_app/dist
 cercemap_app/public/bundle.js
 cercemap_geojson_source/node_modules
+npm-debug.log
