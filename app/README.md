@@ -41,7 +41,7 @@ NODE_ENV=production webpack -p --config ./webpack.production.config.js
 cd ..
 git tag vX.X.X
 git add .
-git commit -m 'XXXX'
+git commit -m 'XXXX' -n
 git push origin master
 
 ```
