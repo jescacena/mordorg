@@ -345,14 +345,33 @@ export const POPUP_LAIA_OPTIONS = {
   autoPanPaddingTopLeft: (window.innerWidth < 700)? [0, 100] : [100, 180]
 };
 
+export const LAYERLABELS = {
+  SCHOOLS: 'Centros educativos',
+  MUNICIPAL_SERVICES: 'Servicios 	Municipales',
+  FOOD: 'Alimentación',
+  HEALTH: 'Farmacias y salud',
+  CLOTHES: 'Ropa / Complementos',
+  BANKS: 'Bancos / Cajeros',
+  POLICE: 'Policía / Guardia Civil',
+  BAZAARS: 'Bazares y otros'
+};
+
+
+export const LAYER_BGCOLORCLASS = {
+  SCHOOLS: 'bg-blue',
+  MUNICIPAL_SERVICES: 'bg-orange',
+  FOOD: 'bg-cadetblue',
+  HEALTH: 'bg-green',
+  CLOTHES: 'bg-purple',
+  BANKS: 'bg-darkred',
+  POLICE: 'bg-darkgreen',
+  BAZAARS: 'bg-magenta'
+};
 
 // export const googleMapsClient = require('@google/maps').createClient({
 //   key: 'AIzaSyC4hAxLWQYK86JGwSCI3FB4TiuAGRU-ez4',
 //   Promise: Promise
 // });
-
-
-
 
 // Reset market default icons
 // delete L.Icon.Default.prototype._getIconUrl;

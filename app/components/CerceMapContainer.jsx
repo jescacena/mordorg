@@ -2,6 +2,7 @@ const React = require('react');
 const {connect} = require('react-redux');
 
 import SelectorPanel from 'SelectorPanel';
+import SidePanel from 'SidePanel';
 // import Legend from 'Legend';
 import LoadingSpinner from 'LoadingSpinner';
 import ModalMessage from 'ModalMessage';
@@ -33,14 +34,17 @@ export class CerceMapContainer extends React.Component {
     return (
       <div className="ccm-container">
         <Logo />
-        <MapLayer path={path}/>
+        <MapLayer path={path} />
         <SelectorPanel />
         <Footer />
         <LoadingSpinner />
         <ModalMessage />
         <LocateAddressForm />
+      <SidePanel />
       </div>
     );
+
+
   }
 }
 

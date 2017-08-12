@@ -225,6 +225,16 @@ export const toggleLayerSelectorReducer = (state='', action) => {
   }
 };
 
+export const toggleSideNavReducer = (state='', action) => {
+  switch (action.type) {
+  case 'TOGGLE_SIDENAV_SELECTOR':
+    return !state;
+  default:
+    return state;
+
+  }
+};
+
 export const toggleSearchboxReducer = (state='', action) => {
   switch (action.type) {
   case 'TOGGLE_SEARCH_BOX':

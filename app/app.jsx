@@ -17,6 +17,7 @@ require('leaflet/dist/leaflet.css');
 // import CerceMapContainer2 from 'CerceMapContainer2';
 import CerceMapContainer from 'CerceMapContainer';
 
+
 // const actions = require('actions');
 
 // const version = '<{version}>';

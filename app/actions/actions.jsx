@@ -143,6 +143,13 @@ export const toggleLayerSelector = () => {
   };
 };
 
+export const toggleSideNav = () => {
+  return {
+    type: 'TOGGLE_SIDENAV_SELECTOR'
+  };
+};
+
+
 export const toggleSearchbox = () => {
   return {
     type: 'TOGGLE_SEARCH_BOX'
@@ -321,6 +328,9 @@ export const startToggleLayer = (layerId) => {
           dispatch(setLayerData(layerId, response.features));
           dispatch(hideLoading());
           dispatch(setFitToBounds());
+          dispatch(toggleLayerSelector());
+          dispatch(toggleSideNav());
+
         } else if(response.no_layer_data) {
           console.log(response.no_layer_data);
         }
