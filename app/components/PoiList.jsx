@@ -72,7 +72,7 @@ export class PoiList extends React.Component {
 
                                      }}>
                                      {feature.properties.name}
-                                     <img src={feature.properties.image_front} />
+                                     <img src={feature.properties.image_front_for_facebook_app} />
                                    </ListGroupItem>
                                  ));
   }
