@@ -4,6 +4,7 @@ import {CUSTOM_LAYER_ICONS,
   POPUP_TEMPLATE,
   POPUP_LOCATE_ADDRESS_IN_AREA} from 'constants';
 const $ = require('jQuery');
+const ReactGA = require('react-ga');
 
 // const $ = require('jQuery');
 
@@ -22,6 +23,14 @@ export function flyTo(flyToPoint,
                       locateAddressInAreaData) {
   let leafletPoint = new L.LatLng(flyToPoint.lat, flyToPoint.lon);
   leafletMap.flyTo(leafletPoint, 17);
+
+  ReactGA.event({
+    category: 'flyTo',
+    action: 'Fly to point',
+    label:JSON.stringify(flyToPoint)
+  });
+
+
   const icon = (showPopupPoiData.layerId)? L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS[showPopupPoiData.layerId])
                                           :
                                           L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS.default);
@@ -52,6 +61,12 @@ export function flyTo(flyToPoint,
     const html = POPUP_LOCATE_ADDRESS_IN_AREA(context);
 
     marker.bindPopup(html, POPUP_OPTIONS);
+
+    ReactGA.event({
+      category: 'flyTo',
+      action: 'Locate Address in Area',
+      label:JSON.stringify(locateAddressInAreaData)
+    });
   }
 
   marker.addTo(leafletMap);

@@ -2,9 +2,13 @@ import {AREA_CENTER} from 'constants';
 
 const LocationService = require('LocationService');
 const GeometryService = require('GeometryService');
-
+const ReactGA = require('react-ga');
 
 export const showLocateAddresInAreaForm = () => {
+  ReactGA.event({
+    category: 'LocateAddresInAreaForm',
+    action: 'Show'
+  });
   return {
     type: 'SHOW_LOCATE_ADDRESS_IN_AREA_FORM'
   };
@@ -31,6 +35,11 @@ export const setModalMessageText = (modalMessageText) => {
 };
 
 export const togglePoiList = (listkey) => {
+  ReactGA.event({
+    category: 'togglePoiList',
+    action: 'toggle',
+    label:JSON.stringify(listkey)
+  });
   return {
     type: 'TOGGLE_POI_LIST',
     listkey
@@ -38,6 +47,11 @@ export const togglePoiList = (listkey) => {
 };
 
 export const toggleLayer = (layerId) => {
+  ReactGA.event({
+    category: 'toggleLayer',
+    action: 'toggle',
+    label:JSON.stringify(layerId)
+  });
   return {
     type: 'TOGGLE_LAYER',
     layerId
@@ -45,6 +59,11 @@ export const toggleLayer = (layerId) => {
 };
 
 export const toggleArea = (areaId) => {
+  ReactGA.event({
+    category: 'toggleArea',
+    action: 'toggle',
+    label:JSON.stringify(areaId)
+  });
   return {
     type: 'TOGGLE_AREA',
     areaId
@@ -120,6 +139,10 @@ export const setFitToBounds = () => {
 };
 
 export const locateUserPosition = () => {
+  ReactGA.event({
+    category: 'locateUserPosition',
+    action: 'locate'
+  });
   return {
     type: 'LOCATE_USER_POSITION'
   };
@@ -138,12 +161,20 @@ export const removeFitToBounds = () => {
 };
 
 export const toggleLayerSelector = () => {
+  ReactGA.event({
+    category: 'toggleLayerSelector',
+    action: 'toggle'
+  });
   return {
     type: 'TOGGLE_LAYER_SELECTOR'
   };
 };
 
 export const toggleSideNav = () => {
+  ReactGA.event({
+    category: 'toggleSideNav',
+    action: 'toggle'
+  });
   return {
     type: 'TOGGLE_SIDENAV_SELECTOR'
   };
@@ -156,6 +187,10 @@ export const toggleSearchbox = () => {
 };
 
 export const toggleFullScreen = () => {
+  ReactGA.event({
+    category: 'toggleFullScreen',
+    action: 'toggle'
+  });
   return {
     type: 'TOGGLE_FULL_SCREEN'
   };
@@ -193,6 +228,11 @@ export const setLeafletMapInstance = (leafletMapInstance) => {
 };
 
 export const setPopupMessageLocateAddressInAreaData = (data) => {
+  ReactGA.event({
+    category: 'setPopupMessageLocateAddressInAreaData',
+    action: 'set',
+    label:JSON.stringify(data)
+  });
   return {
     type: 'SET_POPUP_MESSAGE_LAIA_DATA',
     data: data
@@ -200,6 +240,11 @@ export const setPopupMessageLocateAddressInAreaData = (data) => {
 };
 
 export const setLocateAddressInAreaAreaId = (areaId) => {
+  ReactGA.event({
+    category: 'setLocateAddressInAreaAreaId',
+    action: 'set',
+    label:JSON.stringify(areaId)
+  });
   return {
     type: 'SET_LAIA_AREAID',
     areaId: areaId
@@ -221,6 +266,11 @@ export const setLocateAddressInAreaPointTo = (pointTo) => {
 };
 
 export const setShowPopupPoiData = (data) => {
+  ReactGA.event({
+    category: 'setShowPopupPoiData',
+    action: 'set',
+    label:JSON.stringify(data)
+  });
   return {
     type: 'SET_SHOW_POPUP_POI_DATA',
     data: data
@@ -240,6 +290,11 @@ export const fetchClosestPointToPolygon = (latlng, areaId) => {
 }
 
 export const checkPointInPolygon = (latlng, areaId) => {
+  ReactGA.event({
+    category: 'checkPointInPolygon',
+    action: 'check',
+    label:JSON.stringify(areaId)
+  });
   return (dispatch, getState) => {
     const polygon = getState().areas[areaId];
       const ll = L.latLng(latlng[0],latlng[1]);
@@ -256,6 +311,11 @@ export const checkPointInPolygon = (latlng, areaId) => {
 };
 
 export const startViewPoiList= (listkey) => {
+  ReactGA.event({
+    category: 'startViewPoiList',
+    action: 'start',
+    label:JSON.stringify(listkey)
+  });
   return (dispatch, getState) => {
     const locationServicePromise = LocationService.getGeoJsonDataListByKey(listkey);
     return locationServicePromise.then((response)=> {
@@ -272,6 +332,11 @@ export const startViewPoiList= (listkey) => {
   };
 };
 export const startViewArea= (areaId, postAction) => {
+  ReactGA.event({
+    category: 'startViewArea',
+    action: 'start',
+    label:JSON.stringify(areaId)
+  });
   return (dispatch, getState) => {
     const locationServicePromise = LocationService.getGeoJsonDataArea(areaId);
     return locationServicePromise.then((response)=> {
@@ -290,6 +355,11 @@ export const startViewArea= (areaId, postAction) => {
 
 
 export const startViewPOI= (layerid, poiKey) => {
+  ReactGA.event({
+    category: 'startViewPOI',
+    action: 'start',
+    label:JSON.stringify(layerid) + '-' + JSON.stringify(poiKey)
+  });
   return (dispatch, getState) => {
     const locationServicePromise = LocationService.getGeoJsonDataById(layerid, poiKey);
     return locationServicePromise.then((response)=> {
@@ -316,6 +386,11 @@ export const startViewPOI= (layerid, poiKey) => {
 };
 
 export const startToggleLayer = (layerId) => {
+  ReactGA.event({
+    category: 'startToggleLayer',
+    action: 'start',
+    label:JSON.stringify(layerId)
+  });
   return (dispatch, getState) => {
     const layer = getState().layers[layerId];
     if(!layer || !layer.data || layer.data.length === 0) {

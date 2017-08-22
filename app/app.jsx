@@ -13,6 +13,8 @@ require('drmonty-leaflet-awesome-markers/css/leaflet.awesome-markers.css');
 require('leaflet/dist/leaflet.css');
 // require('leaflet-geometryutil');
 
+const ReactGA = require('react-ga');
+ReactGA.initialize('UA-44651404-2');
 
 // import CerceMapContainer2 from 'CerceMapContainer2';
 import CerceMapContainer from 'CerceMapContainer';
@@ -41,13 +43,17 @@ require('style!css!sass!applicationStyles');
 // <Route path="/poi/:layerid/:poikey" component={CerceMapContainer} />
 // <Route path="/poilist/:listkey" component={CerceMapContainer} />
 
+function logPageView() {
+  ReactGA.set({ page: window.location.pathname + window.location.search });
+  ReactGA.pageview(window.location.pathname + window.location.search);
+}
 
 setTimeout(function () {
   ReactDOM.render(
     <Provider store = {store}>
       <Router>
         <div>
-          <Route path="/" component={CerceMapContainer} />
+          <Route path="/" component={CerceMapContainer} onUpdate={logPageView}/>
         </div>
       </Router>
     </Provider>,
