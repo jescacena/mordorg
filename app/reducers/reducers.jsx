@@ -79,6 +79,27 @@ export const modalReducer = (state = false, action) => {
   }
 };
 
+export const sidePanelScrollTopArrowReducer = (state = false, action) => {
+  switch(action.type) {
+  case 'SHOW_SIDE_PANEL_TOP_SCROLL_ARROW':
+    return true;
+  case 'HIDE_SIDE_PANEL_TOP_SCROLL_ARROW':
+    return false;
+  default:
+    return state;
+  }
+};
+export const sidePanelScrollBottomArrowReducer = (state = false, action) => {
+  switch(action.type) {
+  case 'SHOW_SIDE_PANEL_BOTTOM_SCROLL_ARROW':
+    return true;
+  case 'HIDE_SIDE_PANEL_BOTTOM_SCROLL_ARROW':
+    return false;
+  default:
+    return state;
+  }
+};
+
 export const loadingReducer = (state = false, action) => {
   switch(action.type) {
   case 'SHOW_LOADING':

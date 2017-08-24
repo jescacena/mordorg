@@ -40,7 +40,10 @@ export class SidePanel extends React.Component {
 
   render() {
     // console.log('SelectorPanel props', this.props);
-    const {dispatch, layers, showSideNav,poilists} = this.props;
+    const {dispatch, layers, showSideNav,
+      showSidePanelTopScrollArrow,
+      showSidePanelBottomScrollArrow,
+      poilists} = this.props;
     const dynamicClassButton = (showSideNav) ? 'side-nav icon-decorator left' : 'side-nav icon-decorator right';
 
     const dynamicToggleButton = (this.hasAnyLayerSelected(layers))?
@@ -60,6 +63,8 @@ export class SidePanel extends React.Component {
 
         <PoiList dispatch={dispatch}
           showSideNav={showSideNav}
+          showSidePanelTopScrollArrow={showSidePanelTopScrollArrow}
+          showSidePanelBottomScrollArrow={showSidePanelBottomScrollArrow}
           poilists={poilists}
           layers={layers}
           />
@@ -82,7 +87,9 @@ SidePanel.defaultProps = {
 
 SidePanel.propTypes = {
   layers: React.PropTypes.object,
-  showSideNav:React.PropTypes.bool,
+  showSideNav: React.PropTypes.bool,
+  showSidePanelTopScrollArrow: React.PropTypes.bool,
+  showSidePanelBottomScrollArrow: React.PropTypes.bool,
   poilists: React.PropTypes.object
 
   // showLayerSelector: React.PropTypes.bool,
@@ -95,6 +102,8 @@ export default connect(
     return {
       layers: state.layers,
       showSideNav: state.showSideNav,
+      showSidePanelTopScrollArrow: state.showSidePanelTopScrollArrow,
+      showSidePanelBottomScrollArrow: state.showSidePanelBottomScrollArrow,
       poilists: state.poilists
 
       // showLayerSelector: state.showLayerSelector,

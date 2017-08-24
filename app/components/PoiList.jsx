@@ -9,6 +9,14 @@ import {LAYERLABELS,LAYER_BGCOLORCLASS} from 'constants';
 
 export class PoiList extends React.Component {
 
+  // componentDidMount() {
+  //   setTimeout(function () {
+  //     document.getElementById('ccm-poi-list').addEventListener('scroll', (e) => {
+  //         console.log('JESSSSSSS jajja');
+  //         this.listenScrollEvent(e, this);
+  //     });
+  //   }, 500);
+  // }
   showModalMessage(msg) {
     const {dispatch} = this.props;
     dispatch(actions.setModalMessageText(msg));
@@ -16,9 +24,10 @@ export class PoiList extends React.Component {
   }
 
   onPoiClickHandler(layerId,poiData) {
+
     const {dispatch} = this.props;
 
-    console.log('onPoiClickHandler layerId,poiData', layerId,poiData);
+    console.log('onPoiClickHandler layerId,poiData', this,layerId,poiData);
     // poiObject.active = !poiObject.active;
 
     const poiViewData = {
@@ -119,9 +128,29 @@ export class PoiList extends React.Component {
     );
   }
 
+  listenScrollEvent(event) {
+    const {dispatch} = this.props;
+
+    const target = event.nativeEvent.target;
+
+    // console.log('target.scrollTop-->',target.scrollTop,target.offsetHeight,target.scrollHeight);
+    if(target.scrollTop <=2) {
+      dispatch(actions.hideSidePanelTopScrollArrow());
+    } else {
+      dispatch(actions.showSidePanelTopScrollArrow());
+    }
+
+    if((target.offsetHeight + target.scrollTop) === (target.scrollHeight + 4)) {
+      dispatch(actions.hideSidePanelBottomScrollArrow());
+    } else {
+      dispatch(actions.showSidePanelBottomScrollArrow());
+    }
+  }
+
   render() {
 
-    const {dispatch, layers, showSideNav,poilists} = this.props;
+    const {dispatch, layers, showSideNav,
+      poilists,showSidePanelTopScrollArrow,showSidePanelBottomScrollArrow} = this.props;
 
     // const poiArray = this.buildList(layers);
     // console.log('PoiList poiArray', poiArray);
@@ -174,9 +203,19 @@ export class PoiList extends React.Component {
 */
 
     const dynamicClass = 'ccm-poi-list ' + ((showSideNav)?'open':'');
+    const dynamicClassTopArrow = 'arrow top ' + ((showSidePanelTopScrollArrow)?'show':'hide')
+    const dynamicClassBottomArrow = 'arrow down ' + ((showSidePanelBottomScrollArrow)?'show':'hide')
     return (
-      <div className={dynamicClass}>
+      <div id="ccm-poi-list" className={dynamicClass} onScroll={(event)=> {
+         this.listenScrollEvent(event);
+      }}>
         {listgroupInstance}
+        <div className={dynamicClassTopArrow}>
+          <span className="glyphicon glyphicon-menu-up" aria-hidden="true" />
+        </div>
+        <div className={dynamicClassBottomArrow}>
+          <span className="glyphicon glyphicon-menu-down" aria-hidden="true" />
+        </div>
       </div>
     );
   }
@@ -190,6 +229,8 @@ PoiList.defaultProps = {
 PoiList.propTypes = {
   layers: React.PropTypes.object,
   showSideNav: React.PropTypes.bool,
+  showSidePanelTopScrollArrow: React.PropTypes.bool,
+  showSidePanelBottomScrollArrow: React.PropTypes.bool,
   poilists: React.PropTypes.object
 };
 
@@ -198,6 +239,8 @@ export default connect(
     return {
       layers: state.layers,
       showSideNav: state.showSideNav,
+      showSidePanelTopScrollArrow: state.showSidePanelTopScrollArrow,
+      showSidePanelBottomScrollArrow: state.showSidePanelBottomScrollArrow,
       poilists: state.poilists
 
     };

@@ -208,6 +208,30 @@ export const hideLoading = () => {
   };
 };
 
+export const showSidePanelTopScrollArrow = () => {
+  return {
+    type: 'SHOW_SIDE_PANEL_TOP_SCROLL_ARROW'
+  };
+};
+
+export const hideSidePanelTopScrollArrow = () => {
+  return {
+    type: 'HIDE_SIDE_PANEL_TOP_SCROLL_ARROW'
+  };
+};
+
+export const showSidePanelBottomScrollArrow = () => {
+  return {
+    type: 'SHOW_SIDE_PANEL_BOTTOM_SCROLL_ARROW'
+  };
+};
+
+export const hideSidePanelBottomScrollArrow = () => {
+  return {
+    type: 'HIDE_SIDE_PANEL_BOTTOM_SCROLL_ARROW'
+  };
+};
+
 export const showModal = () => {
   return {
     type: 'SHOW_MODAL'
