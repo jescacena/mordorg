@@ -27,6 +27,7 @@ export const API_URLS = {
   BAZARES_CHINOS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_bazares_chinos.json',
   TALLERES_MECANICOS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_talleres_mecanicos.json',
   FERRETERIAS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_ferreterias.json',
+  PELUQUERIAS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_peluquerias.json',
   FLORISTERIAS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_floristerias.json',
   FRUTERIAS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_fruterias.json',
   PESCADERIAS: 'https://raw.githubusercontent.com/jescacena/mordorg/master/ccpois2geojson/json/ccpois_pescaderias.json',
