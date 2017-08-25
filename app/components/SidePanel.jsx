@@ -26,15 +26,23 @@ export class SidePanel extends React.Component {
   * hasAnyLayerSelected
   * Check if there is any layer selected
   * @param {object} layers
+  * @param {object} poilists
   * @returns {boolean} true if exist any layer selected
   */
-  hasAnyLayerSelected(layers) {
+  hasAnyLayerSelected(layers,poilists) {
     let result = false;
     Object.keys(layers).forEach(function (layerKey) {
       if(layers[layerKey] && layers[layerKey].leafleftLayer && layers[layerKey].show) {
         result = true;
       }
     });
+    if(!result) {
+      Object.keys(poilists).forEach(function (key) {
+        if(poilists[key] && poilists[key].leafleftLayer && poilists[key].show) {
+          result = true;
+        }
+      });
+    }
     return result;
   }
 
@@ -46,7 +54,7 @@ export class SidePanel extends React.Component {
       poilists} = this.props;
     const dynamicClassButton = (showSideNav) ? 'side-nav icon-decorator left' : 'side-nav icon-decorator right';
 
-    const dynamicToggleButton = (this.hasAnyLayerSelected(layers))?
+    const dynamicToggleButton = (this.hasAnyLayerSelected(layers,poilists))?
             (<button
               className={dynamicClassButton}
               onClick={(event)=> {

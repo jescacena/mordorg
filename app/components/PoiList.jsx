@@ -51,23 +51,14 @@ export class PoiList extends React.Component {
   }
 
 
+
   /*
-  * buildList: loop over layers array and add active ones to list
+  * buildPoiListGroup: loop over layers array and add active ones to list
   * @type method
   * @param {object} layers
   * @returns Array of Features
   */
-  // buildPoiList(layers) {
-  //   let result = [];
-  //
-  //   Object.keys(layers).forEach(function (layerKey) {
-  //     if(layers[layerKey] && layers[layerKey].leafleftLayer && layers[layerKey].show) {
-  //       result = result.concat(layers[layerKey].data);
-  //     }
-  //   });
-  //   return result;
-  // }
-  buildPoiList(layerId, poiArray, bulletColorClass) {
+  buildPoiListGroup(layerId, poiArray, bulletColorClass) {
     let poiArraySorted = poiArray.sort(function(item1,item2) {
       return item1.properties.name.localeCompare(item2.properties.name);
     });
@@ -89,9 +80,30 @@ export class PoiList extends React.Component {
                                    </ListGroupItem>
                                  ));
   }
+
   /*
   * @method
   * @name buildPoiList
+  * loop over poilist and add them to list
+  * @type method
+  * @param {object} poilist
+  * @returns Array of Features
+  */
+  buildPoiList(poilist) {
+    console.log('JES poilist', poilist);
+    let result = [];
+
+    // Object.keys(layers).forEach(function (layerKey) {
+    //   if(layers[layerKey] && layers[layerKey].leafleftLayer && layers[layerKey].show) {
+    //     result = result.concat(layers[layerKey].data);
+    //   }
+    // });
+    return this.buildLayerList(poilist);
+  }
+
+  /*
+  * @method
+  * @name buildLayerList
   * loop over layers array and add active ones to list
   * @type method
   * @param {object} layers
@@ -122,7 +134,7 @@ export class PoiList extends React.Component {
                                   active={ item.active }>
                                   <h5>{item.title}</h5>
                                 </ListGroupItem>
-                                {this.buildPoiList(item.key,item.data,item.fgcolor)}
+                                {this.buildPoiListGroup(item.key,item.data,item.fgcolor)}
                               </div>
                            ));
 
@@ -133,6 +145,13 @@ export class PoiList extends React.Component {
     );
   }
 
+  /*
+  * @method
+  * @name listenScrollEvent
+  * scroll event handler
+  * @type method
+  * @param {object} event
+  */
   listenScrollEvent(event) {
     const {dispatch} = this.props;
 
@@ -193,7 +212,7 @@ export class PoiList extends React.Component {
     //   </ListGroup>
     // );
 
-    const listgroupInstance = this.buildLayerList(layers);
+    const listgroupInstance = (poilists)? this.buildPoiList(poilists) : this.buildLayerList(layers);
 
     /*
     // <ListGroupItem

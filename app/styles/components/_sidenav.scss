@@ -16,7 +16,7 @@
       font-size: 0.85em;
       height: 3em;
       &.left {
-        left: 27.2em;
+        left: 21.9em;
         @include handset {
           left: 9.7em;
         }
@@ -47,9 +47,10 @@
 
   .ccm-poi-list {
     display: block;
+    margin-left: 0.5em;
     // position: absolute;
     position:relative;
-    width:23.2em;
+    width:18.2em;
     top: 0em;
     left: -24em;
     z-index: 0;

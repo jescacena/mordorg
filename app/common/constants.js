@@ -125,6 +125,16 @@ export const CUSTOM_SUBTYPE_ICONS = {
     markerColor: 'cadetblue',
     prefix: 'fa'
   },
+  supermercado: {
+    icon: 'shopping-basket',
+    markerColor: 'cadetblue',
+    prefix: 'fa'
+  },
+  peluqueria: {
+    icon: 'users',
+    markerColor: 'purple',
+    prefix: 'fa'
+  },
   bazar_alimentacion: {
     icon: 'wrench',
     markerColor: 'purple',
@@ -171,16 +181,6 @@ export const CUSTOM_SUBTYPE_ICONS = {
     prefix: 'fa'
   },
   carniceria: {
-    icon: 'shopping-basket',
-    markerColor: 'cadetblue',
-    prefix: 'fa'
-  },
-  supermercado: {
-    icon: 'shopping-basket',
-    markerColor: 'cadetblue',
-    prefix: 'fa'
-  },
-  bazar_alimentacion: {
     icon: 'shopping-basket',
     markerColor: 'cadetblue',
     prefix: 'fa'
@@ -265,9 +265,6 @@ export const CUSTOM_SUBTYPE_ICONS = {
     markerColor: 'darkpurple',
     prefix: 'fa'
   }
-
-
-
 
 };
 
@@ -354,9 +351,19 @@ export const LAYERLABELS = {
   CLOTHES: 'Ropa / Complementos',
   BANKS: 'Bancos / Cajeros',
   POLICE: 'Policía / Guardia Civil',
-  BAZAARS: 'Bazares y otros'
+  BAZAARS: 'Bazares y otros',
+  PELUQUERIAS: 'Peluquerías',
+  FRUTERIAS: 'Fruterías',
+  FERRETERIAS: 'Ferreterías',
+  PANADERIAS: 'Panaderías',
+  CARNICERIAS: 'Carnicerías',
+  FLORISTERIAS: 'Floristerías',
+  SUPERMERCADOS: 'Supermercados',
+  TALLERES_MECANICOS: 'Talleres mecánicos',
+  PESCADERIAS: 'Pescaderías',
+  CENTROS_CULTURALES: 'Centros culturales',
+  ZONAS_INFANTILES: 'Zonas infantiles'
 };
-
 
 export const LAYER_BGCOLORCLASS = {
   SCHOOLS: 'bg-blue',
@@ -366,7 +373,20 @@ export const LAYER_BGCOLORCLASS = {
   CLOTHES: 'bg-purple',
   BANKS: 'bg-darkred',
   POLICE: 'bg-darkgreen',
-  BAZAARS: 'bg-magenta'
+  BAZAARS: 'bg-magenta',
+  PELUQUERIAS: 'bg-magenta',
+  FRUTERIAS: 'bg-cadetblue',
+  FERRETERIAS: 'bg-magenta',
+  PANADERIAS: 'bg-cadetblue',
+  CARNICERIAS: 'bg-cadetblue',
+  FLORISTERIAS: 'bg-magenta',
+  SUPERMERCADOS: 'bg-cadetblue',
+  TALLERES_MECANICOS: 'bg-magenta',
+  PESCADERIAS: 'bg-cadetblue',
+  CENTROS_CULTURALES: 'bg-orange',
+  ZONAS_INFANTILES: 'bg-orange'
+
+
 };
 
 export const LAYER_FGCOLORCLASS = {
@@ -377,7 +397,20 @@ export const LAYER_FGCOLORCLASS = {
   CLOTHES: 'fg-purple',
   BANKS: 'fg-darkred',
   POLICE: 'fg-darkgreen',
-  BAZAARS: 'fg-magenta'
+  BAZAARS: 'fg-magenta',
+  PELUQUERIAS: 'fg-magenta',
+  FRUTERIAS: 'fg-cadetblue',
+  FERRETERIAS: 'fg-magenta',
+  PANADERIAS: 'fg-cadetblue',
+  CARNICERIAS: 'fg-cadetblue',
+  FLORISTERIAS: 'fg-magenta',
+  SUPERMERCADOS: 'fg-cadetblue',
+  TALLERES_MECANICOS: 'fg-magenta',
+  PESCADERIAS: 'fg-cadetblue',
+  CENTROS_CULTURALES: 'fg-orange',
+  ZONAS_INFANTILES: 'fg-orange'
+
+
 };
 
 // export const googleMapsClient = require('@google/maps').createClient({

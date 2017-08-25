@@ -348,6 +348,10 @@ export const startViewPoiList= (listkey) => {
         dispatch(setPoiListData(listkey, response.features));
         dispatch(hideLoading());
         dispatch(setFitToBounds());
+        if(!getState().showSideNav) {
+          dispatch(toggleSideNav());
+        }
+
       } else if(response.no_layer_data) {
         console.log(response.no_layer_data);
       }
