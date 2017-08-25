@@ -16,7 +16,7 @@
       font-size: 0.85em;
       height: 3em;
       &.left {
-        left: 16.7em;
+        left: 27.2em;
         @include handset {
           left: 9.7em;
         }
@@ -46,18 +46,20 @@
 
 
   .ccm-poi-list {
-    display: none;
+    display: block;
     // position: absolute;
     position:relative;
-
+    width:23.2em;
     top: 0em;
-    width:14.2em;
+    left: -24em;
+    z-index: 0;
+    -webkit-transition: left 0.3s ease; /* Safari */
+    transition: left 0.3s ease;
     @include handset {
       width:8.2em;
     }
-    z-index: 0;
     &.open {
-      display: block;
+      left: 0em;
     }
 
     .arrow {
@@ -90,14 +92,16 @@
       border-radius: 10px;
 
       .list-group-item {
+        // text-align: center;
         border: 1px solid $light-grey-border;
         background-color: $light-grey-transparent;
         color:$grey;
-        padding:10px 10px 0px 10px;
+        padding:15px 0px 0px 0px;
         cursor:pointer;
         border-radius:0;
+        font-size: 0.9em;
         &:last-child {
-          padding:10px;
+          padding:15px 0px 15px 0px;
         }
         &.title {
           padding:10px;
@@ -115,12 +119,21 @@
           }
         }
         img {
-          width: 150px;
+          width: 100%;
+          border: 1px solid $light-grey-border;
         }
         @include handset {
           font-size:0.8em;
           img {
-            width: 89px;
+            // width: 89px;
+          }
+        }
+        .text-poi {
+          display: inline-block;
+          margin-left:0.2em;
+          text-transform: capitalize;
+          .glyphicon {
+            margin-right: 0.1em;
           }
         }
       }

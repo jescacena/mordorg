@@ -368,6 +368,17 @@ export const LAYER_BGCOLORCLASS = {
   BAZAARS: 'bg-magenta'
 };
 
+export const LAYER_FGCOLORCLASS = {
+  SCHOOLS: 'fg-blue',
+  MUNICIPAL_SERVICES: 'fg-orange',
+  FOOD: 'fg-cadetblue',
+  HEALTH: 'fg-green',
+  CLOTHES: 'fg-purple',
+  BANKS: 'fg-darkred',
+  POLICE: 'fg-darkgreen',
+  BAZAARS: 'fg-magenta'
+};
+
 // export const googleMapsClient = require('@google/maps').createClient({
 //   key: 'AIzaSyC4hAxLWQYK86JGwSCI3FB4TiuAGRU-ez4',
 //   Promise: Promise

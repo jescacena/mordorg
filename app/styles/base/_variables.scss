@@ -95,6 +95,61 @@ $brown: #A03439;
   @include bg-magenta;
 }
 
+/* Layer foreground colors */
+@mixin fg-red {
+  color: $red !important;
+}
+.fg-red {
+  @include fg-red;
+}
+@mixin fg-blue {
+  color: $blue  !important;
+}
+.fg-blue {
+  @include fg-blue;
+}
+@mixin fg-orange {
+  color: $orange !important;
+}
+.fg-orange {
+  @include fg-orange;
+}
+@mixin fg-cadetblue {
+  color: $cadetblue !important;
+}
+.fg-cadetblue {
+  @include fg-cadetblue;
+}
+@mixin fg-green {
+  color: $green !important;
+}
+.fg-green {
+  @include fg-green;
+}
+@mixin fg-purple {
+  color: $purple !important;
+}
+.fg-purple {
+  @include fg-purple;
+}
+@mixin fg-darkred {
+  color: $darkred !important;
+}
+.fg-darkred {
+  @include fg-darkred;
+}
+@mixin fg-darkgreen {
+  color: $darkgreen !important;
+}
+.fg-darkgreen {
+  @include fg-darkgreen;
+}
+@mixin fg-magenta {
+  color: $magenta !important;
+}
+.fg-magenta {
+  @include fg-magenta;
+}
 /*Responsive*/
 $handset-width: 320px;
 $tablet-width: 768px;

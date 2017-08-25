@@ -4,7 +4,7 @@ const actions = require('actions');
 
 import { ListGroup, ListGroupItem} from 'react-bootstrap';
 
-import {LAYERLABELS,LAYER_BGCOLORCLASS} from 'constants';
+import {LAYERLABELS, LAYER_BGCOLORCLASS, LAYER_FGCOLORCLASS} from 'constants';
 
 
 export class PoiList extends React.Component {
@@ -67,10 +67,11 @@ export class PoiList extends React.Component {
   //   });
   //   return result;
   // }
-  buildPoiList(layerId, poiArray) {
+  buildPoiList(layerId, poiArray, bulletColorClass) {
     let poiArraySorted = poiArray.sort(function(item1,item2) {
       return item1.properties.name.localeCompare(item2.properties.name);
     });
+    const dcBulletClass = 'glyphicon glyphicon-stop ' + bulletColorClass;
     return poiArraySorted.map((feature) => (
                                    <ListGroupItem
                                      key={feature.properties.name}
@@ -80,7 +81,10 @@ export class PoiList extends React.Component {
                                         this.onPoiClickHandler(layerId, feature);
 
                                      }}>
-                                     {feature.properties.name}
+                                     <span className="text-poi">
+                                       <span className={dcBulletClass}></span>
+                                       {feature.properties.name.toLowerCase()}
+                                     </span>
                                      <img src={feature.properties.image_front_for_facebook_app} />
                                    </ListGroupItem>
                                  ));
@@ -103,6 +107,7 @@ export class PoiList extends React.Component {
           key: layerKey,
           title: LAYERLABELS[layerKey.toUpperCase()],
           bgcolor: LAYER_BGCOLORCLASS[layerKey.toUpperCase()],
+          fgcolor: LAYER_FGCOLORCLASS[layerKey.toUpperCase()],
           active: false,
           data: layers[layerKey].data
         });
@@ -117,7 +122,7 @@ export class PoiList extends React.Component {
                                   active={ item.active }>
                                   <h5>{item.title}</h5>
                                 </ListGroupItem>
-                                {this.buildPoiList(item.key,item.data)}
+                                {this.buildPoiList(item.key,item.data,item.fgcolor)}
                               </div>
                            ));
 
