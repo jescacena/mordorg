@@ -15,12 +15,12 @@
       padding:0.8em;
       font-size: 0.85em;
       height: 3em;
+      top: 1.5em;
       &.left {
         left: 21.9em;
         @include handset {
-          left: 9.7em;
+          left: 10.2em;
         }
-        top: 1em;
         // border-top:2px solid $black-transparent;
         // border-right:2px solid $black-transparent;
         // border-bottom:2px solid $black-transparent;
@@ -51,7 +51,7 @@
     // position: absolute;
     position:relative;
     width:18.2em;
-    top: 0em;
+    top: 0.5em;
     left: -24em;
     z-index: 0;
     -webkit-transition: left 0.3s ease; /* Safari */

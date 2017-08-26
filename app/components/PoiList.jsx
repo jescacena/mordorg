@@ -173,58 +173,15 @@ export class PoiList extends React.Component {
 
   render() {
 
-    const {dispatch, layers, showSideNav,
-      poilists,showSidePanelTopScrollArrow,showSidePanelBottomScrollArrow} = this.props;
+    const {layers, showSideNav,
+      poilists, showSidePanelTopScrollArrow,
+      showSidePanelBottomScrollArrow} = this.props;
 
-    // const poiArray = this.buildList(layers);
-    // console.log('PoiList poiArray', poiArray);
-
-    // const dynamicClassSchools = (layers.schools && layers.schools.show) ? 'icon-decorator schools selected' : 'icon-decorator schools';
-    // const dynamicClassFood = (layers.food && layers.food.show) ? 'icon-decorator food selected' : 'icon-decorator food';
-    // const dynamicClassHealth = (layers.health && layers.health.show) ? 'icon-decorator health selected' : 'icon-decorator health';
-    // const dynamicClassRestaurants = (layers.restaurants && layers.restaurants.show) ? 'icon-decorator restaurants selected' : 'icon-decorator restaurants';
-    // const dynamicClassPublicTransports = (layers.public_transports && layers.public_transports.show) ? 'icon-decorator public-transports selected' : 'icon-decorator public-transports';
-    // const dynamicClassHotels = (layers.hotels && layers.hotels.show) ? 'icon-decorator hotels selected' : 'icon-decorator hotels';
-    // const dynamicClassMunicipalServices = (layers.municipal_services && layers.municipal_services.show) ? 'icon-decorator municipal_services selected' : 'icon-decorator municipal_services';
-    // const dynamicClassClothes = (layers.clothes && layers.clothes.show) ? 'icon-decorator clothes selected' : 'icon-decorator clothes';
-    // const dynamicClassBazaars = (layers.bazaars && layers.bazaars.show) ? 'icon-decorator bazaars selected' : 'icon-decorator bazaars';
-    // const dynamicClassBanks = (layers.banks && layers.banks.show) ? 'icon-decorator banks selected' : 'icon-decorator banks';
-    // const dynamicClassPolice = (layers.police && layers.police.show) ? 'icon-decorator police selected' : 'icon-decorator police';
-
-    // let titlePoiList = 'Capa de Pois';
-    // let lgiArray = null;
-    //
-    // if(poiArray && poiArray.length > 0) {
-    //   lgiArray = poiArray.map((item) => (
-    //                                <ListGroupItem key={item.properties.wpid}
-    //                                  active={ true }>{item.properties.name}
-    //                                  <img src={item.properties.image_front} />
-    //                                </ListGroupItem>
-    //                              ));
-    // } else {
-    //   lgiArray = (<ListGroupItem  active={ true }>No hay puntos de interés seleccionados</ListGroupItem>);
-    // }
-    //
-    // const listgroupInstance = (
-    //   <ListGroup>
-    //     <ListGroupItem  active={ true }><h3>{titlePoiList}</h3></ListGroupItem>
-    //     {lgiArray}
-    //   </ListGroup>
-    // );
-
-    const listgroupInstance = (poilists)? this.buildPoiList(poilists) : this.buildLayerList(layers);
-
-    /*
-    // <ListGroupItem
-    //   onClick={(event)=> {
-    //     $(event.target).blur();
-    //     this.showModalMessage('Datos aún no disponibles');
-    //
-    //     // this.onClickHandler('public_transports');
-    //   }}
-    //   className={dynamicClassPublicTransports}
-    //   active={(layers.public_transports && layers.public_transports.show) ? true : false}>Transporte público</ListGroupItem>
-*/
+    const listgroupInstance = (Object.keys(poilists).length === 0 && poilists.constructor === Object)?
+      this.buildLayerList(layers)
+      :
+      this.buildPoiList(poilists)
+      ;
 
     const dynamicClass = 'ccm-poi-list ' + ((showSideNav)?'open':'');
     const dynamicClassTopArrow = 'arrow top ' + ((showSidePanelTopScrollArrow)?'show':'hide')
@@ -247,6 +204,9 @@ export class PoiList extends React.Component {
 
 PoiList.defaultProps = {
   layers: {},
+  poilists: {},
+  showSidePanelTopScrollArrow: false,
+  showSidePanelBottomScrollArrow: false,
   showSideNav: false
 };
 
