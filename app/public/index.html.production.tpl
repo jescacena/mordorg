@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="/app/public/manifest.json">
     <link rel="shortcut icon" type="image/png" href="img/cercedilla_escudo_favicon.png"/>
     <!-- TODO make icons pending-->
     <link rel="icon" sizes="192x192" href="img/logo-192x192.png">
