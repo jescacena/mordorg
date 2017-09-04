@@ -9,6 +9,10 @@ html, body {
 .ccm-container {
   background-color: #9ED0E6;
   height: 100vh;
+  @include handset {
+    // height: 92vh;
+    display:table-row;
+  }
   position:relative;
 
   .ccm-modal-message {

@@ -19,5 +19,13 @@
         }
       }
     }
+    .leaflet-bottom.leaflet-right {
+      @include handset {
+        .leaflet-control-zoom {
+          position: relative;
+          // top:-3.5em;
+        }
+      }
+    }
   }
 }
