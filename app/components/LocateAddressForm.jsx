@@ -18,12 +18,12 @@ export class LocateAddressForm extends React.Component {
   handleNewPlaceSelected(place) {
     const {dispatch, areas, locateAddressInAreaData, leafletMap} = this.props;
 
-    console.log('LocateAddressForm place --->', place);
-    console.log('LocateAddressForm place lat--->', place.geometry.location.lat());
-    console.log('LocateAddressForm place lng --->', place.geometry.location.lng());
-    console.log('LocateAddressForm areas --->', areas);
-    console.log('LocateAddressForm locateAddressInAreaData --->', locateAddressInAreaData);
-    console.log('LocateAddressForm leafletMap --->', leafletMap);
+    // console.log('LocateAddressForm place --->', place);
+    // console.log('LocateAddressForm place lat--->', place.geometry.location.lat());
+    // console.log('LocateAddressForm place lng --->', place.geometry.location.lng());
+    // console.log('LocateAddressForm areas --->', areas);
+    // console.log('LocateAddressForm locateAddressInAreaData --->', locateAddressInAreaData);
+    // console.log('LocateAddressForm leafletMap --->', leafletMap);
 
     // window.L.GeometryUtil = require('leaflet-geometryutil');
 
@@ -42,9 +42,9 @@ export class LocateAddressForm extends React.Component {
     if(closest) {
       const pointTo = L.latLng([closest.lat, closest.lng]);
 
-      console.log('LocateAddressForm pointFrom --->', pointFrom);
-      console.log('LocateAddressForm pointTo --->', pointTo);
-      console.log('LocateAddressForm distance --->', closest.distance);
+      // console.log('LocateAddressForm pointFrom --->', pointFrom);
+      // console.log('LocateAddressForm pointTo --->', pointTo);
+      // console.log('LocateAddressForm distance --->', closest.distance);
 
       dispatch(actions.setLocateAddressInAreaPointFrom(pointFrom));
       dispatch(actions.setLocateAddressInAreaPointTo(pointTo));
@@ -89,7 +89,8 @@ export class LocateAddressForm extends React.Component {
 
     return (
       <div className={dynamicClass}>
-        <h3>Escribe la dirección que quieres localizar:</h3>
+        <h2>DISTANCIA AL PARQUE NACIONAL DESDE LOCALIZACIONES DE CERCEDILLA</h2>
+        <h3>Introduce la dirección a localizar:</h3>
         <div className="input-group">
             <input type="text" id="locate-address-box"
               className="form-control"
