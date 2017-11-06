@@ -8,6 +8,9 @@ export const API_AREA_URLS = {
   SIERRA_GUADARRAMA_LIMITS: 'https://cercemap.org/app/json/limites_parque_nacional_sierra_guadarrama-polygon.json'
 };
 
+export const GOOGLE_MAPS_DISTANCE_MATRIX_API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=@ORIGIN&destinations=@DESTINATION&key=AIzaSyDhOq5P3RiZP3KUsfCBG0HriXfHQg52j-M';
+export const CERCEMAP_DISTANCE_SERVICE_URL = 'https://cercemap.org/geo-distance-calculation-service/index2.php?lat1=@LAT1&lon1=@LON1&lat2=@LAT2&lon2=@LON2';
+
 // [center_lat, center_lng, zoom]
 export const AREA_CENTER = {
   SIERRA_GUADARRAMA_LIMITS: [40.80757278825516, -3.961257934570312, 11]

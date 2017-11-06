@@ -42,43 +42,49 @@ export class LocateAddressForm extends React.Component {
     if(closest) {
       const pointTo = L.latLng([closest.lat, closest.lng]);
 
-      // console.log('LocateAddressForm pointFrom --->', pointFrom);
-      // console.log('LocateAddressForm pointTo --->', pointTo);
-      // console.log('LocateAddressForm distance --->', closest.distance);
+      console.log('LocateAddressForm pointFrom --->', pointFrom);
+      console.log('LocateAddressForm pointTo --->', pointTo);
 
-      dispatch(actions.setLocateAddressInAreaPointFrom(pointFrom));
-      dispatch(actions.setLocateAddressInAreaPointTo(pointTo));
+      //Request Google API Distance
+      GeometryService.distanceCercemapService(pointFrom, pointTo).then((res) => {
+
+        console.log('LocateAddressForm distance --->', res);
+        const distanceInKm = res;
 
 
+        dispatch(actions.setLocateAddressInAreaPointFrom(pointFrom));
+        dispatch(actions.setLocateAddressInAreaPointTo(pointTo));
 
-      // dispatch(actions.renderLine(pointFrom, pointTo));
+        // dispatch(actions.renderLine(pointFrom, pointTo));
 
-      // create a red polyline from an array of LatLng points
-      const polyline = L.polyline([pointFrom, pointTo], {color: 'red',opacity: 0.5}).addTo(leafletMap);
+        // create a red polyline from an array of LatLng points
+        const polyline = L.polyline([pointFrom, pointTo], {color: 'red',opacity: 0.5}).addTo(leafletMap);
 
-      // zoom the map to the polyline
-      // dispatch(actions.setFlyToPoint(place.geometry.location.lat(),
-      //                                 place.geometry.location.lng(), 10));
-      const icon = L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS.default);
-      let markerFrom = L.marker(pointFrom, {icon: icon}).addTo(leafletMap);
-      const distanceInKm = Math.round(closest.distance/1000);
-      const distanceLabel = (distanceInKm <= 0)? Math.round(closest.distance) + ' m' : distanceInKm + ' km';
-      const context = {
-        message: 'Tu dirección está a <div class="distance">'+ distanceLabel +' </div> del límite del Parque Nacional'
-      };
+        // zoom the map to the polyline
+        // dispatch(actions.setFlyToPoint(place.geometry.location.lat(),
+        //                                 place.geometry.location.lng(), 10));
+        const icon = L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS.default);
+        let markerFrom = L.marker(pointFrom, {icon: icon}).addTo(leafletMap);
+        // const distanceInKm = Math.round(closest.distance/1000);
+        const distanceLabel = (distanceInKm < 1)? (distanceInKm*1000) + ' m' : distanceInKm + ' km';
+        const context = {
+          message: 'Tu dirección está a <div class="distance">'+ distanceLabel +' </div> del límite del Parque Nacional'
+        };
 
-      const html = POPUP_LAIA_TEMPLATE(context);
+        const html = POPUP_LAIA_TEMPLATE(context);
 
-      markerFrom.bindPopup(html, POPUP_LAIA_OPTIONS);
-      markerFrom.openPopup();
+        markerFrom.bindPopup(html, POPUP_LAIA_OPTIONS);
+        markerFrom.openPopup();
 
-      let markerTo = L.marker(pointTo, {icon: icon}).addTo(leafletMap);
+        let markerTo = L.marker(pointTo, {icon: icon}).addTo(leafletMap);
 
-      leafletMap.setView(pointFrom, 15);
-      leafletMap.fitBounds(polyline.getBounds());
-
+        leafletMap.setView(pointFrom, 15);
+        leafletMap.fitBounds(polyline.getBounds());
+        dispatch(actions.hideLocateAddresInAreaForm());
+      });
+    } else {
+      dispatch(actions.hideLocateAddresInAreaForm());
     }
-    dispatch(actions.hideLocateAddresInAreaForm());
   }
 
   render() {

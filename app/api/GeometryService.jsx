@@ -1,6 +1,8 @@
 // import {API_URLS, API_NO_LAYER_DATA_MESSAGE, API_AREA_URLS} from 'constants';
-
+const axios = require('axios');
 const leafletPip = require('@mapbox/leaflet-pip');
+import {CERCEMAP_DISTANCE_SERVICE_URL} from 'constants';
+
 
 module.exports = {
 
@@ -16,6 +18,33 @@ module.exports = {
     const result = L.GeometryUtil.distance(map, latlngA, latlngB);
     console.log('GeometryService: distance result --->', result);
     return result;
+  },
+
+  /*
+  * Get distance in km from Google API Service
+  */
+  distanceCercemapService(pointFrom, pointTo) {
+
+    let requestUrl = CERCEMAP_DISTANCE_SERVICE_URL;
+    requestUrl = requestUrl.replace('@LAT1', pointFrom.lat);
+    requestUrl = requestUrl.replace('@LON1', pointFrom.lng);
+    requestUrl = requestUrl.replace('@LAT2', pointTo.lat);
+    requestUrl = requestUrl.replace('@LON2', pointTo.lng);
+
+    console.log('GeometryService:distanceCercemapService requestUrl --->', requestUrl);
+    return axios.get(requestUrl).then(function (res) {
+      console.log('GeometryService:distanceCercemapService OK res-->', res);
+      if (!res || !res.data) {
+        throw new Error('Error fetching distance from Cercemap service');
+      } else {
+        return res.data.distance;
+      }
+    }, function (res) {
+      // throw new Error(res.data);
+      console.log('GeometryService:distanceCercemapService ERROR res-->', res);
+      return [];
+    });
+
   },
 
   /*

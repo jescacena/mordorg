@@ -1,6 +1,6 @@
 {
   "name": "cercemap-app",
-  "version": "1.9.16",
+  "version": "1.9.17",
   "description": "Web app for showing maps in Cercedilla and close locations",
   "main": "index.js",
   "scripts": {
