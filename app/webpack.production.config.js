@@ -124,6 +124,7 @@ module.exports = {
       MapLayer: 'components/MapLayer.jsx',
       SearchBox: 'components/SearchBox.jsx',
       LocateAddressForm: 'components/LocateAddressForm.jsx',
+      LocateUserPositionForm: 'components/LocateUserPositionForm.jsx',
       Legend: 'components/Legend.jsx',
       Logo: 'components/Logo.jsx',
       Footer: 'components/Footer.jsx',

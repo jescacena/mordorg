@@ -11,7 +11,7 @@ html, body {
   height: 100vh;
   @include handset {
     // height: 92vh;
-    display:table-row;
+    // display:table-row;
   }
   position:relative;
 

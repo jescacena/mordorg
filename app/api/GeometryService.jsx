@@ -48,6 +48,21 @@ module.exports = {
   },
 
   /*
+  * Get distance in km from Google API Service
+  */
+  distanceCercemapService2(pointFrom, pointTo) {
+
+    let requestUrl = CERCEMAP_DISTANCE_SERVICE_URL;
+    requestUrl = requestUrl.replace('@LAT1', pointFrom.lat);
+    requestUrl = requestUrl.replace('@LON1', pointFrom.lng);
+    requestUrl = requestUrl.replace('@LAT2', pointTo.lat);
+    requestUrl = requestUrl.replace('@LON2', pointTo.lng);
+
+    console.log('GeometryService:distanceCercemapService requestUrl --->', requestUrl);
+    return axios.get(requestUrl);
+  },
+
+  /*
   * Get closest point to line (point Array)
   * @param map {object} L.Map
   * @param latlngArray {object} point (L.LatLng) Array
@@ -55,7 +70,7 @@ module.exports = {
   * @return distance {number}
   */
   closest(map, latlngArray, latlng) {
-    // console.log('JESSSS L', L.GeometryUtil);
+    console.log('JESSSS closest latlngArray', latlngArray ,latlng);
     const result = L.GeometryUtil.closest(map, latlngArray, latlng);
     console.log('GeometryService: closest result --->', result);
     return result;

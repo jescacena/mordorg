@@ -5,7 +5,7 @@ const GeometryService = require('GeometryService');
 const $ = require('jQuery');
 const MapLayerUtils = require('MapLayerUtils');
 const actions = require('actions');
-import {CUSTOM_LAYER_ICONS} from 'constants';
+import {CUSTOM_LAYER_ICONS, POPUP_LUIA_OPTIONS, POPUP_LUIA_TEMPLATE} from 'constants';
 import { Map, Marker, Popup, TileLayer, GeoJSON, ScaleControl, ZoomControl } from 'react-leaflet';
 const screenfull = require('screenfull');
 
@@ -78,12 +78,25 @@ export class MapLayer extends React.Component {
         dispatch(actions.showLoading());
         dispatch(actions.startViewArea(areaId));
       }
+    } else if(path.indexOf('/locate-user-position-in-area/')!==-1) {
+      const tokens = path.split('/');
+      if(tokens[2]){
+        areaId = tokens[2];
+        console.log('JESSSS locate-user-position-in-area-->', areaId);
+
+        dispatch(actions.hideLocateAddresInAreaForm());
+        dispatch(actions.showLoading());
+        dispatch(actions.setLocateUserPositionInAreaAreaId(areaId));
+        dispatch(actions.startViewArea(areaId));
+        dispatch(actions.showLocateUserPositionInAreaForm());
+      }
     } else if(path.indexOf('/locate-address-in-area/')!==-1) {
       const tokens = path.split('/');
       if(tokens[2]){
         areaId = tokens[2];
         console.log('JESSSS locate-address-in-area-->', areaId);
 
+        dispatch(actions.hideLocateUserPositionInAreaForm());
         dispatch(actions.showLoading());
         dispatch(actions.setLocateAddressInAreaAreaId(areaId));
         dispatch(actions.startViewArea(areaId));
@@ -133,8 +146,8 @@ export class MapLayer extends React.Component {
       let map = this.refs.map.leafletElement;
 
       let {flyToPoint, layers, areas, poilists, fitToBounds,
-        fullScreenMode, showPopupPoiData, locateAddressInAreaData, locateUserPosition,
-        center, zoom, markers, leafletMap, dispatch} = this.props;
+        fullScreenMode, showPopupPoiData, locateAddressInAreaData, locateUserPositionInAreaData, locateUserPosition,
+        center, zoom, markers, leafletMap, dispatch, path} = this.props;
 
       if(!leafletMap || $.isEmptyObject(leafletMap)) {
         dispatch(actions.setLeafletMapInstance(map));
@@ -199,15 +212,51 @@ export class MapLayer extends React.Component {
 
         map.on('locationfound', function(e) {
             if(this.userMarker) {
-              leafletMap.removeLayer(this.userMarker);
+              map.removeLayer(this.userMarker);
             }
             this.userMarker = L.marker(e.latlng, {icon: personIcon});
             this.userMarker.addTo(map);
+
+            if(path.indexOf('/locate-user-position-in-area/')!==-1) {
+              const areaLocationArray = areas[locateUserPositionInAreaData.areaId].data.features[0].geometry.coordinates[0];
+
+              MapLayerUtils.calculateDistanceBetweenAreaAndPoint(areaLocationArray, e.latlng, leafletMap).then((response)=> {
+                const distanceInKm = response.distance;
+                const pointTo = L.latLng([response.closestPoint.lat, response.closestPoint.lng]);
+                let polyline = L.polyline([e.latlng, pointTo], {color: 'red',opacity: 0.5});
+                const icon = L.AwesomeMarkers.icon(CUSTOM_LAYER_ICONS.default);
+                let markerTo = L.marker(pointTo, {icon: icon});
+                const distanceLabel = (distanceInKm < 1)? (distanceInKm*1000) + ' m' : distanceInKm + ' km';
+
+                // create a red polyline from an array of LatLng points
+                polyline.addTo(leafletMap);
+                markerTo.addTo(leafletMap);
+                const context = {
+                  message: 'Tu posición está a <div class="distance">'+ distanceLabel +' </div> del límite del Parque Nacional'
+                };
+                const html = POPUP_LUIA_TEMPLATE(context);
+                this.userMarker.bindPopup(html, POPUP_LUIA_OPTIONS);
+                this.userMarker.openPopup();
+
+                // zoom the map to the polyline
+                const zoomResult = (distanceInKm < 1)? 15 : 11;
+                leafletMap.setView(e.latlng, zoomResult);
+                leafletMap.fitBounds(polyline.getBounds());
+              });
+
+            }
+
             dispatch(actions.disableLocateUserPosition());
+            dispatch(actions.hideLocateAddresInAreaForm());
+            dispatch(actions.hideLocateUserPositionInAreaForm());
+
         });
-        leafletMap.on('locationerror', function(e) {
+        map.on('locationerror', function(e) {
             console.log(e);
             dispatch(actions.disableLocateUserPosition());
+            dispatch(actions.hideLocateAddresInAreaForm());
+            dispatch(actions.hideLocateUserPositionInAreaForm());
+
             dispatch(actions.setModalMessageText('No se ha podido capturar su ubicación. Es necesario conceder permisos de ubicación.'));
             dispatch(actions.showModal());
 
@@ -272,6 +321,7 @@ MapLayer.propTypes = {
   flyToPoint: React.PropTypes.object,
   showPopupPoiData: React.PropTypes.object,
   locateAddressInAreaData: React.PropTypes.object,
+  locateUserPositionInAreaData: React.PropTypes.object,
   fitToBounds: React.PropTypes.bool,
   fullScreenMode: React.PropTypes.bool,
   path: React.PropTypes.string,
@@ -297,6 +347,7 @@ export default connect(
       fullScreenMode: state.fullScreenMode,
       showPopupPoiData: state.showPopupPoiData,
       locateAddressInAreaData: state.locateAddressInAreaData,
+      locateUserPositionInAreaData: state.locateUserPositionInAreaData,
       leafletMap: state.leafletMap,
       locateUserPosition: state.locateUserPosition
     };

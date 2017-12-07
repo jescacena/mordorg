@@ -1,7 +1,7 @@
 .leaflet-popup-pane {
   z-index:111111111;
 }
-.ccm-marker-popup-laia {
+.ccm-marker-popup-laia ,.ccm-marker-popup-luia{
   z-index:111111111;
 
   a.leaflet-popup-close-button {
@@ -102,4 +102,8 @@
   .street-view {
     height: 12em;
   }
+}
+
+.ccm-marker-popup-luia {
+  bottom:0 !important;
 }

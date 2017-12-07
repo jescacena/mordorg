@@ -54,6 +54,7 @@
     font-size: 1.2em;
     @include handset-tablet {
       font-size: 0.9em;
+      padding: 0 0.5em;
     }
     color: $light-orange;
   }

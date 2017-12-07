@@ -46,6 +46,33 @@ export const locateAddressInAreaDataReducer = (state = {}, action) => {
   }
 };
 
+export const locateUserPositionInAreaDataReducer = (state = {}, action) => {
+  switch(action.type) {
+  case 'SET_POPUP_MESSAGE_LUIA_DATA':
+    return {
+      ...state,
+      data: action.data
+    };
+  case 'SET_LUIA_AREAID':
+    return {
+      ...state,
+      areaId: action.areaId
+    };
+  case 'SET_LUIA_POINT_FROM':
+    return {
+      ...state,
+      pointFrom: action.pointFrom
+    };
+  case 'SET_LUIA_POINT_TO':
+    return {
+      ...state,
+      pointTo: action.pointTo
+    };
+  default:
+    return state;
+  }
+};
+
 export const locateUserPositionReducer = (state = false, action) => {
   switch(action.type) {
   case 'LOCATE_USER_POSITION':
@@ -62,6 +89,17 @@ export const locateAddressInAreaFormReducer = (state = false, action) => {
   case 'SHOW_LOCATE_ADDRESS_IN_AREA_FORM':
     return true;
   case 'HIDE_LOCATE_ADDRESS_IN_AREA_FORM':
+    return false;
+  default:
+    return state;
+  }
+};
+
+export const locateUserPositionInAreaFormReducer = (state = false, action) => {
+  switch(action.type) {
+  case 'SHOW_LOCATE_USER_POSITION_IN_AREA_FORM':
+    return true;
+  case 'HIDE_LOCATE_USER_POSITION_IN_AREA_FORM':
     return false;
   default:
     return state;

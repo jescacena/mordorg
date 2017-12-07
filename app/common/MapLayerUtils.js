@@ -5,8 +5,56 @@ import {CUSTOM_LAYER_ICONS,
   POPUP_LOCATE_ADDRESS_IN_AREA} from 'constants';
 const $ = require('jQuery');
 const ReactGA = require('react-ga');
+const GeometryService = require('GeometryService');
+
 
 // const $ = require('jQuery');
+
+/*
+* @name calculateDistanceBetweenAreaAndPoint
+* @description Calculate distance between point and area
+* @param {object} areaCoordsArray
+* @param {object} pointFrom Array [lat,lon]
+* @return {object} {closestPoint: [lat,lon] , distance:XXX }
+*/
+export function calculateDistanceBetweenAreaAndPoint(areaCoordsArray, pointFrom, leafletMap) {
+
+  return new Promise((resolve, reject)=>{
+
+    //Prepare Area Coords
+    const areaLocationArray = areaCoordsArray.map((location)=> {
+      return [location[1], location[0]];
+    });
+
+    console.log('calculateDistanceBetweenAreaAndPoint areaLocationArray --->', areaLocationArray);
+
+
+    //get closest point to area limits
+    const closest = GeometryService.closest(leafletMap, areaLocationArray, pointFrom);
+    if(closest) {
+      const pointTo = L.latLng([closest.lat, closest.lng]);
+
+      console.log('calculateDistanceBetweenAreaAndPoint pointFrom --->', pointFrom);
+      console.log('calculateDistanceBetweenAreaAndPoint pointTo --->', pointTo);
+
+      //Request Google API Distance
+      GeometryService.distanceCercemapService2(pointFrom, pointTo)
+      .then((res) => {
+        console.log('calculateDistanceBetweenAreaAndPoint distance --->', res);
+        resolve({
+          closestPoint: pointTo,
+          distance: res.data.distance
+        });
+      })
+      .catch((error)=> {
+        reject('calculateDistanceBetweenAreaAndPoint error Not getting distance');
+      })
+
+    } else {
+      reject('calculateDistanceBetweenAreaAndPoint error Not getting closest point');
+    }
+  });
+}
 
 /*
 * flyTo: Fly to point and add a marker

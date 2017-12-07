@@ -20,9 +20,11 @@ const {searchTextReducer,
   fitToBoundsReducer,
   showPopupPoiDataReducer,
   locateAddressInAreaDataReducer,
+  locateUserPositionInAreaDataReducer,
   locateUserPositionReducer,
   leafletMapReducer,
   locateAddressInAreaFormReducer,
+  locateUserPositionInAreaFormReducer,
   flyToPointReducer} = require('reducers');
 
 export const configure = (initialState = {
@@ -42,6 +44,7 @@ export const configure = (initialState = {
   showSidePanelTopScrollArrow: false,
   showSidePanelBottomScrollArrow: false,
   showLocateAddressInAreaForm: false,
+  showLocateUserPositionInAreaForm: false,
   locateUserPosition: false,
   modalMessageText: 'Todas las caras de la verdad',
   layers: {},
@@ -50,6 +53,7 @@ export const configure = (initialState = {
   areas: {},
   poilists: {},
   showPopupPoiData: {},
+  locateUserPositionInAreaData: {},
   locateAddressInAreaData: {}
 }) => {
   const reducer = redux.combineReducers({
@@ -73,9 +77,11 @@ export const configure = (initialState = {
     flyToPoint: flyToPointReducer,
     showPopupPoiData: showPopupPoiDataReducer,
     locateAddressInAreaData: locateAddressInAreaDataReducer,
+    locateUserPositionInAreaData: locateUserPositionInAreaDataReducer,
     fitToBounds: fitToBoundsReducer,
     locateUserPosition: locateUserPositionReducer,
-    showLocateAddressInAreaForm: locateAddressInAreaFormReducer
+    showLocateAddressInAreaForm: locateAddressInAreaFormReducer,
+    showLocateUserPositionInAreaForm: locateUserPositionInAreaFormReducer
   });
 
   const store = redux.createStore(reducer, initialState, redux.compose(

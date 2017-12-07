@@ -329,6 +329,7 @@ export const CUSTOM_LAYER_ICONS = {
 export const POPUP_TEMPLATE = require('../templates/popup.handlebars');
 export const POPUP_AREA_TEMPLATE = require('../templates/popup-area.handlebars');
 export const POPUP_LAIA_TEMPLATE = require('../templates/popup-locate-address-in-area.handlebars');
+export const POPUP_LUIA_TEMPLATE = require('../templates/popup-locate-user-position-in-area.handlebars');
 
 // API console: https://console.developers.google.com/apis/credentials?project=cerce-api-project&hl=ES
 export const GOOGLE_MAP_KEY = 'AIzaSyC4hAxLWQYK86JGwSCI3FB4TiuAGRU-ez4';
@@ -343,6 +344,13 @@ export const POPUP_OPTIONS = {
 export const POPUP_LAIA_OPTIONS = {
   maxWidth: (window.innerWidth < 700)? '200':'250',
   className: 'ccm-marker-popup-laia',
+  // autoPanPadding: (window.innerWidth < 700)? [0, 100] : [100, 180]
+  autoPanPaddingTopLeft: (window.innerWidth < 700)? [0, 100] : [100, 180]
+};
+
+export const POPUP_LUIA_OPTIONS = {
+  maxWidth: (window.innerWidth < 700)? '200':'250',
+  className: 'ccm-marker-popup-luia',
   // autoPanPadding: (window.innerWidth < 700)? [0, 100] : [100, 180]
   autoPanPaddingTopLeft: (window.innerWidth < 700)? [0, 100] : [100, 180]
 };

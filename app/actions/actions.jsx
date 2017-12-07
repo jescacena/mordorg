@@ -14,9 +14,25 @@ export const showLocateAddresInAreaForm = () => {
   };
 };
 
+export const showLocateUserPositionInAreaForm = () => {
+  ReactGA.event({
+    category: 'LocateUserPositionInAreaForm',
+    action: 'Show'
+  });
+  return {
+    type: 'SHOW_LOCATE_USER_POSITION_IN_AREA_FORM'
+  };
+};
+
 export const hideLocateAddresInAreaForm = () => {
   return {
     type: 'HIDE_LOCATE_ADDRESS_IN_AREA_FORM'
+  };
+};
+
+export const hideLocateUserPositionInAreaForm = () => {
+  return {
+    type: 'HIDE_LOCATE_USER_POSITION_IN_AREA_FORM'
   };
 };
 
@@ -263,6 +279,18 @@ export const setPopupMessageLocateAddressInAreaData = (data) => {
   };
 };
 
+export const setPopupMessageLocateUserPositionInAreaData = (data) => {
+  ReactGA.event({
+    category: 'setPopupMessageLocateUserPositionInAreaData',
+    action: 'set',
+    label:JSON.stringify(data)
+  });
+  return {
+    type: 'SET_POPUP_MESSAGE_LUIA_DATA',
+    data: data
+  };
+};
+
 export const setLocateAddressInAreaAreaId = (areaId) => {
   ReactGA.event({
     category: 'setLocateAddressInAreaAreaId',
@@ -275,6 +303,18 @@ export const setLocateAddressInAreaAreaId = (areaId) => {
   };
 };
 
+export const setLocateUserPositionInAreaAreaId = (areaId) => {
+  ReactGA.event({
+    category: 'setLocateUserPositionInAreaAreaId',
+    action: 'set',
+    label:JSON.stringify(areaId)
+  });
+  return {
+    type: 'SET_LUIA_AREAID',
+    areaId: areaId
+  };
+};
+
 export const setLocateAddressInAreaPointFrom = (pointFrom) => {
   return {
     type: 'SET_LAIA_POINT_FROM',
@@ -282,9 +322,23 @@ export const setLocateAddressInAreaPointFrom = (pointFrom) => {
   };
 };
 
+export const setLocateUserPositionInAreaPointFrom = (pointFrom) => {
+  return {
+    type: 'SET_LUIA_POINT_FROM',
+    areaId: pointFrom
+  };
+};
+
 export const setLocateAddressInAreaPointTo = (pointTo) => {
   return {
     type: 'SET_LAIA_POINT_TO',
+    areaId: pointTo
+  };
+};
+
+export const setLocateUserPositionInAreaPointTo = (pointTo) => {
+  return {
+    type: 'SET_LUIA_POINT_TO',
     areaId: pointTo
   };
 };

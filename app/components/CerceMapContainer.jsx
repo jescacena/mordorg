@@ -7,6 +7,7 @@ import SidePanel from 'SidePanel';
 import LoadingSpinner from 'LoadingSpinner';
 import ModalMessage from 'ModalMessage';
 import LocateAddressForm from 'LocateAddressForm';
+import LocateUserPositionForm from 'LocateUserPositionForm';
 import MapLayer from 'MapLayer';
 import Logo from 'Logo';
 import Footer from 'Footer';
@@ -40,6 +41,7 @@ export class CerceMapContainer extends React.Component {
         <LoadingSpinner />
         <ModalMessage />
         <LocateAddressForm />
+        <LocateUserPositionForm />
       <SidePanel />
       </div>
     );
